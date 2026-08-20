@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
-import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 import styles from "./page.module.css";
+import ImageSlideshow from "@/components/ui/ImageSlideshow";
 
 const previewCards = [
   {
@@ -22,13 +22,20 @@ const previewCards = [
   },
   {
     num: "03",
+    href: "/creations",
+    title: "Créations",
+    text: "Des modèles personnalisables.",
+    cta: "Découvrir",
+  },
+  {
+    num: "04",
     href: "/collections",
     title: "Collections",
     text: "Un aperçu du chemin parcouru, à travers mes réalisations passées.",
     cta: "Découvrir",
   },
   {
-    num: "04",
+    num: "05",
     href: "/contact",
     title: "Contact",
     text: "Une idée, un projet ? Discutons-en.",
@@ -45,7 +52,10 @@ export default function HomePage() {
             Stylisme <span className="slash" /> Modélisme{" "}
             <span className="slash" /> Couture
           </Eyebrow>
-          <h1>Créer, c&apos;est rendre possible ce qui n&apos;existait pas encore.</h1>
+          <h1 className={styles.tag}>
+            « La mode est avant tout un moyen d&apos;exprimer une idée, une
+            émotion ou une personnalité. »
+          </h1>
           <p className={styles.lede}>
             TshinK conçoit des vêtements sur-mesure, transforme des pièces
             existantes, et donne vie à des créations uniques — du croquis à
@@ -61,10 +71,14 @@ export default function HomePage() {
           </div>
         </div>
         <div className={styles.heroVisual}>
-          <ImagePlaceholder caption="Image — atelier, en cours de confection" />
-          <div className={styles.tag}>
-            « J&apos;imagine des créations, je développe des collections,
-            j&apos;accompagne des projets, je transforme des pièces. »
+          <div className={styles.heroImageBox}>
+            <ImageSlideshow
+                slides={[
+                  { src: "/images/4A.jpeg", alt: "Collection Expo, 4A" },
+                  { src: "/images/4B.png", alt: "Collection Expo, 4B" },
+                  { src: "/images/collEscalier.jpg", alt: "Collection Expo Mode, version escalier" },
+                ]}
+            />
           </div>
         </div>
       </section>
@@ -89,8 +103,8 @@ export default function HomePage() {
       <section className={styles.pullquote}>
         <div className="wrap">
           <p>
-            « La mode est avant tout un moyen d&apos;exprimer une idée, une
-            émotion ou une personnalité. »
+            « J&apos;imagine des créations, je développe des collections,
+            j&apos;accompagne des projets, je transforme des pièces. »
           </p>
           <Image
             src="/logo-full.png"
