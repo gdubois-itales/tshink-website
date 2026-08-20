@@ -1,0 +1,284 @@
+/* ==========================================================================
+   TshinK — Design tokens & base styles
+   Repris du mockup validé (tshink-mockup.html). Les polices sont chargées
+   via next/font dans app/layout.tsx et exposées ici en tant que variables
+   CSS (--font-serif / --font-sans).
+   ========================================================================== */
+
+:root {
+  --black: #1b1614;
+  --ink: #2a211d;
+  --ecru: #f2ece0;
+  --ecru-deep: #e6dac4;
+  --white: #fbf8f3;
+  --bordeaux: #7c1f2b;
+  --bordeaux-deep: #3f0f16;
+  --grey: #8c8275;
+  --line: rgba(27, 22, 20, 0.14);
+  --line-strong: rgba(27, 22, 20, 0.28);
+
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+
+  --header-height: 78px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ecru);
+  color: var(--ink);
+  font-family: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif), "Georgia", serif;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.08;
+  color: var(--black);
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+::selection {
+  background: var(--bordeaux);
+  color: var(--white);
+}
+
+/* ============ Layout helpers ============ */
+
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+@media (max-width: 720px) {
+  .wrap {
+    padding: 0 20px;
+  }
+}
+
+.hairline {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: 0;
+}
+
+main {
+  padding-top: var(--header-height);
+}
+
+.section {
+  padding: 100px 0;
+}
+.section.tight {
+  padding: 70px 0;
+}
+@media (max-width: 720px) {
+  .section {
+    padding: 64px 0;
+  }
+  .section.tight {
+    padding: 48px 0;
+  }
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 56px;
+}
+.section-head h2 {
+  font-size: clamp(30px, 4vw, 44px);
+  margin-top: 16px;
+}
+.section-head .lede {
+  margin-top: 18px;
+  color: var(--ink);
+  font-size: 16.5px;
+  max-width: 560px;
+}
+
+.bg-black {
+  background: var(--black);
+  color: var(--ecru);
+}
+.bg-black h1,
+.bg-black h2,
+.bg-black h3,
+.bg-black h4 {
+  color: var(--white);
+}
+.bg-white {
+  background: var(--white);
+}
+
+/* ============ Eyebrow label ============ */
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bordeaux);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--bordeaux);
+  display: inline-block;
+}
+
+.slash {
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: var(--bordeaux);
+  transform: rotate(-34deg);
+  margin: 0 2px;
+}
+
+/* ============ Buttons ============ */
+
+.cta-outline {
+  border: 1px solid var(--black);
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: inline-block;
+}
+.cta-outline:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.cta-solid {
+  background: var(--bordeaux);
+  color: var(--white);
+  padding: 14px 30px;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: background 0.2s ease;
+  border: 1px solid var(--bordeaux);
+}
+.cta-solid:hover {
+  background: var(--bordeaux-deep);
+  border-color: var(--bordeaux-deep);
+}
+
+.cta-ghost {
+  border: 1px solid var(--black);
+  color: var(--black);
+  padding: 14px 30px;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+.cta-ghost:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* ============ Image placeholder ("swatch") ============
+   Utilisé partout tant que les vraies photos ne sont pas intégrées.
+   Voir components/ui/ImagePlaceholder.tsx
+*/
+.ph {
+  position: relative;
+  background: repeating-linear-gradient(
+      135deg,
+      rgba(27, 22, 20, 0.05) 0 2px,
+      transparent 2px 14px
+    ),
+    linear-gradient(160deg, #e6dac4, #efe6d5);
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.ph .cap {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey);
+  padding: 12px 14px;
+  background: linear-gradient(to top, rgba(251, 248, 243, 0.9), transparent);
+  width: 100%;
+}
+.ph::before {
+  content: "TshinK";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(27, 22, 20, 0.22);
+  letter-spacing: 0.04em;
+}
+
+/* Ruler / tape-measure decorative graphic (used on Services > Déroulement) */
+.ruler {
+  height: 22px;
+  background-image: repeating-linear-gradient(
+      90deg,
+      var(--black) 0 1px,
+      transparent 1px 10px
+    ),
+    repeating-linear-gradient(90deg, var(--black) 0 1.5px, transparent 1.5px 50px);
+  background-size: 100% 9px, 100% 18px;
+  background-position: bottom, bottom;
+  background-repeat: repeat-x, repeat-x;
+  opacity: 0.4;
+}
+
+/* ============ Placeholder page (route skeleton) ============ */
+
+.placeholder-page {
+  min-height: calc(100vh - var(--header-height) - 260px);
+  display: flex;
+  align-items: center;
+}
