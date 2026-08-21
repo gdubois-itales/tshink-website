@@ -8,21 +8,26 @@ type Slide = {
     alt: string;
 };
 
+type ImageSlideshowProps = {
+    slides: Slide[];
+    intervalMs?: number;
+    sizes?: string;
+    objectFit?: "contain" | "cover";
+};
+
 export default function ImageSlideshow({
                                            slides,
                                            intervalMs = 4000,
                                            sizes = "(max-width: 920px) 100vw, 50vw",
-                                       }: {
-    slides: Slide[];
-    intervalMs?: number;
-    sizes?: string;
-}) {
+                                           objectFit = "contain",
+                                       }: ImageSlideshowProps) {
     const [current, setCurrent] = useState(0);
 
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrent((i) => (i + 1) % slides.length);
         }, intervalMs);
+
         return () => clearInterval(timer);
     }, [slides.length, intervalMs]);
 
@@ -37,7 +42,7 @@ export default function ImageSlideshow({
                     sizes={sizes}
                     priority={i === 0}
                     style={{
-                        objectFit: "contain",
+                        objectFit: objectFit,
                         position: "absolute",
                         inset: 0,
                         opacity: i === current ? 1 : 0,
