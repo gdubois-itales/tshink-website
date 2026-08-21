@@ -78,21 +78,25 @@ export default function Header() {
 
       <div className={`${styles.mobilePanel} ${mobileOpen ? styles.open : ""}`}>
         {navLinks.map((link) => (
-          <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}>
-            {link.label}
-          </Link>
+            <div key={link.href}>
+              <Link href={link.href} onClick={() => setMobileOpen(false)}>
+                {link.label}
+              </Link>
+              {link.label === "Collections" && (
+                  <div className={styles.sub}>
+                    {collections.map((c) => (
+                        <Link
+                            key={c.slug}
+                            href={`/collections/${c.slug}`}
+                            onClick={() => setMobileOpen(false)}
+                        >
+                          — {c.title}
+                        </Link>
+                    ))}
+                  </div>
+              )}
+            </div>
         ))}
-        <div className={styles.sub}>
-          {collections.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/collections/${c.slug}`}
-              onClick={() => setMobileOpen(false)}
-            >
-              — {c.title}
-            </Link>
-          ))}
-        </div>
       </div>
     </>
   );

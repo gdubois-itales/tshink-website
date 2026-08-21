@@ -52,9 +52,9 @@ export default function HomePage() {
             Stylisme <span className="slash" /> Modélisme{" "}
             <span className="slash" /> Couture
           </Eyebrow>
-          <h1 className={styles.tag}>
-            « La mode est avant tout un moyen d&apos;exprimer une idée, une
-            émotion ou une personnalité. »
+          <h1 className={styles.heroTitle}>
+            « Chaque idée ouvre une nouvelle histoire. Chaque création en
+            écrit un nouveau chapitre. »
           </h1>
           <p className={styles.lede}>
             TshinK conçoit des vêtements sur-mesure, transforme des pièces
@@ -69,6 +69,10 @@ export default function HomePage() {
               Discutons de votre projet
             </Button>
           </div>
+          <p className={styles.tag}>
+            « J&apos;imagine des créations, je développe des collections,
+            j&apos;accompagne des projets, je transforme des pièces. »
+          </p>
         </div>
         <div className={styles.heroVisual}>
           <div className={styles.heroImageBox}>
@@ -103,8 +107,7 @@ export default function HomePage() {
       <section className={styles.pullquote}>
         <div className="wrap">
           <p>
-            « J&apos;imagine des créations, je développe des collections,
-            j&apos;accompagne des projets, je transforme des pièces. »
+            « Créer un vêtement, c&apos;est transformer une idée en une histoire que l&apos;on peut porter. »
           </p>
           <Image
             src="/logo-full.png"
