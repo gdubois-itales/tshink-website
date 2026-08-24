@@ -104,14 +104,14 @@ main {
   padding: 50px 0;
 }
 .section.tight {
-  padding: 70px 0;
+  padding: 36px 0;
 }
 @media (max-width: 720px) {
   .section {
-    padding: 64px 0;
+    padding: 40px 0;
   }
   .section.tight {
-    padding: 48px 0;
+    padding: 28px 0;
   }
 }
 
