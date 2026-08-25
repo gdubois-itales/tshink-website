@@ -1,7 +1,7 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
+import Image from "next/image";
 import styles from "./page.module.css";
-import ImageSlideshow from "@/components/ui/ImageSlideshow";
 
 export default function AProposPage() {
   return (
@@ -11,17 +11,13 @@ export default function AProposPage() {
             <div className={styles.editorial}>
               <div className={styles.editorialImage}>
                 <div className={styles.slideshowFrame}>
-                  <ImageSlideshow
-                      slides={[
-                        {
-                          src: "/images/atelier03.jpg",
-                          alt: "Portrait atelier 03",
-                        },
-                        {
-                          src: "/images/atelier04.jpg",
-                          alt: "Portrait atelier 04",
-                        },
-                      ]}
+                  <Image
+                      src="/images/atelier01.png"
+                      alt="Portrait en atelier 01"
+                      fill
+                      sizes="(max-width: 880px) 100vw, 40vw"
+                      style={{ objectFit: "cover" }}
+                      priority
                   />
                 </div>
               </div>
