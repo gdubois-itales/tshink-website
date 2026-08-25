@@ -1,7 +1,6 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
-import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
-import ImageSlideshow from "@/components/ui/ImageSlideshow";
+import ImageCarousel from "@/components/ui/ImageCarousel";
 import styles from "./page.module.css";
 
 const steps = [
@@ -72,9 +71,10 @@ export default function ServicesPage() {
                 </p>
               </div>
               <div className={styles.imageBox}>
-              <ImageSlideshow
+              <ImageCarousel
                   slides={[
-                    { src: "/images/atelier03.jpg", alt: "Croquis de création" },
+                    { src: "/images/atelier03.jpg", alt: "Portrait atelier 03" },
+                    { src: "/images/atelier04.jpg", alt: "Portrait atelier 04" },
                   ]}
                   sizes="(max-width: 880px) 100vw, 50vw"
               />
@@ -96,7 +96,7 @@ export default function ServicesPage() {
                 </p>
               </div>
               <div className={styles.imageBox}>
-                <ImageSlideshow
+                <ImageCarousel
                     slides={[
                       { src: "/images/CreaComm01.jpg", alt: "Commande Veste DC - Spits" },
                       { src: "/images/ChemiseHô.png", alt: "Chemise homme black & white" },
@@ -132,7 +132,7 @@ export default function ServicesPage() {
                 </ul>
               </div>
               <div className={styles.imageBox}>
-                <ImageSlideshow
+                <ImageCarousel
                     slides={[
                       { src: "/images/PullMaman.png", alt: "Custo pull maman" },
                       { src: "/images/retoucheRobe.png", alt: "Retouche robe Tata Carine" },
