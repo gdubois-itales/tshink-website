@@ -27,11 +27,10 @@ export default function AProposPage() {
               </div>
               <div className={styles.editorialCopy}>
                 <Eyebrow>À propos</Eyebrow>
-                <h1>À propos</h1>
-                <p className={styles.quote}>
+                <h1 className={styles.quote}>
                   Créer, c&apos;est rendre possible ce qui n&apos;existait pas
                   encore.
-                </p>
+                </h1>
                 <p>
                   La mode est avant tout un moyen d&apos;exprimer une idée, une
                   émotion ou une personnalité. C&apos;est cette conviction qui
