@@ -1,0 +1,100 @@
+.serviceRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    padding: 60px 0;
+}
+.serviceRow:not(:last-child) {
+    border-bottom: 1px solid var(--line);
+}
+.serviceRow.reverse .imageBox {
+    order: -1;
+}
+@media (max-width: 880px) {
+    .serviceRow,
+    .serviceRow.reverse {
+        grid-template-columns: 1fr;
+    }
+    .serviceRow.reverse .imageBox {
+        order: 0;
+    }
+}
+.imageBox {
+    position: relative;
+    aspect-ratio: 4 / 3;
+}
+.serviceRow h3 {
+    font-size: clamp(24px, 3vw, 32px);
+}
+.serviceRow p {
+    margin-top: 16px;
+    font-size: 15px;
+    color: var(--ink);
+}
+
+.kicker {
+    font-family: var(--font-serif), serif;
+    font-style: italic;
+    color: var(--bordeaux);
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.taglist {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+.taglist li {
+    display: flex;
+    gap: 12px;
+    font-size: 14.5px;
+    align-items: baseline;
+}
+.taglist li::before {
+    content: "";
+    width: 16px;
+    height: 1px;
+    background: var(--bordeaux);
+    margin-top: 9px;
+    flex-shrink: 0;
+}
+
+.rulerWrap {
+    margin-top: 22px;
+}
+
+.steps {
+    margin-top: 10px;
+}
+.step {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+}
+.step:last-child {
+    border-bottom: 1px solid var(--line);
+}
+.stepNum {
+    font-family: var(--font-serif), serif;
+    font-style: italic;
+    font-size: 34px;
+    color: var(--bordeaux);
+    opacity: 0.35;
+}
+.step h4 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+.step p {
+    font-size: 14.5px;
+    color: var(--ink);
+    max-width: 64ch;
+}
