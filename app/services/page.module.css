@@ -28,7 +28,7 @@
     position: relative;
 }
 .serviceRow h3 {
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(24px, 3vw, 3px);
 }
 .serviceRow p {
     margin-top: 16px;
@@ -40,7 +40,7 @@
     font-family: var(--font-serif), serif;
     font-style: italic;
     color: var(--bordeaux);
-    font-size: 14px;
+    font-size: 30px;
     display: block;
     margin-bottom: 10px;
 }
