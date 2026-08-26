@@ -224,7 +224,7 @@ export default function ImageCarousel({
 
                                 <button
                                     type="button"
-                                    className={styles.lightboxNavButton}
+                                    className={`${styles.lightboxNavButton} ${styles.lightboxNavNext}`}
                                     onClick={next}
                                     aria-label="Image suivante"
                                 >
