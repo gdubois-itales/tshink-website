@@ -43,9 +43,9 @@ export default function ServicesPage() {
           <div className="wrap">
             <div className="section-head">
               <Eyebrow>Services</Eyebrow>
-              <h2 style={{ fontStyle: "italic" }}>
+              <h1 style={{ fontStyle: "italic" }}>
                 Imaginer n&apos;est que le début de l&apos;histoire.
-              </h2>
+              </h1>
               <p className="lede">
                 Chaque projet est différent, tout comme les personnes qui me le
                 confient. Certains souhaitent une création originale,

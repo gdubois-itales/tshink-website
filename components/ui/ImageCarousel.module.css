@@ -220,6 +220,10 @@
     color: var(--bordeaux);
 }
 
+.lightboxNavNext {
+    justify-self: end;
+}
+
 .lightboxProgress {
     width: min(100%, 340px);
 

@@ -119,6 +119,7 @@ main {
   max-width: 640px;
   margin-bottom: 56px;
 }
+.section-head h1,
 .section-head h2 {
   font-size: clamp(30px, 4vw, 44px);
   margin-top: 16px;
