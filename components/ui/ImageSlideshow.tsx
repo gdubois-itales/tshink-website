@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import RunwayWalker from "./RunwayWalker";
+import styles from "./ImageSlideshow.module.css";
 
 type Slide = {
     src: string;
@@ -17,39 +19,55 @@ type ImageSlideshowProps = {
 
 export default function ImageSlideshow({
                                            slides,
-                                           intervalMs = 4000,
+                                           intervalMs = 3000,
                                            sizes = "(max-width: 920px) 100vw, 50vw",
                                            objectFit = "contain",
                                        }: ImageSlideshowProps) {
     const [current, setCurrent] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(true);
 
     useEffect(() => {
+        if (!isPlaying) {
+            return;
+        }
+
         const timer = setInterval(() => {
             setCurrent((i) => (i + 1) % slides.length);
         }, intervalMs);
 
         return () => clearInterval(timer);
-    }, [slides.length, intervalMs]);
+    }, [isPlaying, slides.length, intervalMs]);
+
+    const togglePlayback = () => {
+        setIsPlaying((playing) => !playing);
+    };
 
     return (
-        <>
-            {slides.map((slide, i) => (
-                <Image
-                    key={slide.src}
-                    src={slide.src}
-                    alt={slide.alt}
-                    fill
-                    sizes={sizes}
-                    priority={i === 0}
-                    style={{
-                        objectFit: objectFit,
-                        position: "absolute",
-                        inset: 0,
-                        opacity: i === current ? 1 : 0,
-                        transition: "opacity 1.6s ease",
-                    }}
-                />
-            ))}
-        </>
+        <div className={styles.slideshow}>
+            <div className={styles.imageArea}>
+                {slides.map((slide, i) => (
+                    <Image
+                        key={slide.src}
+                        src={slide.src}
+                        alt={slide.alt}
+                        fill
+                        sizes={sizes}
+                        priority={i === 0}
+                        style={{
+                            objectFit: objectFit,
+                            position: "absolute",
+                            inset: 0,
+                            opacity: i === current ? 1 : 0,
+                            transition: "opacity 1.6s ease",
+                        }}
+                    />
+                ))}
+            </div>
+
+            <RunwayWalker
+                isPlaying={isPlaying}
+                onToggle={togglePlayback}
+            />
+        </div>
     );
 }
