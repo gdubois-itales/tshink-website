@@ -1,0 +1,57 @@
+.walker {
+    position: absolute;
+    right: 65px;
+    bottom: 18px;
+
+    width: 90px;
+    height: 150px;
+
+    padding: 0;
+    margin: 0;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    transition: transform 0.25s ease;
+}
+
+.walker:hover {
+    transform: translateY(-3px);
+}
+
+.walker img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    pointer-events: none;
+}
+
+@media (max-width: 920px) {
+    .slideshow {
+        height: 100%;
+    }
+
+    .imageArea {
+        height: calc(100% - 60px);
+    }
+
+    .walker {
+        position: relative;
+        right: auto;
+        bottom: auto;
+
+        width: 55px;
+        height: 95px;
+
+        margin: 5px auto 0;
+    }
+}
