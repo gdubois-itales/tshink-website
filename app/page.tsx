@@ -78,8 +78,8 @@ export default function HomePage() {
           <div className={styles.heroImageBox}>
             <ImageSlideshow
                 slides={[
-                  { src: "/images/4A.jpeg", alt: "Collection Expo, 4A" },
-                  { src: "/images/4B.png", alt: "Collection Expo, 4B" },
+                  { src: "/images/4A.jpg", alt: "Collection Expo, 4A" },
+                  { src: "/images/4B.jpg", alt: "Collection Expo, 4B" },
                   { src: "/images/collEscalier.jpg", alt: "Collection Expo Mode, version escalier" },
                 ]}
             />

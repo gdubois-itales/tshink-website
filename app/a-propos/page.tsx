@@ -12,7 +12,7 @@ export default function AProposPage() {
               <div className={styles.editorialImage}>
                 <div className={styles.slideshowFrame}>
                   <Image
-                      src="/images/atelier01.png"
+                      src="/images/atelier01.jpg"
                       alt="Portrait en atelier 01"
                       fill
                       sizes="(max-width: 880px) 100vw, 40vw"
