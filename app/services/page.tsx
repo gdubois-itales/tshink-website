@@ -99,8 +99,8 @@ export default function ServicesPage() {
                 <ImageCarousel
                     slides={[
                       { src: "/images/CreaComm01.jpg", alt: "Commande Veste DC - Spits" },
-                      { src: "/images/ChemiseHô.png", alt: "Chemise homme black & white" },
-                      { src: "/images/pullFê.png", alt: "Pull femme crème" },
+                      { src: "/images/ChemiseHo.jpg", alt: "Chemise homme black & white" },
+                      { src: "/images/pullFe.jpg", alt: "Pull femme crème" },
                     ]}
                     sizes="(max-width: 880px) 100vw, 50vw"
                 />
@@ -134,11 +134,11 @@ export default function ServicesPage() {
               <div className={styles.imageBox}>
                 <ImageCarousel
                     slides={[
-                      { src: "/images/PullMaman.png", alt: "Custo pull maman" },
-                      { src: "/images/retoucheRobe.png", alt: "Retouche robe Tata Carine" },
+                      { src: "/images/PullMaman.jpg", alt: "Custo pull maman" },
+                      { src: "/images/retoucheRobe.jpg", alt: "Retouche robe Tata Carine" },
                       { src: "/images/tiretteJeans.jpg", alt: "Croquis de création" },
-                      { src: "/images/transformationChute.png", alt: "Carnet de création" },
-                      { src: "/images/VesteMarraine.png", alt: "Retouche é Custo veste Marraine" },
+                      { src: "/images/transformationChute.jpg", alt: "Carnet de création" },
+                      { src: "/images/VesteMarraine.jpg", alt: "Retouche é Custo veste Marraine" },
                     ]}
                     sizes="(max-width: 880px) 100vw, 50vw"
                 />
