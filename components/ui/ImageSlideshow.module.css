@@ -9,3 +9,36 @@
     width: 100%;
     height: 100%;
 }
+
+.runwayControls {
+    position: absolute;
+    right: 65px;
+    bottom: 18px;
+
+    display: flex;
+    flex-direction: column; /* bouton au-dessus de la silhouette */
+    align-items: center;
+    gap: 10px;
+
+    z-index: 5;
+}
+
+@media (max-width: 920px) {
+    .runwayControls {
+        position: relative;
+        right: auto;
+        bottom: auto;
+
+        margin: 15px auto 0;
+    }
+}
+
+@media (max-width: 920px) {
+    .slideshow {
+        height: auto;
+    }
+
+    .imageArea {
+        height: 55vh;
+    }
+}

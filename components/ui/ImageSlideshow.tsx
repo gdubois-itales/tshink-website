@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import RunwayWalker from "./RunwayWalker";
 import styles from "./ImageSlideshow.module.css";
+import PlayPauseButton from "./PlayPauseButton";
 
 type Slide = {
     src: string;
@@ -64,10 +65,19 @@ export default function ImageSlideshow({
                 ))}
             </div>
 
-            <RunwayWalker
-                isPlaying={isPlaying}
-                onToggle={togglePlayback}
-            />
+            <div className={styles.runwayControls}>
+                <PlayPauseButton
+                    isPlaying={isPlaying}
+                    onToggle={togglePlayback}
+                />
+
+
+                <RunwayWalker
+                    isPlaying={isPlaying}
+                    onToggle={togglePlayback}
+                />
+            </div>
+
         </div>
     );
 }
