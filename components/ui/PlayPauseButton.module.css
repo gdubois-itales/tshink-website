@@ -1,0 +1,35 @@
+.playPause {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+    margin: 0 auto;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--bordeaux);
+    color: var(--white);
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 6px rgba(27, 22, 20, 0.25);
+
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.playPause:hover {
+    background: var(--bordeaux-deep);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 920px) {
+    .playPause {
+        width: 28px;
+        height: 28px;
+    }
+}

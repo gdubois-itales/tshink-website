@@ -1,8 +1,4 @@
 .walker {
-    position: absolute;
-    right: 65px;
-    bottom: 18px;
-
     width: 90px;
     height: 150px;
 
@@ -13,8 +9,6 @@
     background: transparent;
 
     cursor: pointer;
-
-    z-index: 5;
 
     display: flex;
     align-items: flex-end;
@@ -36,22 +30,11 @@
 }
 
 @media (max-width: 920px) {
-    .slideshow {
-        height: 100%;
-    }
-
-    .imageArea {
-        height: calc(100% - 60px);
-    }
 
     .walker {
-        position: relative;
-        right: auto;
-        bottom: auto;
-
         width: 55px;
         height: 95px;
 
-        margin: 5px auto 0;
+        margin: 0;
     }
 }
