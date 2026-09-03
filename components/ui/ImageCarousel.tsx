@@ -13,12 +13,14 @@ type ImageCarouselProps = {
     slides: Slide[];
     sizes?: string;
     objectFit?: "contain" | "cover";
+    aspectRatio?: string;
 };
 
 export default function ImageCarousel({
                                           slides,
                                           sizes = "(max-width: 920px) 100vw, 50vw",
                                           objectFit = "contain",
+                                          aspectRatio,
                                       }: ImageCarouselProps) {
     const [current, setCurrent] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +76,7 @@ export default function ImageCarousel({
 
                 {/* ================= IMAGE ================= */}
 
-                <div className={styles.imageFrame}>
+                <div className={styles.imageFrame} style={aspectRatio ? { aspectRatio } : undefined}>
                     <button
                         type="button"
                         className={styles.imageButton}
