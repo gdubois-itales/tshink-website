@@ -12,6 +12,8 @@ export type Creation = {
     title: string;
     meta: string;
     desc: string;
+    size: string;
+    price: string;
     badge: string;
     cardImage: { src: string; alt: string };
     modalImages: { src: string; alt: string }[];
@@ -29,122 +31,141 @@ const vetements: Creation[] = [
     {
         slug: "bi-pull",
         cat: "vetement",
-        title: "Bi-Pull", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
+        title: "Pull en 2 - 127,70 €",
+        meta: "Pièce unique",
+        desc: "Sweat rouge.\nCoton/viscose écru ligné rouge.",
+        size: "Taille 38",
+        price: "Matières = 17,70 €.\nModèle = 110 €",
+        badge: "Sur commande",
         cardImage: { src: `${V}/model/biPull.jpg`, alt: "Bi-Pull, porté" },
-        modalImages: [{ src: `${V}/buste/biPullB.jpg`, alt: "Bi-Pull, sur buste" }],
+        modalImages: [
+            { src: `${V}/buste/biPullB.jpg`, alt: "Bi-Pull, sur buste" },
+            { src: `${V}/model/biPull.jpg`, alt: "Bi-Pull, porté" }],
     },
     {
         slug: "byzance-01",
         cat: "vetement",
-        title: "Byzance I", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        cardImage: { src: `${V}/model/byzance01.jpg`, alt: "Byzance I, porté" },
-        modalImages: [{ src: `${V}/buste/byzance01B.jpg`, alt: "Byzance I, sur buste" }],
+        title: "Byzance Grey - 281,50 €",
+        meta: "Pièce unique",
+        desc: "Fausse fourrure ligné blanc/gris.\nFausse fourrure gris ardoise.\nDoublure satinée beige.",
+        size: "Taille 38/40",
+        price: "Matières = 86,50 €.\nModèle = 195 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/byzance01.jpg`, alt: "Byzance Grey, porté" },
+        modalImages: [
+            { src: `${V}/buste/byzance01B.jpg`, alt: "Byzance Grey, sur buste" },
+            { src: `${V}/model/byzance01.jpg`, alt: "Byzance Grey, porté" }],
     },
     {
         slug: "byzance-02",
         cat: "vetement",
-        title: "Byzance II", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        cardImage: { src: `${V}/model/byzance02.jpg`, alt: "Byzance II, porté" },
-        modalImages: [{ src: `${V}/buste/byzance02B.jpg`, alt: "Byzance II, sur buste" }],
+        title: "Byzance Red - 255 €",
+        meta: "Pièce unique",
+        desc: "Fausse fourrure écrue double face quadrillée rouge.\nFausse fourrure girs/brun.",
+        size: "Taille 38/40",
+        price: "Modèle = 195 €.\nMatières = 60 €.",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/byzance02.jpg`, alt: "Byzance Red, porté" },
+        modalImages: [
+            { src: `${V}/buste/byzance02B.jpg`, alt: "Byzance Red, sur buste" },
+            { src: `${V}/model/byzance02.jpg`, alt: "Byzance Red, porté" }],
     },
     {
         slug: "byzance-03",
         cat: "vetement",
-        title: "Byzance III", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        cardImage: { src: `${V}/model/byzance03.jpg`, alt: "Byzance III, porté" },
-        // À VÉRIFIER : byzance03B.jpg ET byzance03B1.jpg existent tous les deux —
-        // je suppose que ce sont 2 angles bustes de la même pièce. Confirme.
+        title: "Byzance White - 275 €",
+        meta: "Pièce unique",
+        desc: "Fausse fourrue écrue tachetée.\nFausse fourrure écrue.",
+        size: "Taille 38/40",
+        price: "Modèle = 195 €.\nMatières = 80 €.",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/byzance03.jpg`, alt: "Byzance White, porté" },
         modalImages: [
-            { src: `${V}/buste/byzance03B.jpg`, alt: "Byzance III, sur buste" },
-            { src: `${V}/buste/byzance03B1.jpg`, alt: "Byzance III, sur buste, autre angle" },
+            { src: `${V}/buste/byzance03B.jpg`, alt: "Byzance White, sur buste" },
+            { src: `${V}/model/byzance03.jpg`, alt: "Byzance White, porté" },
         ],
     },
     {
-        slug: "byzance-003",
+        slug: "decape-01",
         cat: "vetement",
-        title: "Byzance IV", // À COMPLÉTER — nom de fichier ambigu, voir note ci-dessous
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        // À VÉRIFIER : "byzance003.jpg" n'a pas de photo buste correspondante
-        // clairement identifiable dans ton dossier. Pas de doublon avec Byzance III ?
-        cardImage: { src: `${V}/model/byzance003.jpg`, alt: "Byzance IV, porté" },
-        modalImages: [{ src: `${V}/model/byzance003.jpg`, alt: "Byzance IV, porté" }],
+        title: "Décape Fur Ecru - 138,75 €",
+        meta: "Pièce unique",
+        desc: "Fausse fourrure écrue tachetée.\nFausse fourrure écrue.\nDoublue ardoise satinée.",
+        size: "Taille 38",
+        price: "Modèle = 100 €.\nMatoères = 38,75 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/cape01.jpg`, alt: "Décape Fur Ecru, portée" },
+        modalImages: [
+            { src: `${V}/buste/cape01B.jpg`, alt: "Décape Fur Ecru, sur buste" },
+            { src: `${V}/model/cape01.jpg`, alt: "Décape Fur Ecru, portée" }],
     },
     {
-        slug: "cape-001",
+        slug: "decape-02",
         cat: "vetement",
-        title: "Cape Vêtement I", // À COMPLÉTER (nom provisoire pour la distinguer des accessoires "Cape A/B")
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        // À VÉRIFIER : j'ai supposé cape001.jpg <-> cape01B.jpg (numérotation différente : 001 vs 01)
-        cardImage: { src: `${V}/model/cape001.jpg`, alt: "Cape Vêtement I, portée" },
-        modalImages: [{ src: `${V}/buste/cape01B.jpg`, alt: "Cape Vêtement I, sur buste" }],
+        title: "Décape Red - 141,50 €",
+        meta: "Pièce unique",
+        desc: "Laine bouclette rouge.\nLainage fin rouge.\nDoublure ardoise satinée.",
+        size: "Taille 38",
+        price: "Modèle = 100 €.\nMatières = 41,50 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/cape02.jpg`, alt: "Décape Red, portée" },
+        modalImages: [
+            { src: `${V}/buste/cape02B.jpg`, alt: "Décape Red, sur buste" },
+            { src: `${V}/model/cape02.jpg`, alt: "Décape Red, portée" }],
     },
     {
-        slug: "cape-02",
+        slug: "decape-03",
         cat: "vetement",
-        title: "Cape Vêtement II", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        cardImage: { src: `${V}/model/cape02.jpg`, alt: "Cape Vêtement II, portée" },
-        modalImages: [{ src: `${V}/buste/cape02B.jpg`, alt: "Cape Vêtement II, sur buste" }],
-    },
-    {
-        slug: "cape-03",
-        cat: "vetement",
-        title: "Cape Vêtement III", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        // Pas de photo buste pour cette pièce : on réutilise la photo modèle dans la modale
-        // (même logique que pour "Top Fleuri III" plus bas).
-        cardImage: { src: `${V}/model/cape03.jpg`, alt: "Cape Vêtement III, portée" },
-        modalImages: [{ src: `${V}/model/cape03.jpg`, alt: "Cape Vêtement III, portée" }],
+        title: "Décape Minkee Ecru - 127 €",
+        meta: "Pièce unique",
+        desc: "Minkee écru.\nMaille à peluchons blanc.",
+        size: "Taille 38",
+        price: "Modèle = 100 €.\nMatières = 27 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/cape03.jpg`, alt: "Décape Minkee Ecru, portée" },
+        modalImages: [{ src: `${V}/model/cape03.jpg`, alt: "Décape Minkee Ecru, portée" }],
     },
     {
         slug: "capette-01",
         cat: "vetement",
-        title: "Capette I", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        cardImage: { src: `${V}/model/capette01.jpg`, alt: "Capette I, portée" },
-        modalImages: [{ src: `${V}/buste/capette01B.jpg`, alt: "Capette I, sur buste" }],
+        title: "Capette SD Blue - 127 €",
+        meta: "Pièce unique",
+        desc: "Laine chevron bleu/écru.\nGalon.",
+        size: "Taille 38",
+        price: "Modèle = 85 €.\nMatières = 42 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/capette01.jpg`, alt: "Capette SD Blue, portée" },
+        modalImages: [
+            { src: `${V}/buste/capette01B.jpg`, alt: "Capette SD Blue, sur buste" },
+            { src: `${V}/model/capette01.jpg`, alt: "Capette SD Blue, portée" }],
     },
     {
         slug: "capette-02",
         cat: "vetement",
-        title: "Capette II", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        cardImage: { src: `${V}/model/capette02.jpg`, alt: "Capette II, portée" },
-        modalImages: [{ src: `${V}/buste/capette02B.jpg`, alt: "Capette II, sur buste" }],
+        title: "Capette SD White/Grey - 115 €",
+        meta: "Pièce unique",
+        desc: "Laine bouclette lignée gris/écru.",
+        size: "Taille 38",
+        price: "Modèle = 85 €.\nMatières = 30 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/capette02.jpg`, alt: "Capette SD White/Grey, portée" },
+        modalImages: [
+            { src: `${V}/buste/capette02B.jpg`, alt: "Capette SD White/Grey, sur buste" },
+            { src: `${V}/model/capette02.jpg`, alt: "Capette SD White/Grey, portée" }],
     },
     {
         slug: "open-veste",
         cat: "vetement",
-        title: "Open Veste", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        cardImage: { src: `${V}/model/openVeste.jpg`, alt: "Open Veste, portée" },
-        modalImages: [{ src: `${V}/buste/openVesteB.jpg`, alt: "Open Veste, sur buste" }],
+        title: "OpenLegs - 304,85 €",
+        meta: "Pièce unique",
+        desc: "Vinyle noir.\nDoublure jacquard satinée beige.",
+        size: "Taille 38",
+        price: "Modèle = 250 €.\nMatières = 54,85 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/openVeste.jpg`, alt: "OpenLegs, portée" },
+        modalImages: [
+            { src: `${V}/buste/openVesteB.jpg`, alt: "OpenLegs, sur buste" },
+            { src: `${V}/model/openVeste.jpg`, alt: "OpenLegs, portée" }],
     },
     {
         slug: "pant-corset",
@@ -169,97 +190,122 @@ const vetements: Creation[] = [
     {
         slug: "reverse-01",
         cat: "vetement",
-        title: "Pull Réversible I", // À COMPLÉTER
-        meta: "Pièce unique — Réversible", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        // À VÉRIFIER : "reverse01.jpg" (dossier model) et "pulRev01.jpg" (dossier buste)
-        // n'ont pas le même nom de base — je suppose que c'est la même pièce
-        // (pull réversible), nommée différemment dans les 2 dossiers. Confirme.
+        title: "Maille de 2 - 192 €",
+        meta: "Pièce unique — Réversible",
+        desc: "Maille impriméjacquard.",
+        size: "Taille 38/40",
+        price: "Modèle = 150 €.\nMatières = 42 €",
+        badge: "Sur commande",
         cardImage: { src: `${V}/model/reverse01.jpg`, alt: "Pull Réversible I, porté" },
-        modalImages: [{ src: `${V}/buste/pulRev01.jpg`, alt: "Pull Réversible I, sur buste" }],
+        modalImages: [
+            { src: `${V}/buste/pulRev01.jpg`, alt: "Maille de 2 I, sur buste" },
+            { src: `${V}/buste/pulRev02.jpg`, alt: "Maille de 2 II, sur buste" },
+            { src: `${V}/model/reverse01.jpg`, alt: "Maille de 2 I, porté" },
+            { src: `${V}/model/reverse02.jpg`, alt: "Maille de 2 II, porté" }],
     },
     {
-        slug: "reverse-02",
+        slug: "robe-fakecoat",
         cat: "vetement",
-        title: "Pull Réversible II", // À COMPLÉTER
-        meta: "Pièce unique — Réversible", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        // Même remarque que ci-dessus : reverse02.jpg <-> pulRev02.jpg
-        cardImage: { src: `${V}/model/reverse02.jpg`, alt: "Pull Réversible II, porté" },
-        modalImages: [{ src: `${V}/buste/pulRev02.jpg`, alt: "Pull Réversible II, sur buste" }],
+        title: "Robe Fake Coat - 379,40 €",
+        meta: "Pièce unique",
+        desc: "Tartan rouge.\nVoile noir.\nDoublure noire.",
+        size: "Taille 38",
+        price: "Modèle = 320 €.\nMatières = 59,40 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/robeFakeCoat.jpg`, alt: "Robe Fake Coat, porté" },
+        modalImages: [
+            { src: `${V}/buste/robeFakeCoatB.jpg`, alt: "Robe Fake Coat, sur buste" },
+            { src: `${V}/model/robeFakeCoat.jpg`, alt: "Robe Fake Coat, porté" }],
     },
     {
         slug: "top-01",
         cat: "vetement",
-        title: "Top I", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
+        title: "Top KMiSol Grey - 115 €",
+        meta: "Pièce unique",
+        desc: "Voile de polyester gris/mauve, quadrillage floqué noir.",
+        size: "Taille 38",
+        price: "Modèle = 100 €.\nMatières = 15 €",
+        badge: "Sur commande",
         cardImage: { src: `${V}/model/top01.jpg`, alt: "Top I, porté" },
-        modalImages: [{ src: `${V}/buste/top01B.jpg`, alt: "Top I, sur buste" }],
+        modalImages: [
+            { src: `${V}/buste/top01B.jpg`, alt: "Top KMiSol Grey, sur buste" },
+            { src: `${V}/model/top01.jpg`, alt: "Top KMiSol Grey, porté" }],
     },
     {
         slug: "top-02",
         cat: "vetement",
-        title: "Top II", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        cardImage: { src: `${V}/model/top02.jpg`, alt: "Top II, porté" },
-        modalImages: [{ src: `${V}/buste/top02B.jpg`, alt: "Top II, sur buste" }],
-    },
-    {
-        slug: "top-fleuri-3",
-        cat: "vetement",
-        title: "Top Fleuri III",
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        cardImage: { src: `${V}/model/top03.jpg`, alt: "Top Fleuri III, porté" },
-        // Pas de photo buste pour cette pièce : on réutilise la photo modèle dans la modale.
-        modalImages: [{ src: `${V}/model/top03.jpg`, alt: "Top Fleuri III, porté" }],
-    },
-    {
-        slug: "top-texture-creme",
-        cat: "vetement",
-        title: "Top Texturé Crème",
-        meta: "Pièce unique — Maille",
-        desc: "Top ample à manches longues en maille texturée, coupe fluide, ton crème.",
-        badge: "Sur commande",
-        cardImage: { src: `${V}/model/top04.jpg`, alt: "Top Texturé Crème, porté" },
-        modalImages: [{ src: `${V}/buste/top04B.jpg`, alt: "Top Texturé Crème, sur buste" }],
-    },
-    {
-        slug: "tri-jupe-franges",
-        cat: "vetement",
-        title: "Tri-Jupe Franges",
+        title: "Top KMiSol Red - 115€",
         meta: "Pièce unique",
-        desc: "Jupe superposée à finitions franges, jouant sur la transparence et le mouvement.",
+        desc: "Polyester satiné rouge, tacheté noit/écru..",
+        size: "Taille 38",
+        price: "Modèle = 100 €.\nMatières = 15 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/top02.jpg`, alt: "Top KMiSol Red, porté" },
+        modalImages: [
+            { src: `${V}/buste/top02B.jpg`, alt: "Top KMiSol Red, sur buste" },
+            { src: `${V}/model/top02.jpg`, alt: "Top KMiSol Red, porté" }],
+    },
+    {
+        slug: "top-03",
+        cat: "vetement",
+        title: "Top KMiSol Green - 115 €",
+        meta: "Pièce unique",
+        desc: "Polyester satiné vert, tacheté noir/écru.",
+        size: "Taille 38",
+        price: "Modèle = 100 €.\nMatières = 15 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/top03.jpg`, alt: "Top KMiSol Green, porté" },
+        modalImages: [
+            { src: `${V}/buste/top03B.jpg`, alt: "Top KMiSol Green, sur buste" },
+            { src: `${V}/model/top03.jpg`, alt: "Top KMiSol Green, porté" }],
+    },
+    {
+        slug: "top-04",
+        cat: "vetement",
+        title: "Top KMiSol Black/Yellow/Gold - 115 €",
+        meta: "Pièce unique",
+        desc: "Viscose fond blanc, tacheté noir/jaune/or.",
+        size: "Taille 38",
+        price: "Modèle = 100 €.\nMatières = 15 €",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/top04.jpg`, alt: "Top KMiSol Black/Yellow/Gold, porté" },
+        modalImages: [
+            { src: `${V}/buste/top04B.jpg`, alt: "Top KMiSol Black/Yellow/Gold, sur buste" },
+            { src: `${V}/model/top04.jpg`, alt: "Top KMiSol Black/Yellow/Gold, porté" }],
+    },
+    {
+        slug: "tri-jupe",
+        cat: "vetement",
+        title: "Tri-Jupe - ",
+        meta: "Pièce unique",
+        desc: "DESCRIPTION A FAIRE",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/triJupe.jpg`, alt: "Tri-Jupe Franges, portée" },
         modalImages: [{ src: `${V}/buste/triJupeB.jpg`, alt: "Tri-Jupe Franges, sur buste" }],
     },
     {
-        slug: "veste-chinee",
+        slug: "veste-chine",
         cat: "vetement",
-        title: "Veste Chinée",
-        meta: "Pièce unique — Tweed",
-        desc: "Veste longue en tweed chiné noir et blanc, finitions contrastées, portée ouverte.",
+        title: "Veste Chine - 309,40 €",
+        meta: "Pièce unique",
+        desc: "Fausse fourrure gris ardoise.\nCoton écru.\nDoublure noire.",
+        size: "Taille 38",
+        price: "Modèle = 220 €.\nMatières = 89,40 €",
         badge: "Sur commande",
-        cardImage: { src: `${V}/model/vesteChine.jpg`, alt: "Veste Chinée, portée" },
-        modalImages: [{ src: `${V}/buste/vesteChineB.jpg`, alt: "Veste Chinée, sur buste" }],
+        cardImage: { src: `${V}/model/vesteChine.jpg`, alt: "Veste Chine, portée" },
+        modalImages: [
+            { src: `${V}/buste/vesteChineB.jpg`, alt: "Veste Chine, sur buste" },
+            { src: `${V}/model/vesteChine.jpg`, alt: "Veste Chine, portée" }],
     },
     {
         slug: "veste-dc",
         cat: "vetement",
-        title: "Veste DC", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
-        // À VÉRIFIER : "vesteDC.jpg" (minuscule) <-> "VesteDCB.jpg" (majuscule) —
-        // casse différente, à uniformiser si ton hébergeur est sensible à la casse.
+        title: "Veste DC - 280,50 €",
+        meta: "Pièce unique",
+        desc: "Fausse fourrure crème.\nDoublure noire.\nTissu texturé noir.",
+        size: "Taille 38",
+        price: "Modèle = 215 €.\nMatières = 65,50 €",
+        badge: "Sur commande",
         cardImage: { src: `${V}/model/vesteDC.jpg`, alt: "Veste DC, portée" },
         modalImages: [{ src: `${V}/buste/VesteDCB.jpg`, alt: "Veste DC, sur buste" }],
     },

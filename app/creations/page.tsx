@@ -114,8 +114,25 @@ export default function CreationsPage() {
                   <Eyebrow>
                     {selected.cat === "accessoire" ? "Accessoire" : "Création"}
                   </Eyebrow>
+
                   <h3 style={{ marginTop: 14 }}>{selected.title}</h3>
+
                   <p>{selected.desc}</p>
+
+                  <p className={styles.size}>{selected.size}</p>
+                  <p className={styles.price}>{selected.price}</p>
+                  <p className={styles.info}>
+                    Prix final calculé selon la matière choisie et son tarif au moment de la commande.
+                    <br/>
+                    Prix de la matière ci-dessus indiqué à titre indicatif.
+                  </p>
+                  <p className={styles.size}>
+                    → LINK Voir les matières disponibles
+                  </p>
+                  <p className={styles.size}>
+                    → LINK Nous contacter
+                  </p>
+
                   <span className={styles.badge}>{selected.badge}</span>
                 </div>
               </div>
