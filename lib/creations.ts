@@ -170,22 +170,30 @@ const vetements: Creation[] = [
     {
         slug: "pant-corset",
         cat: "vetement",
-        title: "Pantalon Corset", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
+        title: "Pantalon Corset - 133,75 €",
+        meta: "Pièce unique",
+        desc: "Jersey noir.\nPolyester élasthane - carreaux coloré",
+        size: "Taille 38/40",
+        price: "Modèle = 90 €.\nMatières = 43,75 €",
+        badge: "Sur commande",
         cardImage: { src: `${V}/model/pantCorset.jpg`, alt: "Pantalon Corset, porté" },
-        modalImages: [{ src: `${V}/buste/pantCorsetB.jpg`, alt: "Pantalon Corset, sur buste" }],
+        modalImages: [
+            { src: `${V}/buste/pantCorsetB.jpg`, alt: "Pantalon Corset, sur buste" },
+            { src: `${V}/model/pantCorset.jpg`, alt: "Pantalon Corset, porté" }],
     },
     {
         slug: "pant-valy",
         cat: "vetement",
-        title: "Pantalon Valy", // À COMPLÉTER
-        meta: "Pièce unique", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Sur commande", // À COMPLÉTER
+        title: "Pantalon Valy - 192,80 €",
+        meta: "Pièce unique",
+        desc: "Simili cuir noir.\nVoile rouge pourpre",
+        size: "Taille 38",
+        price: "Modèle = 140 €.\nMatières = 52,80 €",
+        badge: "Sur commande",
         cardImage: { src: `${V}/model/pantValy.jpg`, alt: "Pantalon Valy, porté" },
-        modalImages: [{ src: `${V}/buste/pantValyB.jpg`, alt: "Pantalon Valy, sur buste" }],
+        modalImages: [
+            { src: `${V}/buste/pantValyB.jpg`, alt: "Pantalon Valy, sur buste" },
+            { src: `${V}/model/pantValy.jpg`, alt: "Pantalon Valy, porté" }],
     },
     {
         slug: "reverse-01",
@@ -276,12 +284,16 @@ const vetements: Creation[] = [
     {
         slug: "tri-jupe",
         cat: "vetement",
-        title: "Tri-Jupe - ",
+        title: "Jupe de 3 - 268 €",
         meta: "Pièce unique",
-        desc: "DESCRIPTION A FAIRE",
+        desc: "Suédine crème.\nCrèpe blanc.\nVoile bordeaux - motif fleurs et or",
+        size: "Taille 38",
+        price: "Modèle = 220 €.\nMatières = 48 €",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/triJupe.jpg`, alt: "Tri-Jupe Franges, portée" },
-        modalImages: [{ src: `${V}/buste/triJupeB.jpg`, alt: "Tri-Jupe Franges, sur buste" }],
+        modalImages: [
+            { src: `${V}/buste/triJupeB.jpg`, alt: "Tri-Jupe Franges, sur buste" },
+            { src: `${V}/model/triJupe.jpg`, alt: "Tri-Jupe Franges, portée" }],
     },
     {
         slug: "veste-chine",
