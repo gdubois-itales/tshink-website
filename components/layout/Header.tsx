@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 import { navLinks, collections } from "@/lib/nav-links";
+import CartIcon from "@/components/ui/CartIcon";
 
 export default function Header() {
   const pathname = usePathname();
@@ -64,15 +65,18 @@ export default function Header() {
             </Link>
           </nav>
 
-          <button
-            className={styles.burger}
-            aria-label="Menu"
-            onClick={() => setMobileOpen((v) => !v)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          <div className={styles.actions}>
+            <CartIcon />
+            <button
+                className={styles.burger}
+                aria-label="Menu"
+                onClick={() => setMobileOpen((v) => !v)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </header>
 

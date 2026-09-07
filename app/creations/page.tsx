@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Eyebrow from "@/components/ui/Eyebrow";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 import { creations, type Creation, type Category } from "@/lib/creations";
+import { useCart } from "@/lib/cart-context";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 const filterOptions: { key: "all" | Category; label: string }[] = [
   { key: "all", label: "Toutes" },
@@ -13,14 +16,49 @@ const filterOptions: { key: "all" | Category; label: string }[] = [
   { key: "accessoire", label: "Accessoires" },
 ];
 
+// Les 3 choix proposés dans la mini pop-up ouverte depuis la modale d'une
+// création, quand le client clique sur "Choisir une matière".
+type MatiereChoice = "menu" | "note-connue" | "note-conseil" | null;
+
 export default function CreationsPage() {
+  const router = useRouter();
+  const { commencerSelection, ajouterAvecNote } = useCart();
+
   const [activeFilter, setActiveFilter] = useState<"all" | Category>("all");
   const [selected, setSelected] = useState<Creation | null>(null);
+  const [matiereChoice, setMatiereChoice] = useState<MatiereChoice>(null);
+  const [noteText, setNoteText] = useState("");
 
   const visible =
       activeFilter === "all"
           ? creations
           : creations.filter((c) => c.cat === activeFilter);
+
+  function closeModal() {
+    setSelected(null);
+    setMatiereChoice(null);
+    setNoteText("");
+  }
+
+  function handleVoirMatieresDispo() {
+    if (!selected) return;
+    commencerSelection({
+      slug: selected.slug,
+      title: selected.title,
+      image: selected.cardImage,
+    });
+    closeModal();
+    router.push("/matieres");
+  }
+
+  function handleAjouterNote() {
+    if (!selected || !noteText.trim()) return;
+    ajouterAvecNote(
+        { slug: selected.slug, title: selected.title, image: selected.cardImage },
+        noteText
+    );
+    closeModal();
+  }
 
   return (
       <>
@@ -88,14 +126,14 @@ export default function CreationsPage() {
             <div
                 className={styles.modalOverlay}
                 onClick={(e) => {
-                  if (e.target === e.currentTarget) setSelected(null);
+                  if (e.target === e.currentTarget) closeModal();
                 }}
             >
               <div className={styles.modalBox}>
                 <button
                     type="button"
                     className={styles.modalClose}
-                    onClick={() => setSelected(null)}
+                    onClick={closeModal}
                     aria-label="Fermer"
                 >
                   ✕
@@ -126,15 +164,102 @@ export default function CreationsPage() {
                     <br/>
                     Prix de la matière ci-dessus indiqué à titre indicatif.
                   </p>
-                  <p className={styles.size}>
-                    → LINK Voir les matières disponibles
+                  <p className={styles.link}>
+                    <button
+                        type="button"
+                        className={styles.linkBtn}
+                        onClick={() => setMatiereChoice("menu")}
+                    >
+                      → Choisir la matière
+                    </button>
                   </p>
-                  <p className={styles.size}>
-                    → LINK Nous contacter
+                  <p className={styles.link}>
+                    <Link href="/contact">
+                      → Nous contacter
+                    </Link>
                   </p>
 
                   <span className={styles.badge}>{selected.badge}</span>
                 </div>
+              </div>
+            </div>
+        )}
+
+        {selected && matiereChoice && (
+            <div
+                className={styles.miniOverlay}
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) setMatiereChoice(null);
+                }}
+            >
+              <div className={styles.miniBox}>
+                <button
+                    type="button"
+                    className={styles.modalClose}
+                    onClick={() => setMatiereChoice(null)}
+                    aria-label="Fermer"
+                >
+                  ✕
+                </button>
+
+                {matiereChoice === "menu" && (
+                    <>
+                      <Eyebrow>Matière</Eyebrow>
+                      <h4 style={{ marginTop: 14 }}>
+                        Comment souhaitez-vous choisir la matière pour «&nbsp;{selected.title}&nbsp;»&nbsp;?
+                      </h4>
+                      <div className={styles.miniChoices}>
+                        <button type="button" className="cta-outline" onClick={handleVoirMatieresDispo}>
+                          Voir matières dispo
+                        </button>
+                        <button
+                            type="button"
+                            className="cta-outline"
+                            onClick={() => setMatiereChoice("note-connue")}
+                        >
+                          J&apos;ai déjà une matière
+                        </button>
+                        <button
+                            type="button"
+                            className="cta-outline"
+                            onClick={() => setMatiereChoice("note-conseil")}
+                        >
+                          Je ne sais pas, conseillez-moi
+                        </button>
+                      </div>
+                    </>
+                )}
+
+                {(matiereChoice === "note-connue" || matiereChoice === "note-conseil") && (
+                    <>
+                      <Eyebrow>Matière</Eyebrow>
+                      <h4 style={{ marginTop: 14 }}>
+                        {matiereChoice === "note-connue"
+                            ? "Décrivez la matière que vous avez déjà"
+                            : "Décrivez votre besoin, nous vous conseillons"}
+                      </h4>
+                      <textarea
+                          className={styles.noteInput}
+                          rows={4}
+                          value={noteText}
+                          onChange={(e) => setNoteText(e.target.value)}
+                          placeholder={
+                            matiereChoice === "note-connue"
+                                ? "Ex : un velours bordeaux que j'ai déjà chez moi…"
+                                : "Ex : j'aimerais quelque chose de chaud, plutôt neutre…"
+                          }
+                      />
+                      <button
+                          type="button"
+                          className="cta-solid"
+                          style={{ marginTop: 14, width: "100%" }}
+                          disabled={!noteText.trim()}
+                          onClick={handleAjouterNote}
+                      >
+                        Ajouter au panier
+                      </button>
+                    </>
+                )}
               </div>
             </div>
         )}
