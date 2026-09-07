@@ -118,6 +118,12 @@
   color: var(--bordeaux);
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .burger {
   display: none;
   flex-direction: column;

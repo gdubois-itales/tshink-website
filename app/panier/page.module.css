@@ -1,0 +1,161 @@
+.empty {
+    padding: 60px 0;
+    color: var(--grey);
+    font-size: 15px;
+}
+.emptyLink {
+    color: var(--bordeaux);
+    text-decoration: underline;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    align-items: start;
+}
+@media (max-width: 880px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============ Liste des créations du panier ============ */
+
+.lineList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lineCard {
+    display: flex;
+    gap: 18px;
+    border: 1px solid var(--line);
+    padding: 18px;
+    position: relative;
+}
+.lineThumb {
+    position: relative;
+    width: 84px;
+    height: 100px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+}
+.lineInfo h4 {
+    font-size: 16px;
+    padding-right: 20px;
+}
+.lineDetail {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--ink);
+}
+.matiereTag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    border: 1px solid var(--line-strong);
+    padding: 4px 9px;
+    margin: 4px 6px 0 0;
+}
+.noteText {
+    font-style: italic;
+    color: var(--grey);
+    white-space: pre-line;
+}
+.removeLine {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: 0;
+    background: none;
+    font-size: 13px;
+    color: var(--grey);
+}
+.removeLine:hover {
+    color: var(--bordeaux);
+}
+
+/* ============ Encadré commande (sticky) ============ */
+
+.orderBox {
+    position: sticky;
+    top: calc(var(--header-height) + 24px);
+    border: 1px solid var(--line-strong);
+    background: var(--white);
+    padding: 28px;
+}
+.orderBox h3 {
+    font-size: 19px;
+}
+.field {
+    margin-top: 18px;
+}
+.field label {
+    display: block;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 6px;
+}
+.field input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--line-strong);
+    background: var(--ecru);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+}
+.field input:focus {
+    outline: none;
+    border-color: var(--bordeaux);
+}
+.submitBtn {
+    width: 100%;
+    margin-top: 22px;
+    border: 1px solid var(--bordeaux);
+}
+
+/* ============ Pop-up de confirmation ============ */
+
+.confirmOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 22, 20, 0.72);
+    z-index: 950;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.confirmBox {
+    background: var(--white);
+    max-width: 480px;
+    width: 100%;
+    padding: 40px 34px;
+    text-align: center;
+}
+.confirmBox h3 {
+    font-size: 22px;
+    margin-top: 14px;
+}
+.confirmBox p {
+    margin-top: 12px;
+    font-size: 14px;
+}
+.confirmRecap {
+    margin-top: 18px;
+    text-align: left;
+    font-size: 13px;
+    color: var(--ink);
+    max-height: 240px;
+    overflow-y: auto;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+    white-space: pre-line;
+}

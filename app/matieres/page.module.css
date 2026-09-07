@@ -1,0 +1,75 @@
+.matiereGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+@media (max-width: 880px) {
+    .matiereGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 560px) {
+    .matiereGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.imageBox {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--line-strong);
+    overflow: hidden;
+}
+.matiereCard h4 {
+    margin-top: 12px;
+    font-size: 15px;
+}
+.composition {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--grey);
+}
+
+.addBtn {
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--ink);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    transition: all 0.2s ease;
+}
+.addBtn:hover {
+    border-color: var(--bordeaux);
+    color: var(--bordeaux);
+}
+.addBtn.added {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+}
+
+.shopList {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+}
+.shopLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--ink);
+    transition: all 0.2s ease;
+}
+.shopLink:hover {
+    border-color: var(--bordeaux);
+    color: var(--bordeaux);
+}
