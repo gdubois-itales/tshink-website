@@ -28,6 +28,7 @@ export default function CreationsPage() {
   const [selected, setSelected] = useState<Creation | null>(null);
   const [matiereChoice, setMatiereChoice] = useState<MatiereChoice>(null);
   const [noteText, setNoteText] = useState("");
+  const [priceInfoOpen, setPriceInfoOpen] = useState(false);
 
   const visible =
       activeFilter === "all"
@@ -38,6 +39,7 @@ export default function CreationsPage() {
     setSelected(null);
     setMatiereChoice(null);
     setNoteText("");
+    setPriceInfoOpen(false);
   }
 
   function handleVoirMatieresDispo() {
@@ -55,7 +57,8 @@ export default function CreationsPage() {
     if (!selected || !noteText.trim()) return;
     ajouterAvecNote(
         { slug: selected.slug, title: selected.title, image: selected.cardImage },
-        noteText
+        noteText,
+        matiereChoice === "note-connue" ? "connue" : "conseil"
     );
     closeModal();
   }
@@ -74,13 +77,11 @@ export default function CreationsPage() {
                 Découvrez une sélection de créations de vêtements et
                 d&apos;accessoires imaginées par TshinK. Chaque pièce est
                 conçue et confectionnée avec le même soin apporté à
-                l&apos;ensemble de mon travail. Cliquez sur une création
-                pour découvrir ses détails, choisir la matière qui vous
-                inspire — ou vous laisser conseiller — puis composez votre
-                commande, pièce après pièce, jusqu&apos;à votre panier.
-                Une pièce vous inspire ?
-                Voyons ensemble comment elle peut devenir la vôtre.
-
+                l&apos;ensemble de mon travail. Cliquez sur une création pour
+                découvrir ses détails, choisir la matière qui vous inspire —
+                ou vous laisser conseiller — puis composez votre commande,
+                pièce après pièce, jusqu&apos;à votre panier. Une pièce vous
+                inspire ? Voyons ensemble comment elle peut devenir la vôtre.
               </p>
             </div>
 
@@ -164,7 +165,15 @@ export default function CreationsPage() {
                   <p className={styles.info}>
                     Prix final calculé selon la matière choisie et son tarif au moment de la commande.
                     <br/>
-                    Prix de la matière ci-dessus indiqué à titre indicatif.
+                    Prix de la matière ci-dessus indiqué à titre indicatif.{" "}
+                    <button
+                        type="button"
+                        className={styles.infoIcon}
+                        onClick={() => setPriceInfoOpen(true)}
+                        aria-label="Plus d'informations sur le prix"
+                    >
+                      ⓘ
+                    </button>
                   </p>
                   <p className={styles.link}>
                     <button
@@ -262,6 +271,44 @@ export default function CreationsPage() {
                       </button>
                     </>
                 )}
+              </div>
+            </div>
+        )}
+        {selected && priceInfoOpen && (
+            <div
+                className={styles.miniOverlay}
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) setPriceInfoOpen(false);
+                }}
+            >
+              <div className={styles.miniBox}>
+                <button
+                    type="button"
+                    className={styles.modalClose}
+                    onClick={() => setPriceInfoOpen(false)}
+                    aria-label="Fermer"
+                >
+                  ✕
+                </button>
+
+                <Eyebrow>Prix indicatif</Eyebrow>
+                <p style={{ marginTop: 16, fontSize: 13.5 }}>
+                  Le prix du modèle constitue la base de la création. Le prix
+                  final dépend de la matière choisie et de son tarif actuel.
+                </p>
+                <p style={{ marginTop: 12, fontSize: 13.5 }}>
+                  Le prix de la matière indiqué correspond à son tarif au
+                  moment de la confection de la pièce présentée.
+                </p>
+                <p style={{ marginTop: 12, fontSize: 13.5 }}>
+                  Vous souhaitez cette création dans une autre matière ?
+                  Indiquez-nous sa référence et la matière souhaitée via la
+                  page{" "}
+                  <Link href="/contact" style={{ color: "var(--bordeaux)", textDecoration: "underline" }}>
+                    Contact
+                  </Link>{" "}
+                  pour obtenir le prix final.
+                </p>
               </div>
             </div>
         )}
