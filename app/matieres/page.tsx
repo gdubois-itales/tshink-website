@@ -19,11 +19,29 @@ export default function MatieresPage() {
                         <Eyebrow>Matières</Eyebrow>
                         <h1>Les matières disponibles en atelier</h1>
                         <p className="lede">
-                            Voici un aperçu des tissus actuellement disponibles dans
-                            l&apos;atelier. Le prix d&apos;une création tient compte de la
-                            matière sélectionnée au moment de sa confection — contactez-moi
-                            avec la référence du modèle et le tissu souhaité pour obtenir un
-                            prix final actualisé.
+                            Toutes les créations du site sont réalisées à la demande. Voici
+                            un aperçu des tissus actuellement disponibles dans l&apos;atelier
+                            — vous pouvez aussi vous laisser conseiller si aucun ne vous
+                            parle encore.
+                        </p>
+                    </div>
+
+                    <div className={styles.priceDisclaimer}>
+                        <strong>Prix indicatif</strong>
+                        <p>
+                            Le prix du modèle constitue la base de la création. Le prix
+                            final dépend de la matière choisie et de son tarif actuel : il
+                            varie selon le marché.
+                        </p>
+                        <p>
+                            Le prix de la matière indiqué correspond à son tarif au moment
+                            de la confection de la pièce présentée en page Créations.
+                        </p>
+                        <p>
+                            Vous souhaitez une création dans une autre matière ?
+                            Indiquez-nous sa référence et la matière souhaitée via la page{" "}
+                            <a href="/contact" className={styles.disclaimerLink}>Contact</a>{" "}
+                            pour obtenir le prix final.
                         </p>
                     </div>
 
@@ -68,7 +86,6 @@ export default function MatieresPage() {
                     </div>
                     <div className={styles.shopList}>
                         {fabricShops.map((shop) => (
-
                             <a
                             key={shop.url}
                             href={shop.url}
