@@ -38,6 +38,12 @@ export default function FloatingCart() {
         router.push("/creations");
     }
 
+    function handleAjouterCreationDepuisSelection() {
+        validerCreationAvecMatieres();
+        setCreationAjoutee(false);
+        router.push("/creations");
+    }
+
     return (
         <>
             <div className={styles.floatingCart}>
@@ -61,7 +67,9 @@ export default function FloatingCart() {
                             </button>
 
                             <div className={styles.headerText}>
-                                <div className={styles.label}>Création en cours</div>
+                                <div className={styles.label}>
+                                    Création en cours
+                                </div>
                                 <div className={styles.title}>
                                     {enCours.creationTitle}
                                 </div>
@@ -128,11 +136,7 @@ export default function FloatingCart() {
                                 type="button"
                                 className="cta-solid"
                                 disabled={enCours.matieres.length === 0}
-                                onClick={() => {
-                                    validerCreationAvecMatieres();
-                                    setCreationAjoutee(false);
-                                    router.push("/creations");
-                                }}
+                                onClick={handleAjouterCreationDepuisSelection}
                             >
                                 Ajouter une création
                             </button>
@@ -161,10 +165,15 @@ export default function FloatingCart() {
                 )}
 
                 <div className={styles.panierSummary}>
-                    <span>
+                    <button
+                        type="button"
+                        className={styles.panierCount}
+                        onClick={() => router.push("/panier")}
+                        aria-label="Voir mon panier"
+                    >
                         {panier.length} création
                         {panier.length > 1 ? "s" : ""} dans le panier
-                    </span>
+                    </button>
 
                     {creationAjoutee ? (
                         <div className={styles.summaryActions}>
