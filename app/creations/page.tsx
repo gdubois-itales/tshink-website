@@ -74,11 +74,13 @@ export default function CreationsPage() {
                 Découvrez une sélection de créations de vêtements et
                 d&apos;accessoires imaginées par TshinK. Chaque pièce est
                 conçue et confectionnée avec le même soin apporté à
-                l&apos;ensemble de mon travail. Selon les modèles, certaines
-                créations sont disponibles immédiatement tandis que
-                d&apos;autres peuvent être recréées sur demande dans
-                d&apos;autres matières ou coloris. Une pièce vous inspire ?
+                l&apos;ensemble de mon travail. Cliquez sur une création
+                pour découvrir ses détails, choisir la matière qui vous
+                inspire — ou vous laisser conseiller — puis composez votre
+                commande, pièce après pièce, jusqu&apos;à votre panier.
+                Une pièce vous inspire ?
                 Voyons ensemble comment elle peut devenir la vôtre.
+
               </p>
             </div>
 
