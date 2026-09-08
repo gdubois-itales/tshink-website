@@ -41,6 +41,8 @@ export type FabricShopLink = {
 
 // À COMPLÉTER avec tes vraies boutiques de référence.
 export const fabricShops: FabricShopLink[] = [
-    { name: "Nom de la boutique 1", url: "https://example.com" },
-    { name: "Nom de la boutique 2", url: "https://example.com" },
+    { name: "Les Tissus du Chien Vert", url: "https://www.chienvert.com" },
+    { name: "La Toison d'Or", url: "https://www.latoisondor.be/" },
+    { name: "Chamick", url: "https://www.chamick.com/" },
+    { name: "Mondial Tissus", url: "https://www.mondialtissus.fr/" },
 ];
