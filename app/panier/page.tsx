@@ -35,7 +35,12 @@ function detailLigne(ligne: CartLine): string {
             ? `Matière(s) : ${ligne.matieres.map((m) => m.name).join(", ")}`
             : "Matière(s) : aucune sélectionnée";
     }
-    return `Note du client : ${ligne.note}`;
+
+    if (ligne.noteType === "connue") {
+        return `Matière déjà en sa possession : ${ligne.note}`;
+    }
+
+    return `Demande de conseil sur la matière : ${ligne.note}`;
 }
 
 function buildRecap(panier: CartLine[]): string {

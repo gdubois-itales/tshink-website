@@ -7,34 +7,41 @@ import { useCart } from "@/lib/cart-context";
 import styles from "./FloatingCart.module.css";
 
 /**
- * Carte flottante affichée sur /matieres : montre la création en cours de
- * composition (photo + matières déjà ajoutées) et permet de la valider dans
- * le panier — soit en restant sur place ("Ajouter au panier"), soit en
- * repartant tout de suite choisir une autre création ("Ajouter une
- * création"). Ne s'affiche que s'il y a une sélection en cours ou déjà des
- * créations dans le panier — sinon elle n'a rien à montrer.
+ * Carte flottante affichée sur /matieres :
+ * - montre la création en cours de composition ;
+ * - permet d'ajouter les matières au panier ;
+ * - après validation, affiche un résumé confirmant l'ajout ;
+ * - permet ensuite de choisir une autre création ou de valider le panier.
  */
 export default function FloatingCart() {
     const router = useRouter();
-    const { enCours, panier, retirerMatiere, validerCreationAvecMatieres, annulerSelection } =
-        useCart();
-    const [zoomOpen, setZoomOpen] = useState(false);
+    const {
+        enCours,
+        panier,
+        retirerMatiere,
+        validerCreationAvecMatieres,
+        annulerSelection,
+    } = useCart();
 
-    if (!enCours && panier.length === 0) return null;
+    const [zoomOpen, setZoomOpen] = useState(false);
+    const [creationAjoutee, setCreationAjoutee] = useState(false);
+
+    if (!enCours && panier.length === 0 && !creationAjoutee) return null;
 
     function handleAjouterAuPanier() {
         validerCreationAvecMatieres();
+        setCreationAjoutee(true);
     }
 
     function handleAjouterCreation() {
-        validerCreationAvecMatieres();
+        setCreationAjoutee(false);
         router.push("/creations");
     }
 
     return (
         <>
             <div className={styles.floatingCart}>
-                {enCours && (
+                {enCours ? (
                     <>
                         <div className={styles.header}>
                             <button
@@ -52,10 +59,14 @@ export default function FloatingCart() {
                                 />
                                 <span className={styles.zoomHint}>⤢</span>
                             </button>
+
                             <div className={styles.headerText}>
                                 <div className={styles.label}>Création en cours</div>
-                                <div className={styles.title}>{enCours.creationTitle}</div>
+                                <div className={styles.title}>
+                                    {enCours.creationTitle}
+                                </div>
                             </div>
+
                             <button
                                 type="button"
                                 className={styles.cancel}
@@ -73,7 +84,10 @@ export default function FloatingCart() {
                                 </p>
                             ) : (
                                 enCours.matieres.map((m) => (
-                                    <div key={m.slug} className={styles.matiereRow}>
+                                    <div
+                                        key={m.slug}
+                                        className={styles.matiereRow}
+                                    >
                                         <div className={styles.matiereThumb}>
                                             <Image
                                                 src={m.image.src}
@@ -83,10 +97,14 @@ export default function FloatingCart() {
                                                 style={{ objectFit: "cover" }}
                                             />
                                         </div>
+
                                         <span>{m.name}</span>
+
                                         <button
                                             type="button"
-                                            onClick={() => retirerMatiere(m.slug)}
+                                            onClick={() =>
+                                                retirerMatiere(m.slug)
+                                            }
                                             aria-label={`Retirer ${m.name}`}
                                         >
                                             ✕
@@ -105,37 +123,85 @@ export default function FloatingCart() {
                             >
                                 Ajouter au panier
                             </button>
+
                             <button
                                 type="button"
                                 className="cta-solid"
                                 disabled={enCours.matieres.length === 0}
-                                onClick={handleAjouterCreation}
+                                onClick={() => {
+                                    validerCreationAvecMatieres();
+                                    setCreationAjoutee(false);
+                                    router.push("/creations");
+                                }}
                             >
                                 Ajouter une création
                             </button>
                         </div>
 
-                        <hr className="hairline" style={{ margin: "16px 0" }} />
+                        <hr
+                            className="hairline"
+                            style={{ margin: "16px 0" }}
+                        />
                     </>
+                ) : (
+                    creationAjoutee && (
+                        <>
+                            <div className={styles.addedConfirmation}>
+                                <div className={styles.addedTitle}>
+                                    ✓ Création ajoutée au panier
+                                </div>
+                            </div>
+
+                            <hr
+                                className="hairline"
+                                style={{ margin: "16px 0" }}
+                            />
+                        </>
+                    )
                 )}
 
                 <div className={styles.panierSummary}>
                     <span>
-                        {panier.length} création{panier.length > 1 ? "s" : ""} dans le panier
+                        {panier.length} création
+                        {panier.length > 1 ? "s" : ""} dans le panier
                     </span>
-                    <button
-                        type="button"
-                        className="cta-outline"
-                        disabled={panier.length === 0}
-                        onClick={() => router.push("/panier")}
-                    >
-                        Valider mon panier
-                    </button>
+
+                    {creationAjoutee ? (
+                        <div className={styles.summaryActions}>
+                            <button
+                                type="button"
+                                className="cta-outline"
+                                onClick={handleAjouterCreation}
+                            >
+                                Ajouter une création
+                            </button>
+
+                            <button
+                                type="button"
+                                className="cta-solid"
+                                onClick={() => router.push("/panier")}
+                            >
+                                Valider mon panier
+                            </button>
+                        </div>
+                    ) : (
+                        <button
+                            type="button"
+                            className="cta-outline"
+                            disabled={panier.length === 0}
+                            onClick={() => router.push("/panier")}
+                        >
+                            Valider mon panier
+                        </button>
+                    )}
                 </div>
             </div>
 
             {zoomOpen && enCours && (
-                <div className={styles.zoomOverlay} onClick={() => setZoomOpen(false)}>
+                <div
+                    className={styles.zoomOverlay}
+                    onClick={() => setZoomOpen(false)}
+                >
                     <button
                         type="button"
                         className={styles.zoomClose}
@@ -144,7 +210,11 @@ export default function FloatingCart() {
                     >
                         ✕
                     </button>
-                    <div className={styles.zoomImageWrap} onClick={(e) => e.stopPropagation()}>
+
+                    <div
+                        className={styles.zoomImageWrap}
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         <Image
                             src={enCours.creationImage.src}
                             alt={enCours.creationImage.alt}
