@@ -3,6 +3,30 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
 }
+
+.priceDisclaimer {
+    border: 1px solid var(--line-strong);
+    border-left: 3px solid var(--bordeaux);
+    background: var(--white);
+    padding: 22px 26px;
+    margin-bottom: 44px;
+    max-width: 720px;
+}
+.priceDisclaimer strong {
+    font-family: var(--font-serif), serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+}
+.priceDisclaimer p {
+    margin-top: 10px;
+    font-size: 13.5px;
+    color: var(--ink);
+}
+.disclaimerLink {
+    color: var(--bordeaux);
+    text-decoration: underline;
+}
 @media (max-width: 880px) {
     .matiereGrid {
         grid-template-columns: repeat(3, 1fr);

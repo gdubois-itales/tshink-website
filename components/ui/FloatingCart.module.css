@@ -16,13 +16,35 @@
     gap: 12px;
     position: relative;
 }
+
 .creationThumb {
     position: relative;
-    width: 56px;
-    height: 56px;
+    width: 84px;
+    height: 84px;
     flex-shrink: 0;
     overflow: hidden;
     border: 1px solid var(--line-strong);
+    padding: 0;
+    background: var(--ecru);
+    cursor: zoom-in;
+}
+.zoomHint {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(27, 22, 20, 0.55);
+    color: var(--white);
+    font-size: 11px;
+    border-radius: 999px;
+}
+
+.headerText {
+    min-width: 0;
 }
 .label {
     font-size: 10px;
@@ -31,10 +53,10 @@
     color: var(--grey);
 }
 .title {
-    font-size: 13.5px;
+    font-size: 14px;
     font-family: var(--font-serif), serif;
-    margin-top: 2px;
-    line-height: 1.2;
+    margin-top: 3px;
+    line-height: 1.25;
 }
 .cancel {
     position: absolute;
@@ -93,6 +115,18 @@
     color: var(--bordeaux);
 }
 
+.actionsRow {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+.actionsRow button {
+    flex: 1;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 11px;
+}
+
 .panierSummary {
     display: flex;
     flex-direction: column;
@@ -102,6 +136,36 @@
 }
 .panierSummary button {
     width: 100%;
+}
+
+/* ============ Grand écran : plus de place, carte + photo agrandies ============ */
+@media (min-width: 1300px) {
+    .floatingCart {
+        width: 340px;
+        right: 40px;
+        padding: 24px;
+    }
+    .creationThumb {
+        width: 130px;
+        height: 130px;
+    }
+    .title {
+        font-size: 15.5px;
+    }
+}
+
+/* ============ Demi-fenêtre / tablette : la carte flottante gêne moins,
+   mais on garde le format compact — le zoom au clic prend le relais. ========= */
+@media (max-width: 1080px) {
+    .floatingCart {
+        width: 240px;
+        right: 20px;
+        padding: 16px;
+    }
+    .creationThumb {
+        width: 64px;
+        height: 64px;
+    }
 }
 
 @media (max-width: 720px) {
@@ -118,4 +182,43 @@
         overflow-y: auto;
         z-index: 480;
     }
+}
+
+/* ============ Lightbox : agrandir la photo au clic ============ */
+
+.zoomOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 22, 20, 0.85);
+    z-index: 960;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    cursor: zoom-out;
+}
+.zoomImageWrap {
+    position: relative;
+    width: min(90vw, 620px);
+    height: min(80vh, 760px);
+    cursor: default;
+}
+.zoomClose {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(251, 248, 243, 0.4);
+    background: rgba(27, 22, 20, 0.4);
+    color: var(--white);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 961;
+}
+.zoomClose:hover {
+    background: var(--bordeaux);
+    border-color: var(--bordeaux);
 }
