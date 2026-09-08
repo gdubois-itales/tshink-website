@@ -19,6 +19,7 @@ import {
 import type { Matiere } from "./matieres";
 
 export type CartLineMode = "matieres" | "note";
+export type NoteType = "connue" | "conseil";
 
 export type CartImage = { src: string; alt: string };
 
@@ -30,6 +31,7 @@ export type CartLine = {
     mode: CartLineMode;
     matieres: Matiere[]; // rempli si mode === "matieres"
     note: string; // rempli si mode === "note"
+    noteType?: NoteType; // précise le type de note : matière déjà en sa possession, ou demande de conseil
 };
 
 export type EnCours = {
@@ -53,7 +55,7 @@ type CartContextValue = {
     ajouterMatiere: (matiere: Matiere) => void;
     retirerMatiere: (slug: string) => void;
     validerCreationAvecMatieres: () => void;
-    ajouterAvecNote: (creation: CreationRef, note: string) => void;
+    ajouterAvecNote: (creation: CreationRef, note: string, noteType: NoteType) => void;
     retirerLigne: (id: string) => void;
     viderPanier: () => void;
 };
@@ -146,7 +148,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setEnCours(null);
     }
 
-    function ajouterAvecNote(creation: CreationRef, note: string) {
+    function ajouterAvecNote(creation: CreationRef, note: string, noteType: NoteType) {
         if (!note.trim()) return;
         const ligne: CartLine = {
             id: makeId(creation.slug),
@@ -156,6 +158,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
             mode: "note",
             matieres: [],
             note: note.trim(),
+            noteType,
         };
         setPanier((p) => [...p, ligne]);
     }
