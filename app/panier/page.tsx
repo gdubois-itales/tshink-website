@@ -106,13 +106,15 @@ export default function PanierPage() {
                         Vérifiez les créations et matières sélectionnées, puis laissez-nous
                         vos coordonnées pour recevoir un récapitulatif et être recontacté·e.
                     </p>
-                    <button
-                        type="button"
-                        className="cta-outline"
-                        onClick={() => router.push("/creations")}
-                    >
-                        Ajouter une création
-                    </button>
+                    {panier.length > 0 && (
+                        <button
+                            type="button"
+                            className="cta-outline"
+                            onClick={() => router.push("/creations")}
+                        >
+                            Ajouter une création
+                        </button>
+                    )}
                 </div>
 
                 {panier.length === 0 ? (
