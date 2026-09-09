@@ -15,6 +15,7 @@ const GOOGLE_FORM_ACTION_URL =
 const ENTRY_NOM = "entry.1324899612";
 const ENTRY_MESSAGE = "entry.1467334355";
 const ENTRY_EMAIL = "entry.1949116587";
+const ENTRY_COMMENTAIRE = "entry.899148491";
 
 // L'adresse e-mail, elle, passe par le champ natif "Collecter les adresses
 // e-mail" (Paramètres > Réponses) plutôt que par une question classique :
@@ -55,6 +56,7 @@ export default function PanierPage() {
 
     const [nom, setNom] = useState("");
     const [email, setEmail] = useState("");
+    const [commentaire, setCommentaire] = useState("");
     const [sending, setSending] = useState(false);
     const [sent, setSent] = useState(false);
 
@@ -70,6 +72,7 @@ export default function PanierPage() {
         body.append(ENTRY_EMAIL, email.trim());
         body.append(ENTRY_NOM, nom.trim());
         body.append(ENTRY_MESSAGE, recap);
+        body.append(ENTRY_COMMENTAIRE, commentaire.trim());
 
         try {
             // mode "no-cors" : on ne peut pas lire la réponse (comportement
@@ -187,6 +190,18 @@ export default function PanierPage() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
+                                />
+                            </div>
+                            <div className={styles.field}>
+                                <label htmlFor="commentaire">
+                                    Un commentaire, une question ? (facultatif)
+                                </label>
+                                <textarea
+                                    id="commentaire"
+                                    rows={3}
+                                    value={commentaire}
+                                    onChange={(e) => setCommentaire(e.target.value)}
+                                    placeholder="Ex : je préfère être recontacté·e par téléphone…"
                                 />
                             </div>
                             <button
