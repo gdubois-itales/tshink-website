@@ -100,6 +100,14 @@ export default function CreationsPage() {
               ))}
             </div>
 
+            {activeFilter === "accessoire" && (
+                <p className={styles.categoryIntro}>
+                  Des accessoires pensés à partir des matières disponibles à l’atelier,
+                  pour prolonger leur histoire et transformer chaque chute en nouvelle pièce.
+                </p>
+            )}
+            <br/>
+
             <div className={styles.creationGrid}>
               {visible.map((c) => (
                   <button
@@ -160,21 +168,41 @@ export default function CreationsPage() {
 
                   <p>{selected.desc}</p>
 
-                  <p className={styles.size}>{selected.size}</p>
-                  <p className={styles.price}>{selected.price}</p>
-                  <p className={styles.info}>
-                    Prix final calculé selon la matière choisie et son tarif au moment de la commande.
-                    <br/>
-                    Prix de la matière ci-dessus indiqué à titre indicatif.{" "}
-                    <button
-                        type="button"
-                        className={styles.infoIcon}
-                        onClick={() => setPriceInfoOpen(true)}
-                        aria-label="Plus d'informations sur le prix"
-                    >
-                      ⓘ
-                    </button>
+                  <p className={styles.size}>{selected.size && (
+                      <p className={styles.size}>{selected.size}</p>
+                  )}
                   </p>
+                  {selected.cat === "vetement" ? (
+                      <>
+                        <p className={styles.price}>{selected.price}</p>
+
+                        <p className={styles.info}>
+                          Prix final calculé selon la matière choisie et son tarif au moment de la commande.
+                          <br />
+                          Prix de la matière ci-dessus indiqué à titre indicatif.{" "}
+                          <button
+                              type="button"
+                              className={styles.infoIcon}
+                              onClick={() => setPriceInfoOpen(true)}
+                              aria-label="Plus d'informations sur le prix"
+                          >
+                            ⓘ
+                          </button>
+                        </p>
+
+                      </>
+                  ) : (
+                      <>
+                        <p className={styles.price}>{selected.price}</p>
+
+                        <p className={styles.info}>
+                          Le prix indiqué correspond à la création du modèle. Si la pièce présentée
+                          n&apos;est plus disponible ou si une nouvelle réalisation nécessite une matière
+                          supplémentaire, le prix de celle-ci est ajouté.
+                        </p>
+                      </>
+                  )}
+
                   <p className={styles.link}>
                     <button
                         type="button"

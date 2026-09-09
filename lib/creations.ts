@@ -10,9 +10,9 @@ export type Creation = {
     slug: string;
     cat: Category;
     title: string;
-    meta: string;
+    meta?: string;
     desc: string;
-    size: string;
+    size?: string;
     price: string;
     badge: string;
     cardImage: { src: string; alt: string };
@@ -334,6 +334,7 @@ const accessoires: Creation[] = [
         title: "Châle Mom",
         meta: "Accessoire — Tricot",
         desc: "Châle enveloppant à motif torsadé, pensé pour un usage cocooning autant qu'élégant.",
+        price: "Modèle = 215 €.\nMatières = 65,50 €",
         badge: "Disponible",
         cardImage: { src: `${A}/chaleMom.jpg`, alt: "Châle Mom" },
         modalImages: [{ src: `${A}/chaleMom.jpg`, alt: "Châle Mom" }],
@@ -401,7 +402,7 @@ const accessoires: Creation[] = [
     {
         slug: "cape-a",
         cat: "accessoire",
-        title: "Cape A", // À COMPLÉTER
+        title: "Cape A - Double Cape", // À COMPLÉTER
         meta: "Accessoire", // À COMPLÉTER
         desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
         badge: "Disponible", // À COMPLÉTER
@@ -453,24 +454,24 @@ const accessoires: Creation[] = [
         badge: "Disponible", // À COMPLÉTER
         // À VÉRIFIER : "SacReverseBulldog.jpg" et "sacsBulldog.jpg" — 2 angles
         // du même sac, ou 2 sacs différents ? J'ai supposé la même pièce.
-        cardImage: { src: `${A}/SacReverseBulldog.jpg`, alt: "Sac Bulldog" },
+        cardImage: { src: `${A}/sacsBulldog.jpg`, alt: "Sac Bulldog" },
         modalImages: [
-            { src: `${A}/SacReverseBulldog.jpg`, alt: "Sac Bulldog" },
-            { src: `${A}/sacsBulldog.jpg`, alt: "Sac Bulldog, autre angle" },
+            { src: `${A}/sacsBulldog.jpg`, alt: "Sac Bulldog sur buste" },
+            { src: `${A}/SacReverseBulldog.jpg`, alt: "Sac Bulldog, à plat" },
         ],
     },
     {
         slug: "sac-chat",
         cat: "accessoire",
-        title: "Sac Chat", // À COMPLÉTER
+        title: "Sac Chat - Tote Bag miroir", // À COMPLÉTER
         meta: "Accessoire — Sac", // À COMPLÉTER
         desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
         badge: "Disponible", // À COMPLÉTER
         // Même remarque que Sac Bulldog : SacReverseChat.jpg + sacsChat.jpg
-        cardImage: { src: `${A}/SacReverseChat.jpg`, alt: "Sac Chat" },
+        cardImage: { src: `${A}/sacsChat.jpg`, alt: "Sac Chat" },
         modalImages: [
-            { src: `${A}/SacReverseChat.jpg`, alt: "Sac Chat" },
-            { src: `${A}/sacsChat.jpg`, alt: "Sac Chat, autre angle" },
+            { src: `${A}/sacsChat.jpg`, alt: "Sac Chat sur buste" },
+            { src: `${A}/SacReverseChat.jpg`, alt: "Sac Chat, à plat" },
         ],
     },
     {
