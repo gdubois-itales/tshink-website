@@ -10,11 +10,11 @@ export type Creation = {
     slug: string;
     cat: Category;
     title: string;
-    meta?: string;
+    meta?: string; // type vêt/access si pas dans title
     desc: string;
-    size?: string;
+    size?: string; // vêt = OK, access = NOK
     price: string;
-    badge: string;
+    badge: string; // disponibilité
     cardImage: { src: string; alt: string };
     modalImages: { src: string; alt: string }[];
 };
@@ -24,7 +24,6 @@ const A = "/images/creations/accessoires";
 
 // ============================================================
 // VÊTEMENTS (22 pièces)
-// cardImage = photo "model" (portée) — modalImages = photo(s) "buste"
 // ============================================================
 
 const vetements: Creation[] = [
@@ -54,7 +53,8 @@ const vetements: Creation[] = [
         cardImage: { src: `${V}/model/byzance01.jpg`, alt: "Byzance Grey, porté" },
         modalImages: [
             { src: `${V}/buste/byzance01B.jpg`, alt: "Byzance Grey, sur buste" },
-            { src: `${V}/model/byzance01.jpg`, alt: "Byzance Grey, porté" }],
+            { src: `${V}/model/byzance01.jpg`, alt: "Byzance Grey, porté" },
+            { src: `${V}/model/byzance01Dos.jpg`, alt: "Byzance Grey, dos, porté" }],
     },
     {
         slug: "byzance-02",
@@ -68,7 +68,9 @@ const vetements: Creation[] = [
         cardImage: { src: `${V}/model/byzance02.jpg`, alt: "Byzance Red, porté" },
         modalImages: [
             { src: `${V}/buste/byzance02B.jpg`, alt: "Byzance Red, sur buste" },
-            { src: `${V}/model/byzance02.jpg`, alt: "Byzance Red, porté" }],
+            { src: `${V}/model/byzance02.jpg`, alt: "Byzance Red, porté" },
+            { src: `${V}/model/byzance02Dos.jpg`, alt: "Byzance Red, dos, porté" }
+        ],
     },
     {
         slug: "byzance-03",
@@ -83,6 +85,28 @@ const vetements: Creation[] = [
         modalImages: [
             { src: `${V}/buste/byzance03B.jpg`, alt: "Byzance White, sur buste" },
             { src: `${V}/model/byzance03.jpg`, alt: "Byzance White, porté" },
+            { src: `${V}/model/byzance03Dos.jpg`, alt: "Byzance White, dos, porté" }
+        ],
+    },
+    {
+        slug: "cape-reverse",
+        cat: "vetement",
+        title: "Cape - 210 €",
+        meta: "Pièce unique",
+        desc: "Col en fausse fourrure\nLaine quadrillée blanc et bleu clair.\nLaine bleu nuit avec fil doré.\nBoutons dorés et bleu nuit.",
+        size: "Taille 38/40",
+        price: "Modèle = 130 €.\nMatières = 80 €.",
+        badge: "Sur commande",
+        cardImage: { src: `${V}/model/capeA01.jpg`, alt: "Cape face A open, porté" },
+        modalImages: [
+            { src: `${V}/buste/capeA01B.jpg`, alt: "Cape face A open, sur buste" },
+            { src: `${V}/buste/capeA02B.jpg`, alt: "Cape face A close, sur buste" },
+            { src: `${V}/buste/capeB01B.jpg`, alt: "Cape face B open, sur buste" },
+            { src: `${V}/buste/capeB02B.jpg`, alt: "Cape face B close, sur buste" },
+            { src: `${V}/model/capeA01.jpg`, alt: "Cape face A open, porté" },
+            { src: `${V}/model/capeA02.jpg`, alt: "Cape face A fermé, porté" },
+            { src: `${V}/model/capeB01.jpg`, alt: "Cape face B open, porté" },
+            { src: `${V}/model/capeB02.jpg`, alt: "Cape face B fermmé, porté" }
         ],
     },
     {
@@ -162,10 +186,12 @@ const vetements: Creation[] = [
         size: "Taille 38",
         price: "Modèle = 250 €.\nMatières = 54,85 €",
         badge: "Sur commande",
-        cardImage: { src: `${V}/model/openVeste.jpg`, alt: "OpenLegs, portée" },
+        cardImage: { src: `${V}/model/openLegs.jpg`, alt: "OpenLegs, portée" },
         modalImages: [
             { src: `${V}/buste/openVesteB.jpg`, alt: "OpenLegs, sur buste" },
-            { src: `${V}/model/openVeste.jpg`, alt: "OpenLegs, portée" }],
+            { src: `${V}/model/openLegs.jpg`, alt: "OpenLegs, portée" },
+            { src: `${V}/model/openLegsDos.jpg`, alt: "OpenLegs, dos, porté" }
+        ],
     },
     {
         slug: "pant-corset",
@@ -179,7 +205,9 @@ const vetements: Creation[] = [
         cardImage: { src: `${V}/model/pantCorset.jpg`, alt: "Pantalon Corset, porté" },
         modalImages: [
             { src: `${V}/buste/pantCorsetB.jpg`, alt: "Pantalon Corset, sur buste" },
-            { src: `${V}/model/pantCorset.jpg`, alt: "Pantalon Corset, porté" }],
+            { src: `${V}/model/pantCorset.jpg`, alt: "Pantalon Corset, porté" },
+            { src: `${V}/model/pantCorsetDos.jpg`, alt: "Pantalon Corset, dos, porté" }
+        ],
     },
     {
         slug: "pant-valy",
@@ -209,7 +237,9 @@ const vetements: Creation[] = [
             { src: `${V}/buste/pulRev01.jpg`, alt: "Maille de 2 I, sur buste" },
             { src: `${V}/buste/pulRev02.jpg`, alt: "Maille de 2 II, sur buste" },
             { src: `${V}/model/reverse01.jpg`, alt: "Maille de 2 I, porté" },
-            { src: `${V}/model/reverse02.jpg`, alt: "Maille de 2 II, porté" }],
+            { src: `${V}/model/reverse02.jpg`, alt: "Maille de 2 II, porté" },
+            { src: `${V}/model/pullReverse01Dos.jpg`, alt: "Maille de 2 I, dos, porté" },
+            { src: `${V}/model/pullReverse02Dos.jpg`, alt: "Maille de 2 II, dos,  porté" }],
     },
     {
         slug: "robe-fakecoat",
@@ -223,7 +253,9 @@ const vetements: Creation[] = [
         cardImage: { src: `${V}/model/robeFakeCoat.jpg`, alt: "Robe Fake Coat, porté" },
         modalImages: [
             { src: `${V}/buste/robeFakeCoatB.jpg`, alt: "Robe Fake Coat, sur buste" },
-            { src: `${V}/model/robeFakeCoat.jpg`, alt: "Robe Fake Coat, porté" }],
+            { src: `${V}/model/robeFakeCoat.jpg`, alt: "Robe Fake Coat, porté" },
+            { src: `${V}/model/robeFakeCoatDos.jpg`, alt: "Robe Fake Coat, dos, porté" }
+        ],
     },
     {
         slug: "top-01",
@@ -290,10 +322,12 @@ const vetements: Creation[] = [
         size: "Taille 38",
         price: "Modèle = 220 €.\nMatières = 48 €",
         badge: "Sur commande",
-        cardImage: { src: `${V}/model/triJupe.jpg`, alt: "Tri-Jupe Franges, portée" },
+        cardImage: { src: `${V}/model/triJupe.jpg`, alt: "Tri-Jupe, portée" },
         modalImages: [
-            { src: `${V}/buste/triJupeB.jpg`, alt: "Tri-Jupe Franges, sur buste" },
-            { src: `${V}/model/triJupe.jpg`, alt: "Tri-Jupe Franges, portée" }],
+            { src: `${V}/buste/triJupeB.jpg`, alt: "Tri-Jupe, sur buste" },
+            { src: `${V}/model/triJupe.jpg`, alt: "Tri-Jupe, portée" },
+            { src: `${V}/model/triJupeDos.jpg`, alt: "Tri-Jupe, dos, portée" }
+        ],
     },
     {
         slug: "veste-chine",
@@ -307,7 +341,9 @@ const vetements: Creation[] = [
         cardImage: { src: `${V}/model/vesteChine.jpg`, alt: "Veste Chine, portée" },
         modalImages: [
             { src: `${V}/buste/vesteChineB.jpg`, alt: "Veste Chine, sur buste" },
-            { src: `${V}/model/vesteChine.jpg`, alt: "Veste Chine, portée" }],
+            { src: `${V}/model/vesteChine.jpg`, alt: "Veste Chine, portée" },
+            { src: `${V}/model/vesteChineDos.jpg`, alt: "Veste Chine, dos, portée" }
+        ],
     },
     {
         slug: "veste-dc",
@@ -319,7 +355,11 @@ const vetements: Creation[] = [
         price: "Modèle = 215 €.\nMatières = 65,50 €",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/vesteDC.jpg`, alt: "Veste DC, portée" },
-        modalImages: [{ src: `${V}/buste/VesteDCB.jpg`, alt: "Veste DC, sur buste" }],
+        modalImages: [
+            { src: `${V}/buste/VesteDCB.jpg`, alt: "Veste DC, sur buste" },
+            { src: `${V}/model/vesteDC.jpg`, alt: "Veste DC, portée" },
+            { src: `${V}/model/vesteDCDos.jpg`, alt: "Veste DC, dos, portée" }
+        ],
     },
 ];
 
@@ -329,280 +369,258 @@ const vetements: Creation[] = [
 
 const accessoires: Creation[] = [
     {
-        slug: "chale-mom",
+        slug: "boheme-retro",
         cat: "accessoire",
-        title: "Châle Mom",
-        meta: "Accessoire — Tricot",
+        title: "Bohème Rétro",
+        meta: "Châle avec galons",
         desc: "Châle enveloppant à motif torsadé, pensé pour un usage cocooning autant qu'élégant.",
-        price: "Modèle = 215 €.\nMatières = 65,50 €",
+        price: "Modèle = 30 €.\nMatières = 10-20 €",
         badge: "Disponible",
-        cardImage: { src: `${A}/chaleMom.jpg`, alt: "Châle Mom" },
-        modalImages: [{ src: `${A}/chaleMom.jpg`, alt: "Châle Mom" }],
+        cardImage: { src: `${A}/bohemeRetro.jpg`, alt: "Châle Bohème Rétro" },
+        modalImages: [{ src: `${A}/bohemeRetro.jpg`, alt: "Châle Bohème Rétro" }],
     },
     {
-        slug: "cheche-noir",
+        slug: "baroudeur-noir",
         cat: "accessoire",
-        title: "Chèche Noir",
-        meta: "Accessoire — Coton",
-        desc: "Chèche minimaliste, finitions franges, pensé pour s'associer à toutes les silhouettes.",
+        title: "Baroudeur Noir",
+        meta: "Chèche",
+        desc: "Châle enveloppant à motif torsadé, pensé pour un usage cocooning autant qu'élégant.",
+        price: "Modèle = 35 €.\nMatières = 10-25 €",
         badge: "Disponible",
-        cardImage: { src: `${A}/checheNoir.jpg`, alt: "Chèche Noir" },
-        modalImages: [{ src: `${A}/checheNoir.jpg`, alt: "Chèche Noir" }],
+        cardImage: { src: `${A}/baroudeurNoir.jpg`, alt: "Chèche Baroudeur Noir" },
+        modalImages: [{ src: `${A}/baroudeurNoir.jpg`, alt: "Chèche Baroudeur Noir" }],
     },
     {
-        slug: "cheche-militaire",
+        slug: "baroudeur-militaire",
         cat: "accessoire",
-        title: "Chèche Militaire",
-        meta: "Accessoire — Coton",
+        title: "Baroudeur Militaire",
+        meta: "Chèche",
         desc: "Variation kaki du chèche, ambiance utilitaire et graphique.",
+        price: "Modèle = 35 €.\nMatières = 10-25 €",
         badge: "Disponible",
-        cardImage: { src: `${A}/checheMilitaire.jpg`, alt: "Chèche Militaire" },
-        modalImages: [{ src: `${A}/checheMilitaire.jpg`, alt: "Chèche Militaire" }],
+        cardImage: { src: `${A}/baroudeurMilitaire.jpg`, alt: "Chèche Baroudeur Militaire" },
+        modalImages: [{ src: `${A}/baroudeurMilitaire.jpg`, alt: "Chèche Baroudeur Militaire" }],
     },
     {
-        slug: "echarpe-fourrure",
+        slug: "col-hiver",
         cat: "accessoire",
-        title: "Écharpe Fourrure",
-        meta: "Accessoire — Fausse fourrure",
+        title: "Col Hiver",
         desc: "Écharpe tubulaire en fausse fourrure, chaude et texturée, pour twister une tenue simple.",
+        price: "Modèle = 35 €.\nMatières = 15-25 €",
         badge: "Disponible",
-        cardImage: { src: `${A}/EcharpeFur.jpg`, alt: "Écharpe Fourrure" },
-        modalImages: [{ src: `${A}/EcharpeFur.jpg`, alt: "Écharpe Fourrure" }],
+        cardImage: { src: `${A}/colHiver.jpg`, alt: "Mini col Fourrure" },
+        modalImages: [{ src: `${A}/colHiver.jpg`, alt: "Mini col Fourrure" }],
     },
     {
-        slug: "echarpe-tricolore",
+        slug: "patchwork-urbain",
         cat: "accessoire",
-        title: "Écharpe Tricolore",
-        meta: "Accessoire — Laine",
+        title: "Patchwork Urbain",
+        meta: "Écharpe",
         desc: "Écharpe rayée à trois teintes, tissée à la main, pièce graphique et chaude.",
+        price: "Modèle = 35 €.\nMatières = 15-25 €",
         badge: "Disponible",
-        cardImage: { src: `${A}/EcharpeTriColor.jpg`, alt: "Écharpe Tricolore" },
-        modalImages: [{ src: `${A}/EcharpeTriColor.jpg`, alt: "Écharpe Tricolore" }],
+        cardImage: { src: `${A}/patchworkUrbain.jpg`, alt: "Écharpe Patchwork Urbain" },
+        modalImages: [{ src: `${A}/patchworkUrbain.jpg`, alt: "Écharpe Patchwork Urbain" }],
     },
     {
-        slug: "capuche-grise",
+        slug: "nomaded",
         cat: "accessoire",
-        title: "Capuche Grise",
-        meta: "Accessoire — Maille",
+        title: "Nomade",
+        meta: "Col capuche",
         desc: "Capuche enveloppante en maille grise, portée seule ou par-dessus une veste.",
+        price: "Modèle = 35 €.\nMatières = 15-25 €",
         badge: "Disponible",
-        cardImage: { src: `${A}/capucheGris.jpg`, alt: "Capuche Grise" },
-        modalImages: [{ src: `${A}/capucheGris.jpg`, alt: "Capuche Grise" }],
+        cardImage: { src: `${A}/nomade.jpg`, alt: "Capuche Nomade" },
+        modalImages: [{ src: `${A}/nomade.jpg`, alt: "Capuche Nomade" }],
     },
     {
-        slug: "capuche-echarpe",
+        slug: "sphinx",
         cat: "accessoire",
-        title: "Capuche-Écharpe",
-        meta: "Accessoire — Maille",
+        title: "Sphinx",
+        meta: "Écharpe Capuche",
         desc: "Capuche prolongée en écharpe, deux accessoires réunis en une seule pièce continue.",
+        price: "Modèle = 35 €.\nMatières = 15-30 €",
         badge: "Disponible",
-        cardImage: { src: `${A}/capucheEcharpe.jpg`, alt: "Capuche-Écharpe" },
-        modalImages: [{ src: `${A}/capucheEcharpe.jpg`, alt: "Capuche-Écharpe" }],
-    },
-    {
-        slug: "cape-a",
-        cat: "accessoire",
-        title: "Cape A - Double Cape", // À COMPLÉTER
-        meta: "Accessoire", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/CapeA.jpg`, alt: "Cape A" },
-        modalImages: [
-            { src: `${A}/CapeA.jpg`, alt: "Cape A" },
-            { src: `${A}/CapeAbis.jpg`, alt: "Cape A, autre angle" },
-        ],
-    },
-    {
-        slug: "cape-b",
-        cat: "accessoire",
-        title: "Cape B", // À COMPLÉTER
-        meta: "Accessoire", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/CapeB.jpg`, alt: "Cape B" },
-        modalImages: [
-            { src: `${A}/CapeB.jpg`, alt: "Cape B" },
-            { src: `${A}/CapeBbis.jpg`, alt: "Cape B, autre angle" },
-        ],
+        cardImage: { src: `${A}/sphinx.jpg`, alt: "Écharpe Capuche Sphinx" },
+        modalImages: [{ src: `${A}/sphinx.jpg`, alt: "Écharpe Capuche Sphinx" }],
     },
     {
         slug: "panier-lingette",
         cat: "accessoire",
-        title: "Panier Lingette", // À COMPLÉTER
-        meta: "Accessoire", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/PanierLingette.jpg`, alt: "Panier Lingette" },
-        modalImages: [{ src: `${A}/PanierLingette.jpg`, alt: "Panier Lingette" }],
+        title: "Panier Lingette",
+        meta: "6 lingettes par panier",
+        desc: "À compléter — décris cette pièce ici.",
+        price: "Modèle = 35 €.\nMatières = 15-20 €",
+        badge: "Sur commande",
+        cardImage: { src: `${A}/panierLingette.jpg`, alt: "Panier Lingette" },
+        modalImages: [{ src: `${A}/panierLingette.jpg`, alt: "Panier Lingette" }],
     },
     {
-        slug: "pied-poule",
+        slug: "parisienne",
         cat: "accessoire",
-        title: "Pied-de-Poule", // À COMPLÉTER
-        meta: "Accessoire", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/PiedPoule.jpg`, alt: "Pied-de-Poule" },
-        modalImages: [{ src: `${A}/PiedPoule.jpg`, alt: "Pied-de-Poule" }],
+        title: "Parisienne",
+        meta: "Écharpe",
+        desc: "À compléter — décris cette pièce ici.",
+        price: "Modèle = 40 €.\nMatières = 15-25 €",
+        badge: "Disponible",
+        cardImage: { src: `${A}/parisienne.jpg`, alt: "Parisienne, Écharpe coupe structurée" },
+        modalImages: [{ src: `${A}/parisienne.jpg`, alt: "Parisienne, Écharpe coupe structurée" }],
     },
     {
-        slug: "sac-bulldog",
+        slug: "toteBagMiroir-chien",
         cat: "accessoire",
-        title: "Sac Bulldog", // À COMPLÉTER
-        meta: "Accessoire — Sac", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        // À VÉRIFIER : "SacReverseBulldog.jpg" et "sacsBulldog.jpg" — 2 angles
-        // du même sac, ou 2 sacs différents ? J'ai supposé la même pièce.
+        title: "Miroir Bulldog",
+        meta: "Tote Bag",
+        desc: "À compléter — Sac réversible.",
+        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        badge: "Sur Commande",
         cardImage: { src: `${A}/sacsBulldog.jpg`, alt: "Sac Bulldog" },
         modalImages: [
             { src: `${A}/sacsBulldog.jpg`, alt: "Sac Bulldog sur buste" },
-            { src: `${A}/SacReverseBulldog.jpg`, alt: "Sac Bulldog, à plat" },
+            { src: `${A}/sacReverseBulldog.jpg`, alt: "Sac Bulldog, à plat" },
         ],
     },
     {
-        slug: "sac-chat",
+        slug: "toteBagMiroir-chat",
         cat: "accessoire",
-        title: "Sac Chat - Tote Bag miroir", // À COMPLÉTER
-        meta: "Accessoire — Sac", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        // Même remarque que Sac Bulldog : SacReverseChat.jpg + sacsChat.jpg
+        title: "Miroir Chat",
+        meta: "Tote Bag",
+        desc: "À compléter — Sac réversible.",
+        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        badge: "Sur Commande",
         cardImage: { src: `${A}/sacsChat.jpg`, alt: "Sac Chat" },
         modalImages: [
             { src: `${A}/sacsChat.jpg`, alt: "Sac Chat sur buste" },
-            { src: `${A}/SacReverseChat.jpg`, alt: "Sac Chat, à plat" },
+            { src: `${A}/sacReverseChat.jpg`, alt: "Sac Chat, à plat" },
         ],
     },
     {
         slug: "snood-cream",
         cat: "accessoire",
-        title: "Snood Crème", // À COMPLÉTER
-        meta: "Accessoire — Snood", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/SnoodCream.jpg`, alt: "Snood Crème" },
-        modalImages: [{ src: `${A}/SnoodCream.jpg`, alt: "Snood Crème" }],
+        title: "Snood Cream",
+        desc: "À compléter.",
+        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        badge: "Sur Commande",
+        cardImage: { src: `${A}/snoodCream.jpg`, alt: "Snood Crème Nath" },
+        modalImages: [{ src: `${A}/snoodCream.jpg`, alt: "Snood Crème Nath" }],
     },
     {
-        slug: "snood-04",
+        slug: "double-snood-01",
         cat: "accessoire",
-        title: "Snood IV", // À COMPLÉTER
-        meta: "Accessoire — Snood", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        // À VÉRIFIER : snood04.jpg et snood05.jpg — traités comme 2 modèles
-        // DIFFÉRENTS (pas 2 angles du même). Confirme si c'est bien le cas.
-        cardImage: { src: `${A}/snood04.jpg`, alt: "Snood IV" },
-        modalImages: [{ src: `${A}/snood04.jpg`, alt: "Snood IV" }],
+        title: "Double Snood 01",
+        desc: "À compléter.",
+        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        badge: "Sur Commande",
+        cardImage: { src: `${A}/doubleSnood01.jpg`, alt: "Double Snood 01" },
+        modalImages: [{ src: `${A}/doubleSnood01.jpg`, alt: "Double Snood 01" }],
     },
     {
-        slug: "snood-05",
+        slug: "double-snood-02",
         cat: "accessoire",
-        title: "Snood V", // À COMPLÉTER
-        meta: "Accessoire — Snood", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/snood05.jpg`, alt: "Snood V" },
-        modalImages: [{ src: `${A}/snood05.jpg`, alt: "Snood V" }],
+        title: "Double Snood 02",
+        desc: "À compléter.",
+        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        badge: "Sur Commande",
+        cardImage: { src: `${A}/doubleSnood02.jpg`, alt: "Double Snood 02" },
+        modalImages: [{ src: `${A}/doubleSnood02.jpg`, alt: "Double Snood 02" }],
     },
     {
-        slug: "bichale",
+        slug: "metamorphe",
         cat: "accessoire",
-        title: "Bi-Châle", // À COMPLÉTER
-        meta: "Accessoire — Châle", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/bichale01.jpg`, alt: "Bi-Châle" },
+        title: "Métamorphe",
+        meta: "Châle",
+        desc: "À compléter.",
+        price: "Modèle = 30 €.\nMatières = 15-25 €",
+        badge: "Sur Commande",
+        cardImage: { src: `${A}/metamorphe01.jpg`, alt: "Métamorphe, bi-châle" },
         modalImages: [
-            { src: `${A}/bichale01.jpg`, alt: "Bi-Châle" },
-            { src: `${A}/bichale02.jpg`, alt: "Bi-Châle, autre angle" },
-            { src: `${A}/bichale03.jpg`, alt: "Bi-Châle, détail" },
+            { src: `${A}/metamorphe01.jpg`, alt: "Métamorphe, bi-Châle angle 1" },
+            { src: `${A}/metamorphe02.jpg`, alt: "Métamorphe, bi-Châle angle 2" },
+            { src: `${A}/metamorphe03.jpg`, alt: "Métamorphe, Bi-Châle angle 3" },
         ],
     },
     {
-        slug: "echarpe-multi-orange",
+        slug: "multiforme-orange",
         cat: "accessoire",
-        title: "Écharpe Multi Orange", // À COMPLÉTER
-        meta: "Accessoire — Laine", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/echarpeMultiOrange01.jpg`, alt: "Écharpe Multi Orange" },
+        title: "Multiforme Orange",
+        meta: "Écharpe — Multi fonction",
+        desc: "À compléter.",
+        price: "Modèle = 50 €.\nMatières = 20-40 €",
+        badge: "Sur Commande",
+        cardImage: { src: `${A}/multiformeOrange01.jpg`, alt: "Écharpe Multiforme Orange" },
         modalImages: [
-            { src: `${A}/echarpeMultiOrange01.jpg`, alt: "Écharpe Multi Orange" },
-            { src: `${A}/echarpeMultiOrange02.jpg`, alt: "Écharpe Multi Orange, autre angle" },
-            { src: `${A}/echarpeMultiOrange03.jpg`, alt: "Écharpe Multi Orange, détail" },
+            { src: `${A}/multiformeOrange01.jpg`, alt: "Écharpe Multiforme Orange, version 1" },
+            { src: `${A}/multiformeOrange02.jpg`, alt: "Écharpe Multiforme Orange, version 2" },
+            { src: `${A}/multiformeOrange03.jpg`, alt: "Écharpe Multiforme Orange, version 3" },
         ],
     },
     {
-        slug: "echarpe-multi-rouge",
+        slug: "multiforme-rouge",
         cat: "accessoire",
-        title: "Écharpe Multi Rouge", // À COMPLÉTER
-        meta: "Accessoire — Laine", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/echarpeMultiRouge01.jpg`, alt: "Écharpe Multi Rouge" },
+        title: "Multiforme Rouge",
+        meta: "Écharpe — Multi fonction",
+        desc: "À compléter — décris cette pièce ici.",
+        price: "Modèle = 50 €.\nMatières = 20-40 €",
+        badge: "Sur commande",
+        cardImage: { src: `${A}/multiformeRouge01.jpg`, alt: "Écharpe Multiforme Rouge" },
         modalImages: [
-            { src: `${A}/echarpeMultiRouge01.jpg`, alt: "Écharpe Multi Rouge" },
-            { src: `${A}/echarpeMultiRouge02.jpg`, alt: "Écharpe Multi Rouge, autre angle" },
-            { src: `${A}/echarpeMultiRouge03.jpg`, alt: "Écharpe Multi Rouge, détail" },
+            { src: `${A}/multiformeRouge01.jpg`, alt: "Écharpe Multiforme Rouge, version 1" },
+            { src: `${A}/multiformeRouge02.jpg`, alt: "Écharpe Multiforme Rouge, version 2" },
+            { src: `${A}/multiformeRouge03.jpg`, alt: "Écharpe Multiforme Rouge, version 3" },
         ],
+    },
+    {
+        slug: "col-pointe",
+        cat: "accessoire",
+        title: "Col Pointe",
+        desc: "À compléter — décris cette pièce ici.",
+        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        badge: "Sur commande",
+        cardImage: { src: `${A}/colPointe01.jpg`, alt: "Col Pointe, face" },
+        modalImages: [
+            { src: `${A}/colePoite02.jpg`, alt: "Col Pointe, profil" },
+            { src: `${A}/colPointe01.jpg`, alt: "Col Pointe, face" },
+        ],
+    },
+    {
+        slug: "double-snood-03",
+        cat: "accessoire",
+        title: "Double Snood",
+        desc: "À compléter — décris cette pièce ici.",
+        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        badge: "Sur commande",
+        cardImage: { src: `${A}/doubleSnood02.jpg`, alt: "Double Snood 03" },
+        modalImages: [{ src: `${A}/doubleSnood02.jpg`, alt: "Double Snood 03" }],
+    },
+    {
+        slug: "snood-01",
+        cat: "accessoire",
+        title: "Snood",
+        desc: "À compléter — décris cette pièce ici.",
+        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        badge: "Sur commande",
+        cardImage: { src: `${A}/snood01.jpg`, alt: "Snood" },
+        modalImages: [{ src: `${A}/snood01.jpg`, alt: "Snood" }],
     },
     {
         slug: "tdc-01",
         cat: "accessoire",
-        title: "Tour de Cou I", // À COMPLÉTER — j'ai supposé "tdc" = "tour de cou"
-        meta: "Accessoire", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/tdc01face.jpg`, alt: "Tour de Cou I, face" },
-        modalImages: [
-            { src: `${A}/tdc01face.jpg`, alt: "Tour de Cou I, face" },
-            { src: `${A}/tdc01profil.jpg`, alt: "Tour de Cou I, profil" },
-        ],
+        title: "Tour de Cou Red",
+        desc: "À compléter — décris cette pièce ici.",
+        price: "Modèle = 30 €.\nMatières = 10-20 €",
+        badge: "Sur commande",
+        cardImage: { src: `${A}/tdc01.jpg`, alt: "Tour de Cou Red" },
+        modalImages: [{ src: `${A}/tdc01.jpg`, alt: "Tour de Cou Red" }],
     },
     {
         slug: "tdc-02",
         cat: "accessoire",
-        title: "Tour de Cou II", // À COMPLÉTER
-        meta: "Accessoire", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/tdc02.jpg`, alt: "Tour de Cou II" },
-        modalImages: [{ src: `${A}/tdc02.jpg`, alt: "Tour de Cou II" }],
-    },
-    {
-        slug: "tdc-03",
-        cat: "accessoire",
-        title: "Tour de Cou III", // À COMPLÉTER
-        meta: "Accessoire", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/tdc03.jpg`, alt: "Tour de Cou III" },
-        modalImages: [{ src: `${A}/tdc03.jpg`, alt: "Tour de Cou III" }],
-    },
-    {
-        slug: "tdc-04",
-        cat: "accessoire",
-        title: "Tour de Cou IV", // À COMPLÉTER
-        meta: "Accessoire", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        cardImage: { src: `${A}/tdc04.jpg`, alt: "Tour de Cou IV" },
-        modalImages: [{ src: `${A}/tdc04.jpg`, alt: "Tour de Cou IV" }],
-    },
-    {
-        slug: "tdc-brun",
-        cat: "accessoire",
-        title: "Tour de Cou Brun", // À COMPLÉTER
-        meta: "Accessoire", // À COMPLÉTER
-        desc: "À compléter — décris cette pièce ici.", // À COMPLÉTER
-        badge: "Disponible", // À COMPLÉTER
-        // À VÉRIFIER : "tcdBrun.jpg" (lettres inversées : "tcd" et non "tdc") —
-        // probablement une faute de frappe au moment du nommage du fichier,
-        // à renommer en "tdcBrun.jpg" si tu veux rester cohérente avec les autres.
-        cardImage: { src: `${A}/tcdBrun.jpg`, alt: "Tour de Cou Brun" },
-        modalImages: [{ src: `${A}/tcdBrun.jpg`, alt: "Tour de Cou Brun" }],
+        title: "Tour de Cou Brun",
+        desc: "À compléter — décris cette pièce ici.",
+        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        badge: "Sur commande",
+        cardImage: { src: `${A}/tdc02.jpg`, alt: "Tour de Cou Brun" },
+        modalImages: [{ src: `${A}/tdc02.jpg`, alt: "Tour de Cou Brun" }],
     },
 ];
 

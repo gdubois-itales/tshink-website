@@ -168,10 +168,7 @@ export default function CreationsPage() {
 
                   <p>{selected.desc}</p>
 
-                  <p className={styles.size}>{selected.size && (
-                      <p className={styles.size}>{selected.size}</p>
-                  )}
-                  </p>
+                  {selected.size && <p className={styles.size}>{selected.size}</p>}
                   {selected.cat === "vetement" ? (
                       <>
                         <p className={styles.price}>{selected.price}</p>
