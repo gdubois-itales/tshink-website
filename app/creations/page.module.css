@@ -116,10 +116,10 @@
 }
 
 .modalInfo {
-    padding: 40px;
+    padding: 25px;
 }
 .modalInfo :global(.eyebrow) {
-    margin-bottom: 14px;
+    margin-bottom: 0px;
 }
 .modalInfo h3 {
     font-size: 26px;
