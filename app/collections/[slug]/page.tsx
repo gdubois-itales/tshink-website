@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Eyebrow from "@/components/ui/Eyebrow";
-import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
+import Image  from "next/image";
 import { collections } from "@/lib/nav-links";
 import { collectionsContent } from "@/lib/collections";
 import styles from "./page.module.css";
+import CollectionGallery from "@/components/ui/CollectionsGallery";
 
 // Pré-génère une route statique pour chaque collection connue
 // (zodiac-tribe, kinky-link, freedoms-temptation).
@@ -35,7 +36,15 @@ export default async function CollectionDetailPage({
   return (
       <>
         <section className={styles.hero}>
-          <ImagePlaceholder caption={content.heroCaption} className={styles.heroImage} />
+          <div className={styles.heroImage}>
+            <Image
+                src={content.heroImage.src}
+                alt={content.heroImage.alt}
+                fill
+                sizes="100vw"
+                style={{ objectFit: "cover", objectPosition: content.heroImage.objectPosition ?? "center" }}
+            />
+          </div>
           <div className={styles.heroInner}>
             <div className="wrap">
               <Eyebrow>{heroEyebrow(collection.year)}</Eyebrow>
@@ -57,11 +66,9 @@ export default async function CollectionDetailPage({
               ))}
             </div>
 
-            <div className={styles.gallery}>
-              {content.gallery.map((caption, i) => (
-                  <ImagePlaceholder key={i} caption={caption} className={styles.galleryImage} />
-              ))}
-            </div>
+            <br/>
+
+            <CollectionGallery images={content.gallery} />
           </div>
         </section>
       </>
