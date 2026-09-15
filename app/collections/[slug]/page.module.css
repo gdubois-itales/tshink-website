@@ -67,24 +67,3 @@
         gap: 24px;
     }
 }
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: 50px;
-}
-@media (max-width: 880px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-.galleryImage:nth-child(3n + 1) {
-    aspect-ratio: 3 / 4;
-}
-.galleryImage:nth-child(3n + 2) {
-    aspect-ratio: 1 / 1;
-}
-.galleryImage:nth-child(3n) {
-    aspect-ratio: 3 / 4;
-}

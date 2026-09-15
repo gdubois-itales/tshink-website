@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Eyebrow from "@/components/ui/Eyebrow";
-import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
+import Image from "next/image";
 import { collections } from "@/lib/nav-links";
 import { collectionsContent } from "@/lib/collections";
 import styles from "./page.module.css";
@@ -32,10 +32,15 @@ export default function CollectionsPage() {
                       href={`/collections/${c.slug}`}
                       className={styles.collPlate}
                   >
-                    <ImagePlaceholder
-                        caption={`Image — ${c.title}`}
-                        className={styles.plateImage}
-                    />
+                    <div className={styles.plateImage}>
+                      <Image
+                          src={content!.cardImage.src}
+                          alt={content!.cardImage.alt}
+                          fill
+                          sizes="(max-width: 820px) 100vw, 50vw"
+                          style={{ objectFit: "cover", objectPosition: "50% 30%" }}
+                      />
+                    </div>
                     <div className={styles.plateInfo}>
                   <span className={styles.yr}>
                     {c.year} — Thème « {c.theme} »
