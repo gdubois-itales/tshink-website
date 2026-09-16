@@ -1,0 +1,59 @@
+.wrap {
+    min-height: calc(100vh - var(--header-height) - 260px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+}
+
+/* Repère temporaire "404" en glitch — à retirer/remplacer quand le
+   logo cassé sera prêt (voir commentaire dans not-found.tsx). */
+.glitchMark {
+    position: relative;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(72px, 14vw, 160px);
+    line-height: 1;
+    color: var(--bordeaux);
+    margin-bottom: 8px;
+    user-select: none;
+}
+.glitchMark span {
+    display: block;
+}
+.glitchMark span:first-child {
+    position: relative;
+    z-index: 1;
+}
+.glitchMark span:last-child {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    z-index: 0;
+    color: var(--bordeaux-deep);
+    opacity: 0.35;
+}
+
+.title {
+    margin-top: 8px;
+    font-size: clamp(28px, 3.6vw, 40px);
+    max-width: 20ch;
+}
+
+.lede {
+    margin-top: 18px;
+    max-width: 46ch;
+    color: var(--grey);
+    font-size: 15px;
+}
+
+.actions {
+    margin-top: 34px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
