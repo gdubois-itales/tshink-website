@@ -24,10 +24,11 @@
 .plateImage {
     position: relative;
     aspect-ratio: 16 / 9;
+    align-self: center;
     border: 0;
     border-right: 1px solid var(--line-strong);
-    object-position: top;
 }
+
 @media (max-width: 820px) {
     .plateImage {
         border-right: 0;

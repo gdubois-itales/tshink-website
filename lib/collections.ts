@@ -48,6 +48,7 @@ export const collectionsContent: CollectionContent[] = [
             { src: "/images/collections/zodiac-tribe/belierProfil.jpg", alt: "Bélier Profil" },
             { src: "/images/collections/zodiac-tribe/verseauDos.jpg", alt: "Verseau Dos" },
             { src: "/images/collections/zodiac-tribe/poissonDos.jpg", alt: "Poisson Dos" },
+            { src: "/images/collections/zodiac-tribe/AllGrid.jpg", alt: "Collection complète" },
         ],
     },
     {
@@ -114,6 +115,7 @@ export const collectionsContent: CollectionContent[] = [
             { src: "/images/collections/kinky-link/SD03.jpg", alt: "SD03" },
             { src: "/images/collections/kinky-link/SD04.jpg", alt: "SD04" },
             { src: "/images/collections/kinky-link/SD05.jpg", alt: "SD05" },
+            { src: "/images/collections/kinky-link/hero.jpg", alt: "Collection complète" },
         ],
     },
     {
@@ -202,6 +204,7 @@ export const collectionsContent: CollectionContent[] = [
             { src: "/images/collections/freedoms-temptation/Caliss03.jpg", alt: "Caliss 03" },
             { src: "/images/collections/freedoms-temptation/Caliss04.jpg", alt: "Caliss 04" },
             { src: "/images/collections/freedoms-temptation/Caliss05.jpg", alt: "Caliss 05" },
+            { src: "/images/collections/freedoms-temptation/hero.jpg", alt: "Collection complète" },
         ],
     },
 ];
