@@ -306,3 +306,71 @@ main {
 .cta-band .cta-solid {
   margin-top: 30px;
 }
+
+/* ============ Mentions légales / Politique de confidentialité ============ */
+
+.legal-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+@media (max-width: 880px) {
+  .legal-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.legal-toc {
+  position: sticky;
+  top: 100px;
+  border: 1px solid var(--line-strong);
+  padding: 24px;
+  background: var(--white);
+}
+@media (max-width: 880px) {
+  .legal-toc {
+    position: static;
+  }
+}
+.legal-toc h4 {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.legal-toc a {
+  display: block;
+  font-size: 13px;
+  color: var(--grey);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--line);
+}
+.legal-toc a:hover {
+  color: var(--bordeaux);
+}
+.legal-body h2 {
+  font-size: 20px;
+  margin-top: 44px;
+  scroll-margin-top: 100px;
+}
+.legal-body h2:first-child {
+  margin-top: 0;
+}
+.legal-body p {
+  font-size: 14.5px;
+  color: var(--ink);
+  margin-top: 12px;
+}
+.legal-body em {
+  color: var(--bordeaux);
+  font-style: italic;
+}
+.legal-body ul {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  color: var(--ink);
+  font-size: 14.5px;
+}
+.legal-body li {
+  margin-bottom: 6px;
+}
