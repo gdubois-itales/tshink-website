@@ -1,0 +1,40 @@
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 70px;
+}
+@media (max-width: 880px) {
+    .contactGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.infoPanel {
+    background: var(--black);
+    color: var(--ecru);
+    padding: 44px;
+    height: fit-content;
+}
+.infoPanel h3 {
+    color: var(--white);
+    font-size: 20px;
+    margin-bottom: 26px;
+}
+.infoItem {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 22px;
+    font-size: 14.5px;
+    align-items: flex-start;
+}
+.infoItem:last-child {
+    margin-bottom: 0;
+}
+.ic {
+    color: #c98f96;
+    font-size: 16px;
+}
+.infoItem a:hover {
+    color: #e3b4b9;
+}
