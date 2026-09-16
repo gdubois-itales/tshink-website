@@ -1,0 +1,85 @@
+.contactNote {
+    font-family: var(--font-serif), serif;
+    font-style: italic;
+    color: var(--bordeaux);
+    font-size: 16px;
+    margin-bottom: 34px;
+    display: block;
+}
+
+.field {
+    margin-bottom: 26px;
+}
+.field label {
+    display: block;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 10px;
+}
+.field input,
+.field textarea {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid var(--line-strong);
+    background: transparent;
+    padding: 12px 2px;
+    font-family: var(--font-sans), sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    transition: border-color 0.2s ease;
+}
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-bottom-color: var(--bordeaux);
+}
+.field textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submitButton {
+    border: 0;
+    cursor: pointer;
+}
+.submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.errorMessage {
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: var(--bordeaux);
+}
+.errorMessage a {
+    text-decoration: underline;
+}
+
+.confirmOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 22, 20, 0.72);
+    z-index: 950;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.confirmBox {
+    background: var(--white);
+    max-width: 480px;
+    width: 100%;
+    padding: 40px 34px;
+    text-align: center;
+}
+.confirmBox h3 {
+    font-size: 22px;
+    margin-top: 14px;
+}
+.confirmBox p {
+    margin-top: 12px;
+    font-size: 14px;
+}

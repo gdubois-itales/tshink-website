@@ -8,27 +8,12 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import { useCart, type CartLine } from "@/lib/cart-context";
 import styles from "./page.module.css";
 
-// Formulaire Google — "Nom" et "Message" sont des questions classiques,
-// chacune avec son entry.XXXXX (récupéré via "Obtenir le lien pré-rempli").
 const GOOGLE_FORM_ACTION_URL =
     "https://docs.google.com/forms/d/e/1FAIpQLSfTbZYSbqwYGHlsPiJQkYa76ZtFrQw6Q68FRuD2oweYeq_y8A/formResponse";
 const ENTRY_NOM = "entry.1324899612";
 const ENTRY_MESSAGE = "entry.1467334355";
 const ENTRY_EMAIL = "entry.1949116587";
 const ENTRY_COMMENTAIRE = "entry.899148491";
-
-// L'adresse e-mail, elle, passe par le champ natif "Collecter les adresses
-// e-mail" (Paramètres > Réponses) plutôt que par une question classique :
-// ce champ n'a donc pas d'entry.XXXXX obtenu via "lien pré-rempli". "emailAddress"
-// est la clé la plus souvent rapportée pour ce champ natif, mais ce n'est
-// pas documenté officiellement par Google et ça peut ne pas fonctionner
-// via un envoi en arrière-plan comme celui-ci (à la différence d'une vraie
-// soumission du formulaire dans un navigateur). À TESTER : passe une
-// commande de test sur /panier et vérifie que le mail récapitulatif arrive
-// bien à l'adresse saisie. Si rien n'arrive, la solution fiable est de
-// désactiver ce champ natif et de créer une vraie question "Adresse e-mail"
-// avec son propre entry.XXXXX, récupéré de la même façon que les 2 autres.
-
 
 function detailLigne(ligne: CartLine): string {
     if (ligne.mode === "matieres") {
@@ -85,8 +70,6 @@ export default function PanierPage() {
                 body,
             });
         } catch {
-            // Rien à faire de plus ici : on affiche quand même la confirmation
-            // côté client, l'essentiel est d'avoir tenté l'envoi.
         }
 
         setSending(false);
