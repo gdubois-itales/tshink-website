@@ -6,11 +6,40 @@ import FloatingCart from "@/components/ui/FloatingCart";
 import { matieres, fabricShops } from "@/lib/matieres";
 import { useCart } from "@/lib/cart-context";
 import styles from "./page.module.css";
+import {useState} from "react";
 
 export default function MatieresPage() {
-    const { enCours, ajouterMatiere, retirerMatiere } = useCart();
+    const { enCours, ajouterMatiere, retirerMatiere, ajouterAvecNote, annulerSelection } = useCart();
     const selectedSlugs = new Set(enCours?.matieres.map((m) => m.slug) ?? []);
+    const [externalNote, setExternalNote] = useState("");
+    const [showReplaceConfirm, setShowReplaceConfirm] = useState(false);
 
+    function handleAddExternalFabric() {
+        if (!enCours || !externalNote.trim()) return;
+
+        if (enCours.matieres.length > 0) {
+            setShowReplaceConfirm(true);
+            return;
+        }
+
+        confirmAddExternalFabric();
+    }
+
+    function confirmAddExternalFabric() {
+        if (!enCours) return;
+        ajouterAvecNote(
+            {
+                slug: enCours.creationSlug,
+                title: enCours.creationTitle,
+                image: enCours.creationImage,
+            },
+            externalNote,
+            "lien-externe"
+        );
+        annulerSelection();
+        setExternalNote("");
+        setShowReplaceConfirm(false);
+    }
     return (
         <>
             <section className="section">
@@ -98,8 +127,70 @@ export default function MatieresPage() {
                             </a>
                             ))}
                     </div>
+
+                    {enCours ? (
+                        <div className={styles.externalFabricCard}>
+                            <h4>Vous avez trouvé votre tissu ailleurs ?</h4>
+                            <label htmlFor="external-fabric" className={styles.externalFabricHint} style={{ display: "block" }}>
+                                Indiquez le nom du tissu, sa référence et la boutique (ou collez
+                                directement le lien de la page produit) : on s&apos;occupe du reste.
+                            </label>
+                            <textarea
+                                id="external-fabric"
+                                className={styles.externalFabricInput}
+                                rows={3}
+                                placeholder="Ex : Velours côtelé bordeaux, réf. VC-234, chienvert.com/..."
+                                value={externalNote}
+                                onChange={(e) => setExternalNote(e.target.value)}
+                            />
+                            <button
+                                type="button"
+                                className={styles.addBtn}
+                                disabled={!externalNote.trim()}
+                                onClick={handleAddExternalFabric}
+                            >
+                                + Ajouter
+                            </button>
+                        </div>
+                    ) : (
+                        <p className={styles.externalFabricHint}>
+                            Repérez d&apos;abord une création sur la page{" "}
+                            <a href="/creations" className={styles.disclaimerLink}>Créations</a>{" "}
+                            pour pouvoir ajouter un tissu trouvé ailleurs à votre panier.
+                        </p>
+                    )}
                 </div>
             </section>
+
+            {showReplaceConfirm && enCours && (
+                <div className={styles.confirmOverlay}>
+                    <div className={styles.confirmBox}>
+                        <Eyebrow>Confirmation</Eyebrow>
+                        <h3>Remplacer la sélection en cours ?</h3>
+                        <p>
+                            Vous avez déjà sélectionné {enCours.matieres.length} matière(s) de
+                            l&apos;atelier pour « {enCours.creationTitle} ». Ajouter ce tissu
+                            trouvé en ligne effacera cette sélection.
+                        </p>
+                        <div className={styles.confirmActions}>
+                            <button
+                                type="button"
+                                className="cta-outline"
+                                onClick={() => setShowReplaceConfirm(false)}
+                            >
+                                Annuler
+                            </button>
+                            <button
+                                type="button"
+                                className="cta-solid"
+                                onClick={confirmAddExternalFabric}
+                            >
+                                Remplacer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <FloatingCart />
         </>
