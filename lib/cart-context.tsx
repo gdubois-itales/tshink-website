@@ -19,7 +19,7 @@ import {
 import type { Matiere } from "./matieres";
 
 export type CartLineMode = "matieres" | "note";
-export type NoteType = "connue" | "conseil";
+export type NoteType = "connue" | "conseil" | "lien-externe";
 
 export type CartImage = { src: string; alt: string };
 

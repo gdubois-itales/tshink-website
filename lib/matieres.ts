@@ -39,7 +39,6 @@ export type FabricShopLink = {
     url: string;
 };
 
-// À COMPLÉTER avec tes vraies boutiques de référence.
 export const fabricShops: FabricShopLink[] = [
     { name: "Les Tissus du Chien Vert", url: "https://www.chienvert.com" },
     { name: "La Toison d'Or", url: "https://www.latoisondor.be/" },

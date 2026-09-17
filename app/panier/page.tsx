@@ -26,6 +26,10 @@ function detailLigne(ligne: CartLine): string {
         return `Matière déjà en sa possession : ${ligne.note}`;
     }
 
+    if (ligne.noteType === "lien-externe") {
+        return `Tissu repéré en ligne : ${ligne.note}`;
+    }
+
     return `Demande de conseil sur la matière : ${ligne.note}`;
 }
 
