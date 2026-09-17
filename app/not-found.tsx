@@ -1,27 +1,21 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
 import styles from "./not-found.module.css";
+import Image from "next/image";
 
 export default function NotFound() {
     return (
         <section className="section">
             <div className={`wrap ${styles.wrap}`}>
-                {/*
-          Repère temporaire en attendant le logo "cassé".
-          Une fois l'asset prêt, remplacez ce bloc <div className={styles.glitchMark}>...</div>
-          par :
+
             <Image
-              src="/images/logo-casse-404.png"
-              alt=""
-              width={220}
-              height={220}
+              src="/logo-404.png"
+              alt="404 logo"
+              width={500}
+              height={200}
               className={styles.brokenLogo}
             />
-        */}
-                <div className={styles.glitchMark} aria-hidden="true">
-                    <span>404</span>
-                    <span>404</span>
-                </div>
+                <br/>
 
                 <Eyebrow>Erreur 404</Eyebrow>
                 <h1 className={styles.title}>Le fil s&apos;est cassé en chemin.</h1>
