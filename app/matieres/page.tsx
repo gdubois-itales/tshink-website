@@ -6,13 +6,72 @@ import FloatingCart from "@/components/ui/FloatingCart";
 import { matieres, fabricShops } from "@/lib/matieres";
 import { useCart } from "@/lib/cart-context";
 import styles from "./page.module.css";
-import {useState} from "react";
+import { useState, useEffect } from "react";
+
+const COMPOSITION_LABELS = ["Utilisation Suggérée", "Palette de Couleurs"];
+
+function renderComposition(text: string) {
+    return text.split("\n").map((line, i) => {
+        const label = COMPOSITION_LABELS.find((l) => line.startsWith(`${l} :`));
+        if (label) {
+            const rest = line.slice(`${label} :`.length);
+            return (
+                <p key={i} className={styles.compositionLabelLine}>
+                    <strong>{label} :</strong>
+                    {rest}
+                </p>
+            );
+        }
+        return (
+            <p key={i} className={styles.compositionLine}>
+                {line}
+            </p>
+        );
+    });
+}
 
 export default function MatieresPage() {
     const { enCours, ajouterMatiere, retirerMatiere, ajouterAvecNote, annulerSelection } = useCart();
     const selectedSlugs = new Set(enCours?.matieres.map((m) => m.slug) ?? []);
     const [externalNote, setExternalNote] = useState("");
     const [showReplaceConfirm, setShowReplaceConfirm] = useState(false);
+    const [detailIndex, setDetailIndex] = useState<number | null>(null);
+    const [fullscreen, setFullscreen] = useState(false);
+
+    const detail = detailIndex !== null ? matieres[detailIndex] : null;
+    const total = matieres.length;
+
+    const closeDetail = () => {
+        setDetailIndex(null);
+        setFullscreen(false);
+    };
+    const goTo = (i: number) => {
+        setDetailIndex((i + total) % total);
+        setFullscreen(false);
+    };
+    const prevDetail = () => detailIndex !== null && goTo(detailIndex - 1);
+    const nextDetail = () => detailIndex !== null && goTo(detailIndex + 1);
+
+    useEffect(() => {
+        if (detailIndex === null) return;
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                fullscreen ? setFullscreen(false) : closeDetail();
+            }
+            if (event.key === "ArrowLeft") prevDetail();
+            if (event.key === "ArrowRight") nextDetail();
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+            document.body.style.overflow = "";
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [detailIndex, fullscreen]);
 
     function handleAddExternalFabric() {
         if (!enCours || !externalNote.trim()) return;
@@ -40,6 +99,7 @@ export default function MatieresPage() {
         setExternalNote("");
         setShowReplaceConfirm(false);
     }
+
     return (
         <>
             <section className="section">
@@ -75,36 +135,25 @@ export default function MatieresPage() {
                     </div>
 
                     <div className={styles.matiereGrid}>
-                        {matieres.map((m) => {
-                            const isSelected = selectedSlugs.has(m.slug);
-                            return (
-                                <div key={m.slug} className={styles.matiereCard}>
-                                    <div className={styles.imageBox}>
-                                        <Image
-                                            src={m.image.src}
-                                            alt={m.image.alt}
-                                            fill
-                                            sizes="(max-width: 560px) 50vw, (max-width: 880px) 33vw, 25vw"
-                                            style={{ objectFit: "cover" }}
-                                        />
-                                    </div>
-                                    <h4>{m.name}</h4>
-                                    <div className={styles.composition}>{m.composition}</div>
-
-                                    {enCours && (
-                                        <button
-                                            type="button"
-                                            className={`${styles.addBtn} ${isSelected ? styles.added : ""}`}
-                                            onClick={() =>
-                                                isSelected ? retirerMatiere(m.slug) : ajouterMatiere(m)
-                                            }
-                                        >
-                                            {isSelected ? "✓ Ajoutée" : "+ Ajouter"}
-                                        </button>
-                                    )}
+                        {matieres.map((m, i) => (
+                            <button
+                                key={m.slug}
+                                type="button"
+                                className={styles.matiereCard}
+                                onClick={() => setDetailIndex(i)}
+                            >
+                                <div className={styles.imageBox}>
+                                    <Image
+                                        src={m.image.src}
+                                        alt={m.image.alt}
+                                        fill
+                                        sizes="(max-width: 560px) 50vw, (max-width: 880px) 33vw, 25vw"
+                                        style={{ objectFit: "cover" }}
+                                    />
                                 </div>
-                            );
-                        })}
+                                <h4>{m.name}</h4>
+                            </button>
+                        ))}
                     </div>
 
                     <hr className="hairline" style={{ margin: "60px 0 40px" }} />
@@ -116,16 +165,16 @@ export default function MatieresPage() {
                     <div className={styles.shopList}>
                         {fabricShops.map((shop) => (
                             <a
-                            key={shop.url}
-                            href={shop.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.shopLink}
+                                key={shop.url}
+                                href={shop.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.shopLink}
                             >
-                            <span>{shop.name}</span>
-                            <span>→</span>
+                                <span>{shop.name}</span>
+                                <span>→</span>
                             </a>
-                            ))}
+                        ))}
                     </div>
 
                     {enCours ? (
@@ -188,6 +237,122 @@ export default function MatieresPage() {
                                 Remplacer
                             </button>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {detail && !fullscreen && (
+                <div
+                    className={styles.confirmOverlay}
+                    onClick={(e) => { if (e.target === e.currentTarget) closeDetail(); }}
+                >
+                    <div className={styles.detailBox}>
+                        <button
+                            type="button"
+                            className={styles.detailClose}
+                            onClick={closeDetail}
+                            aria-label="Fermer"
+                        >
+                            ✕
+                        </button>
+
+                        <button
+                            type="button"
+                            className={styles.detailImage}
+                            onClick={() => setFullscreen(true)}
+                            aria-label="Agrandir l'échantillon"
+                        >
+                            <Image
+                                src={detail.image.src}
+                                alt={detail.image.alt}
+                                fill
+                                sizes="(max-width: 620px) 100vw, 360px"
+                                style={{ objectFit: "cover" }}
+                            />
+                        </button>
+
+                        <div className={styles.detailInfo}>
+                            <div className={styles.detailScroll}>
+                                <Eyebrow>Matière</Eyebrow>
+                                <h3>{detail.name}</h3>
+                                <div className={styles.composition}>{renderComposition(detail.composition)}</div>
+                                {enCours && (
+                                    <button
+                                        type="button"
+                                        className={`${styles.addBtn} ${selectedSlugs.has(detail.slug) ? styles.added : ""}`}
+                                        onClick={() =>
+                                            selectedSlugs.has(detail.slug)
+                                                ? retirerMatiere(detail.slug)
+                                                : ajouterMatiere(detail)
+                                        }
+                                    >
+                                        {selectedSlugs.has(detail.slug) ? "✓ Ajoutée" : "+ Ajouter"}
+                                    </button>
+                                )}
+                            </div>
+                            {total > 1 && (
+                                <div className={styles.navigation}>
+                                    <button
+                                        type="button"
+                                        className={styles.navButton}
+                                        onClick={prevDetail}
+                                        aria-label="Matière précédente"
+                                    >
+                                        <span>←</span>
+                                        <span>Préc.</span>
+                                    </button>
+
+                                    <div className={styles.progress}>
+                                        <div className={styles.counter}>
+                                            <span className={styles.current}>
+                                                {String(detailIndex! + 1).padStart(2, "0")}
+                                            </span>
+                                            <span className={styles.separator}>/</span>
+                                            <span>{String(total).padStart(2, "0")}</span>
+                                        </div>
+                                        <div className={styles.progressTrack}>
+                                            <div
+                                                className={styles.progressBar}
+                                                style={{ width: `${((detailIndex! + 1) / total) * 100}%` }}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        className={`${styles.navButton} ${styles.navNext}`}
+                                        onClick={nextDetail}
+                                        aria-label="Matière suivante"
+                                    >
+                                        <span>Suiv.</span>
+                                        <span>→</span>
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {detail && fullscreen && (
+                <div className={styles.lightbox} onClick={() => setFullscreen(false)}>
+                    <button
+                        type="button"
+                        className={styles.lightboxClose}
+                        onClick={() => setFullscreen(false)}
+                        aria-label="Fermer l'agrandissement"
+                    >
+                        ✕
+                    </button>
+                    <div className={styles.lightboxImage}>
+                        <Image
+                            src={detail.image.src}
+                            alt={detail.image.alt}
+                            fill
+                            sizes="90vw"
+                            style={{ objectFit: "contain" }}
+                            priority
+                        />
                     </div>
                 </div>
             )}
