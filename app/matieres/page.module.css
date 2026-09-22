@@ -48,10 +48,24 @@
     margin-top: 12px;
     font-size: 15px;
 }
+
 .composition {
-    margin-top: 4px;
-    font-size: 12px;
+    margin-top: 8px;
+    font-size: 14px;
     color: var(--grey);
+}
+.compositionLine {
+    margin-top: 8px;
+}
+.compositionLabelLine {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--ink);
+}
+.compositionLabelLine strong {
+    color: var(--bordeaux);
+    font-weight: 600;
+    margin-right: 4px;
 }
 
 .addBtn {
@@ -168,4 +182,167 @@
     .confirmActions {
         flex-direction: column;
     }
+}
+
+.matiereCard {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+.detailBox {
+    background: var(--white);
+    max-width: 860px;
+    width: 100%;
+    height: 430px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+}
+@media (max-width: 620px) {
+    .detailBox {
+        grid-template-columns: 1fr;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+.detailImage {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    align-self: start;   /* ← empêche l'image de s'étirer sur toute la hauteur fixe */
+    background: var(--ecru);
+    display: block;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    cursor: zoom-in;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(27, 22, 20, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+.lightboxImage {
+    position: relative;
+    width: min(90vw, 900px);
+    height: min(85vh, 900px);
+}
+.lightboxClose {
+    position: absolute;
+    top: 24px;
+    right: 30px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: transparent;
+    color: var(--white);
+    font-size: 30px;
+    font-weight: 300;
+    cursor: pointer;
+}
+.lightboxClose:hover {
+    color: var(--bordeaux);
+}
+.detailInfo {
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.detailScroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+.detailInfo h3 {
+    font-size: 25px;
+    margin-top: 12px;
+}
+.detailInfo .addBtn {
+    margin-top: 24px;
+}
+.detailClose {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    background: var(--white);
+    border: 1px solid var(--line-strong);
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.navigation {
+    flex-shrink: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 16px;
+    margin-top: 20px;
+}
+.navButton {
+    border: none;
+    padding: 0;
+    background: transparent;
+    color: var(--black);
+    font-family: var(--font-serif), serif;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+.navButton:hover { color: var(--bordeaux); }
+.navNext { justify-self: end; }
+
+.progress {
+    width: min(100%, 200px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.counter {
+    font-family: var(--font-serif), serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1;
+    color: var(--bordeaux);
+    white-space: nowrap;
+}
+.current { color: var(--bordeaux); }
+.separator { margin: 0 6px; }
+.progressTrack {
+    width: 100%;
+    height: 1px;
+    background: var(--line);
+    position: relative;
+    overflow: hidden;
+}
+.progressBar {
+    height: 2px;
+    background: var(--bordeaux);
+    position: absolute;
+    left: 0;
+    top: -1px;
+    transition: width 0.4s ease;
 }
