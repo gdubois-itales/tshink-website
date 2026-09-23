@@ -145,9 +145,6 @@
   .burger {
     display: flex;
   }
-  .desktopOnly {
-    display: none;
-  }
 }
 
 .mobilePanel {

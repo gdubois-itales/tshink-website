@@ -96,6 +96,7 @@ export default function PanierPage() {
                         Vérifiez les créations et matières sélectionnées, puis laissez-nous
                         vos coordonnées pour recevoir un récapitulatif et être recontacté·e.
                     </p>
+                    <br/>
                     {panier.length > 0 && (
                         <button
                             type="button"

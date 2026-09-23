@@ -33,9 +33,16 @@ export default function Footer() {
           <div>
             <h5>Contact</h5>
             <span>📍 Overijse, Belgique</span>
-            <a href="mailto:contact@tshink.be">✉️ contact@tshink.be</a>
-            <Link href="/contact">Formulaire de contact</Link>
-          </div>
+            <a
+            href="https://www.instagram.com/tshink.be"
+            target="_blank"
+            rel="noopener noreferrer"
+            >
+            📸 Instagram — TshinK.be
+          </a>
+          <a href="mailto:contact@tshink.be">✉️ contact@tshink.be</a>
+          <Link href="/contact">Formulaire de contact</Link>
+        </div>
         </div>
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} TshinK — I-Tales SRL</span>
