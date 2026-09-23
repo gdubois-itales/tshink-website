@@ -95,7 +95,7 @@ export default function AProposPage() {
           <div className="wrap">
             <div className="cta-band" style={{ marginTop: 0 }}>
               <h2>Une idée, une envie, un projet ?</h2>
-              <p>Discutons-en ensemble.</p>
+              <p>Chaque création a son point de départ.</p>
               <Button href="/contact" variant="solid">
                 Écrivons la suite
               </Button>
