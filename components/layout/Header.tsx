@@ -60,9 +60,6 @@ export default function Header() {
                 </Link>
               )
             )}
-            <Link href="/contact" className={`cta-outline ${styles.desktopOnly}`}>
-              Discutons-en
-            </Link>
           </nav>
 
           <div className={styles.actions}>
