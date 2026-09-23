@@ -127,12 +127,21 @@ export default function MatieresPage() {
                             de la confection de la pièce présentée en page Créations.
                         </p>
                         <p>
-                            Vous souhaitez une création dans une autre matière ?
-                            Indiquez-nous sa référence et la matière souhaitée via la page{" "}
-                            <a href="/contact" className={styles.disclaimerLink}>Contact</a>{" "}
-                            pour obtenir le prix final.
+                            Vous souhaitez une création dans une autre matière ? Repérez
+                            d&apos;abord votre modèle sur la page{" "}
+                            <a href="/creations" className={styles.disclaimerLink}>Créations</a>{" "}
+                            et utilisez le bouton <strong>Choisir une matière</strong>, ou
+                            écrivez-nous directement via la page{" "}
+                            <a href="/contact" className={styles.disclaimerLink}>Contact</a>.
                         </p>
                     </div>
+
+                    <p className={styles.jumpToShops}>
+                        Aucune matière ne vous convient ?{" "}
+                        <a href="#boutiques" className={styles.disclaimerLink}>
+                            Découvrez nos boutiques partenaires ↓
+                        </a>
+                    </p>
 
                     <div className={styles.matiereGrid}>
                         {matieres.map((m, i) => (
@@ -158,7 +167,7 @@ export default function MatieresPage() {
 
                     <hr className="hairline" style={{ margin: "60px 0 40px" }} />
 
-                    <div className="section-head">
+                    <div className="section-head" id="boutiques">
                         <Eyebrow>Élargir le choix</Eyebrow>
                         <h2>Quelques boutiques de tissus en ligne</h2>
                     </div>
