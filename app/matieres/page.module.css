@@ -346,3 +346,10 @@
     top: -1px;
     transition: width 0.4s ease;
 }
+
+.jumpToShops {
+    margin-top: 18px;
+    margin-bottom: 44px;
+    font-size: 13.5px;
+    color: var(--grey);
+}
