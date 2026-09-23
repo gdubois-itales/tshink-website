@@ -327,12 +327,14 @@ export default function CreationsPage() {
                 </p>
                 <p style={{ marginTop: 12, fontSize: 13.5 }}>
                   Vous souhaitez cette création dans une autre matière ?
-                  Indiquez-nous sa référence et la matière souhaitée via la
-                  page{" "}
+                  Utilisez le bouton [Choisir la matière] pour l&apos;associer
+                  directement à votre panier — que vous sélectionniez une matière
+                  de l&apos;atelier, indiquiez celle que vous avez déjà, ou
+                  demandiez conseil. Vous avez une référence précise en tête ?
+                  Écrivez-nous directement via la page{" "}
                   <Link href="/contact" style={{ color: "var(--bordeaux)", textDecoration: "underline" }}>
-                    Contact
+                    Contact.
                   </Link>{" "}
-                  pour obtenir le prix final.
                 </p>
               </div>
             </div>
