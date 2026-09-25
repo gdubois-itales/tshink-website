@@ -4,6 +4,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
 import styles from "./page.module.css";
 import ImageSlideshow from "@/components/ui/ImageSlideshow";
+import MannequinsTicker from "@/components/ui/MannequinsTicker";
 
 const previewCards = [
   {
@@ -103,6 +104,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <MannequinsTicker />
 
       <section className={styles.pullquote}>
         <div className="wrap">
