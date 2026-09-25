@@ -142,7 +142,35 @@ export default function ServicesPage() {
                     ]}
                     sizes="(max-width: 880px) 100vw, 50vw"
                 />
-              </div>            </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section className="section tight">
+          <div className="wrap">
+            <div className="section-head">
+              <Eyebrow>Explorations</Eyebrow>
+              <h2>Au-delà du vêtement</h2>
+              <p className="lede">
+                Accessoires, objets déco, essais techniques : la couture ne
+                s&apos;arrête pas à la garde-robe. Un aperçu de quelques
+                réalisations complémentaires.
+              </p>
+            </div>
+            <div className={styles.explorationsBox}>
+              <ImageCarousel
+                  slides={[
+                    { src: "/images/motifs.jpg", alt: "Transformation matière" },
+                    { src: "/images/coussins.jpg", alt: "Coussins" },
+                    { src: "/images/plaid.jpg", alt: "Plaid gris ardoise" },
+                    { src: "/images/plaidBi.jpg", alt: "Plaid noir et blanc, galon ethnique" },
+                    { src: "/images/tricot.jpg", alt: "Tricot plaid" },
+                  ]}
+                  sizes="(max-width: 880px) 100vw, 900px"
+              />
+            </div>
           </div>
         </section>
 
