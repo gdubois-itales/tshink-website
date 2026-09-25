@@ -101,3 +101,14 @@
     color: var(--ink);
     max-width: 64ch;
 }
+
+.explorationsBox {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+@media (max-width: 880px) {
+    .explorationsBox {
+        aspect-ratio: 4 / 3; /* un poil plus carré sur mobile, plus confortable qu'un 16/9 très plat */
+    }
+}
