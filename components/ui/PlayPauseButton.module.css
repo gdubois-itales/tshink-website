@@ -1,8 +1,10 @@
 .playPause {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 7px;
 
+    width: 178px;
     height: 34px;
     padding: 0 14px;
     margin: 0 auto;
@@ -31,6 +33,7 @@
 
 @media (max-width: 920px) {
     .playPause {
+        width: 138px;
         height: 28px;
         padding: 0 11px;
         font-size: 10.5px;

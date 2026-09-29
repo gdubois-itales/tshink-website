@@ -131,6 +131,13 @@ main {
   max-width: 560px;
 }
 
+.section-head.wide {
+  max-width: none;
+}
+.section-head.wide .lede {
+  max-width: 900px;
+}
+
 .bg-black {
   background: var(--black);
   color: var(--ecru);

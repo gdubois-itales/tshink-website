@@ -5,6 +5,7 @@ import Button from "@/components/ui/Button";
 import styles from "./page.module.css";
 import ImageSlideshow from "@/components/ui/ImageSlideshow";
 import MannequinsTicker from "@/components/ui/MannequinsTicker";
+import HeroSlideshow from "@/components/ui/HeroSlideshow";
 
 const previewCards = [
   {
@@ -54,8 +55,8 @@ export default function HomePage() {
             <span className="slash" /> Couture
           </Eyebrow>
           <h1 className={styles.heroTitle}>
-            « Chaque idée ouvre une nouvelle histoire. Chaque création en
-            écrit un nouveau chapitre. »
+            Chaque idée ouvre une nouvelle histoire. Chaque création en
+            écrit un nouveau chapitre.
           </h1>
           <p className={styles.lede}>
             TshinK conçoit des vêtements sur-mesure, transforme des pièces
@@ -75,17 +76,13 @@ export default function HomePage() {
             j&apos;accompagne des projets, je transforme des pièces. »
           </p>
         </div>
-        <div className={styles.heroVisual}>
-          <div className={styles.heroImageBox}>
-            <ImageSlideshow
-                slides={[
-                  { src: "/images/4A.jpg", alt: "Collection Expo, 4A" },
-                  { src: "/images/4B.jpg", alt: "Collection Expo, 4B" },
-                  { src: "/images/collEscalier.jpg", alt: "Collection Expo Mode, version escalier" },
-                ]}
-            />
-          </div>
-        </div>
+        <HeroSlideshow
+            slides={[
+              { src: "/images/4A.jpg", alt: "Collection Expo, 4A" },
+              { src: "/images/4B.jpg", alt: "Collection Expo, 4B" },
+              { src: "/images/collEscalier.jpg", alt: "Collection Expo Mode, version escalier" },
+            ]}
+        />
       </section>
 
       <section className="section tight">

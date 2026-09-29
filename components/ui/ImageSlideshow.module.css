@@ -8,39 +8,15 @@
     position: relative;
     width: 100%;
     height: 100%;
-}
-
-.runwayControls {
-    position: absolute;
-    right: 65px;
-    bottom: 18px;
-
     display: flex;
-    flex-direction: column; /* bouton au-dessus de la silhouette */
-    align-items: center;
-    gap: 10px;
-
-    z-index: 5;
+    justify-content: center;
 }
 
-@media (max-width: 920px) {
-    .runwayControls {
-        position: relative;
-        right: auto;
-        bottom: auto;
-
-        margin: 15px auto 0;
-    }
-}
-
-@media (max-width: 920px) {
-    .slideshow {
-        height: auto;
-    }
-
-    .imageArea {
-        height: 55vh;
-    }
+.imageFrame {
+    position: relative;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
 }
 
 .zoomTrigger {
@@ -51,6 +27,15 @@
     padding: 0;
     background: transparent;
     cursor: zoom-in;
+}
+
+@media (max-width: 920px) {
+    .slideshow {
+        height: auto;
+    }
+    .imageArea {
+        height: 55vh;
+    }
 }
 
 .lightbox {

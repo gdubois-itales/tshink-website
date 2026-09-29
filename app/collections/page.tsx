@@ -9,7 +9,7 @@ export default function CollectionsPage() {
   return (
       <section className="section">
         <div className="wrap">
-          <div className="section-head">
+          <div className="section-head wide">
             <Eyebrow>Collections</Eyebrow>
             <h1>Trois collections, trois années de formation</h1>
             <p className="lede">

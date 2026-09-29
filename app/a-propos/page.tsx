@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 export default function AProposPage() {
   return (
       <>
-        <section className="section">
+        <section className="section" style={{ paddingBottom: 0 }}>
           <div className="wrap">
             <div className={styles.editorial}>
               <div className={styles.editorialImage}>

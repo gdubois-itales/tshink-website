@@ -22,14 +22,7 @@ export default function Footer() {
               </a>
             </p>
           </div>
-          <div>
-            <h5>Navigation</h5>
-            <Link href="/a-propos">À propos</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/creations">Créations</Link>
-            <Link href="/collections">Collections</Link>
-            <Link href="/matieres">Matières</Link>
-          </div>
+
           <div>
             <h5>Contact</h5>
             <span>📍 Overijse, Belgique</span>

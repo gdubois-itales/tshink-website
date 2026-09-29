@@ -67,7 +67,7 @@ export default function CreationsPage() {
       <>
         <section className="section">
           <div className="wrap">
-            <div className="section-head">
+            <div className="section-head wide">
               <Eyebrow>Créations</Eyebrow>
               <h1 style={{ fontStyle: "italic" }}>
                 Une création ne s&apos;arrête pas lorsqu&apos;elle est
