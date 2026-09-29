@@ -10,8 +10,8 @@ import styles from "./FloatingCart.module.css";
  * Carte flottante affichée sur /matieres :
  * - montre la création en cours de composition ;
  * - permet d'ajouter les matières au panier ;
- * - après validation, affiche un résumé confirmant l'ajout ;
- * - permet ensuite de choisir une autre création ou de valider le panier.
+ * - dès l'ajout, redirige vers /creations, où le toast de confirmation
+ *   apparaît (voir lib/cart-context.tsx).
  */
 export default function FloatingCart() {
     const router = useRouter();
@@ -24,30 +24,18 @@ export default function FloatingCart() {
     } = useCart();
 
     const [zoomOpen, setZoomOpen] = useState(false);
-    const [creationAjoutee, setCreationAjoutee] = useState(false);
 
-    if (!enCours && panier.length === 0 && !creationAjoutee) return null;
+    if (!enCours && panier.length === 0) return null;
 
-    function handleAjouterAuPanier() {
+    function handleValiderEtRediriger() {
         validerCreationAvecMatieres();
-        setCreationAjoutee(true);
-    }
-
-    function handleAjouterCreation() {
-        setCreationAjoutee(false);
-        router.push("/creations");
-    }
-
-    function handleAjouterCreationDepuisSelection() {
-        validerCreationAvecMatieres();
-        setCreationAjoutee(false);
         router.push("/creations");
     }
 
     return (
         <>
             <div className={styles.floatingCart}>
-                {enCours ? (
+                {enCours && (
                     <>
                         <div className={styles.header}>
                             <button
@@ -125,20 +113,11 @@ export default function FloatingCart() {
                         <div className={styles.actionsRow}>
                             <button
                                 type="button"
-                                className="cta-outline"
-                                disabled={enCours.matieres.length === 0}
-                                onClick={handleAjouterAuPanier}
-                            >
-                                Ajouter au panier
-                            </button>
-
-                            <button
-                                type="button"
                                 className="cta-solid"
                                 disabled={enCours.matieres.length === 0}
-                                onClick={handleAjouterCreationDepuisSelection}
+                                onClick={handleValiderEtRediriger}
                             >
-                                Ajouter une création
+                                Ajouter au panier
                             </button>
                         </div>
 
@@ -147,21 +126,6 @@ export default function FloatingCart() {
                             style={{ margin: "16px 0" }}
                         />
                     </>
-                ) : (
-                    creationAjoutee && (
-                        <>
-                            <div className={styles.addedConfirmation}>
-                                <div className={styles.addedTitle}>
-                                    ✓ Création ajoutée au panier
-                                </div>
-                            </div>
-
-                            <hr
-                                className="hairline"
-                                style={{ margin: "16px 0" }}
-                            />
-                        </>
-                    )
                 )}
 
                 <div className={styles.panierSummary}>
@@ -175,34 +139,14 @@ export default function FloatingCart() {
                         {panier.length > 1 ? "s" : ""} dans le panier
                     </button>
 
-                    {creationAjoutee ? (
-                        <div className={styles.summaryActions}>
-                            <button
-                                type="button"
-                                className="cta-outline"
-                                onClick={handleAjouterCreation}
-                            >
-                                Ajouter une création
-                            </button>
-
-                            <button
-                                type="button"
-                                className="cta-solid"
-                                onClick={() => router.push("/panier")}
-                            >
-                                Valider mon panier
-                            </button>
-                        </div>
-                    ) : (
-                        <button
-                            type="button"
-                            className="cta-outline"
-                            disabled={panier.length === 0}
-                            onClick={() => router.push("/panier")}
-                        >
-                            Valider mon panier
-                        </button>
-                    )}
+                    <button
+                        type="button"
+                        className="cta-outline"
+                        disabled={panier.length === 0}
+                        onClick={() => router.push("/panier")}
+                    >
+                        Valider mon panier
+                    </button>
                 </div>
             </div>
 

@@ -7,6 +7,7 @@ import { matieres, fabricShops } from "@/lib/matieres";
 import { useCart } from "@/lib/cart-context";
 import styles from "./page.module.css";
 import { useState, useEffect } from "react";
+import {router} from "next/client";
 
 const COMPOSITION_LABELS = ["Utilisation Suggérée", "Palette de Couleurs"];
 
@@ -98,6 +99,7 @@ export default function MatieresPage() {
         annulerSelection();
         setExternalNote("");
         setShowReplaceConfirm(false);
+        router.push("/creations");
     }
 
     return (

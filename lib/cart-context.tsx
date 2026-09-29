@@ -17,6 +17,9 @@ import {
     type ReactNode,
 } from "react";
 import type { Matiere } from "./matieres";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import CartToast from "@/components/ui/CartToast";
 
 export type CartLineMode = "matieres" | "note";
 export type NoteType = "connue" | "conseil" | "lien-externe";
@@ -72,6 +75,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const [panier, setPanier] = useState<CartLine[]>([]);
     const [enCours, setEnCours] = useState<EnCours | null>(null);
     const [hydrated, setHydrated] = useState(false);
+    const router = useRouter();
+
+    function notifyAdded(count: number) {
+        toast(<CartToast count={count} onValidate={() => router.push("/panier")} />);
+    }
 
     // Hydratation depuis sessionStorage au montage (résiste à un F5).
     useEffect(() => {
@@ -144,8 +152,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
             matieres: enCours.matieres,
             note: "",
         };
+        const nextCount = panier.length + 1;
         setPanier((p) => [...p, ligne]);
         setEnCours(null);
+        notifyAdded(nextCount);
     }
 
     function ajouterAvecNote(creation: CreationRef, note: string, noteType: NoteType) {
@@ -160,7 +170,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
             note: note.trim(),
             noteType,
         };
+        const nextCount = panier.length + 1;
         setPanier((p) => [...p, ligne]);
+        notifyAdded(nextCount);
     }
 
     function retirerLigne(id: string) {

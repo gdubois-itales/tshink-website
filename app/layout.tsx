@@ -17,8 +17,9 @@ import "@fontsource/jost/300.css";
 import "@fontsource/jost/400.css";
 import "@fontsource/jost/500.css";
 import "@fontsource/jost/600.css";
-
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "TshinK — La couture sur-mesure",
@@ -38,6 +39,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <ToastContainer position="bottom-right" autoClose={6000} closeOnClick={false} />
         </CartProvider>
       </body>
     </html>
