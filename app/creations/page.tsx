@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const filterOptions: { key: "all" | Category; label: string }[] = [
   { key: "all", label: "Toutes" },
-  { key: "vetement", label: "Créations" },
+  { key: "vetement", label: "Vêtements" },
   { key: "accessoire", label: "Accessoires" },
 ];
 
@@ -203,16 +203,22 @@ export default function CreationsPage() {
                   <p className={styles.link}>
                     <button
                         type="button"
-                        className={styles.linkBtn}
+                        className={styles.filterBtn}
                         onClick={() => setMatiereChoice("menu")}
                     >
-                      → Choisir la matière
+                      Choisir la matière
                     </button>
                   </p>
                   <p className={styles.link}>
-                    <Link href="/contact">
-                      → Nous contacter
-                    </Link>
+                    <button
+                        type="button"
+                        className={styles.filterBtn}
+                        >
+                      <Link href="/contact">
+                        Nous contacter
+                      </Link>
+                    </button>
+
                   </p>
 
                   <span className={styles.badge}>{selected.badge}</span>
