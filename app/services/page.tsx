@@ -41,7 +41,7 @@ export default function ServicesPage() {
       <>
         <section className="section">
           <div className="wrap">
-            <div className="section-head">
+            <div className="section-head wide">
               <Eyebrow>Services</Eyebrow>
               <h1 style={{ fontStyle: "italic" }}>
                 Imaginer n&apos;est que le début de l&apos;histoire.
@@ -104,7 +104,8 @@ export default function ServicesPage() {
                     ]}
                     sizes="(max-width: 880px) 100vw, 50vw"
                 />
-              </div>            </div>
+              </div>
+            </div>
 
             <div className={styles.serviceRow}>
               <div>
@@ -145,32 +146,30 @@ export default function ServicesPage() {
               </div>
             </div>
 
-          </div>
-        </section>
+            <div className={`${styles.serviceRow} ${styles.reverse}`}>
+              <div>
+                <span className={styles.kicker}>Accessoires & Décorations</span>
+                <h3>Au-delà du vêtement</h3>
+                <p>
+                  La couture ne s&apos;arrête pas à la garde-robe.
+                  Accessoires, coussins, plaids, pièces en tricot ou transformation de matière :
+                  je réalise aussi des objets textiles avec la même exigence que mes vêtements.
+                </p>
+              </div>
+              <div className={styles.imageBox}>
+                <ImageCarousel
+                    slides={[
+                      { src: "/images/motifs.jpg", alt: "Transformation matière" },
+                      { src: "/images/coussins.jpg", alt: "Coussins" },
+                      { src: "/images/plaid.jpg", alt: "Plaid gris ardoise" },
+                      { src: "/images/plaidBi.jpg", alt: "Plaid noir et blanc, galon ethnique" },
+                      { src: "/images/tricot.jpg", alt: "Tricot plaid" },
+                    ]}
+                    sizes="(max-width: 880px) 100vw, 50vw"
+                />
+              </div>
+            </div>
 
-        <section className="section tight">
-          <div className="wrap">
-            <div className="section-head">
-              <Eyebrow>Explorations</Eyebrow>
-              <h2>Au-delà du vêtement</h2>
-              <p className="lede">
-                Accessoires, objets déco, essais techniques : la couture ne
-                s&apos;arrête pas à la garde-robe. Un aperçu de quelques
-                réalisations complémentaires.
-              </p>
-            </div>
-            <div className={styles.explorationsBox}>
-              <ImageCarousel
-                  slides={[
-                    { src: "/images/motifs.jpg", alt: "Transformation matière" },
-                    { src: "/images/coussins.jpg", alt: "Coussins" },
-                    { src: "/images/plaid.jpg", alt: "Plaid gris ardoise" },
-                    { src: "/images/plaidBi.jpg", alt: "Plaid noir et blanc, galon ethnique" },
-                    { src: "/images/tricot.jpg", alt: "Tricot plaid" },
-                  ]}
-                  sizes="(max-width: 880px) 100vw, 900px"
-              />
-            </div>
           </div>
         </section>
 

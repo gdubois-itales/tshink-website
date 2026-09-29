@@ -1,0 +1,23 @@
+.imageBox {
+    position: relative;
+    min-height: 420px;
+}
+
+.walkerColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 0 28px 28px 10px;
+}
+
+@media (max-width: 920px) {
+    .imageBox {
+        min-height: 55vh;
+    }
+    .walkerColumn {
+        justify-content: center;
+        padding: 15px 0 30px;
+    }
+}

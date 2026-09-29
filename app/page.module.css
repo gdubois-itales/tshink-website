@@ -1,8 +1,10 @@
 .hero {
   min-height: calc(100vh - var(--header-height));
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 0.8fr 1.2fr auto;
   align-items: stretch;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 @media (max-width: 920px) {
   .hero {
@@ -17,11 +19,7 @@
   align-self: start;
   padding: 70px 60px 70px 32px;
 }
-@media (max-width: 920px) {
-  .heroCopy {
-    padding: 64px 20px 40px;
-  }
-}
+
 .heroTitle {
   font-size: clamp(32px, 4.4vw, 52px);
   font-style: italic;
@@ -37,6 +35,19 @@
   max-width: 46ch;
   color: var(--ink);
 }
+
+@media (max-width: 920px) {
+  .heroCopy {
+    padding: 64px 20px 40px;
+  }
+  .heroTitle {
+    max-width: none;
+  }
+  .lede {
+    max-width: none;
+  }
+}
+
 .heroActions {
   margin-top: 38px;
   display: flex;
@@ -44,36 +55,19 @@
   flex-wrap: wrap;
 }
 
-.heroVisual {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.heroImageBox {
-  position: relative;
-  flex: 1;
-  min-height: 420px;
-}
-@media (max-width: 920px) {
-  .heroImageBox {
-    min-height: 55vh;
-  }
-}
-
 .tag {
   background: var(--bordeaux);
   color: var(--white);
   margin-top: 30px;
-  padding: 10px 10px;
   font-family: var(--font-serif), serif;
   font-style: italic;
   font-weight: 300;
   font-size: clamp(22px, 2vw, 46.4px);
   max-width: 600px;
   align-self: flex-start;
+  padding: 10px 10px 10px 45px;
 }
 
-/* pull quote */
 .pullquote {
   padding: 90px 0;
   text-align: center;

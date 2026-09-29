@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import RunwayWalker from "./RunwayWalker";
 import styles from "./ImageSlideshow.module.css";
 import PlayPauseButton from "./PlayPauseButton";
 
@@ -13,6 +12,8 @@ type Slide = {
 
 type ImageSlideshowProps = {
     slides: Slide[];
+    isPlaying: boolean;
+    onPlayingChange: (playing: boolean) => void;
     intervalMs?: number;
     sizes?: string;
     objectFit?: "contain" | "cover";
@@ -20,18 +21,20 @@ type ImageSlideshowProps = {
 
 export default function ImageSlideshow({
                                            slides,
+                                           isPlaying,
+                                           onPlayingChange,
                                            intervalMs = 3000,
                                            sizes = "(max-width: 920px) 100vw, 50vw",
                                            objectFit = "contain",
                                        }: ImageSlideshowProps) {
     const [current, setCurrent] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(true);
     const [fullscreen, setFullscreen] = useState(false);
+    // Mesurée au chargement de la 1ère image : la zone cliquable épouse
+    // ensuite cette proportion réelle, au lieu de rester plus large qu'elle.
+    const [ratio, setRatio] = useState<number | null>(null);
 
     useEffect(() => {
-        if (!isPlaying) {
-            return;
-        }
+        if (!isPlaying) return;
 
         const timer = setInterval(() => {
             setCurrent((i) => (i + 1) % slides.length);
@@ -40,7 +43,6 @@ export default function ImageSlideshow({
         return () => clearInterval(timer);
     }, [isPlaying, slides.length, intervalMs]);
 
-    // Échap referme la vue agrandie, comme les autres lightbox du site
     useEffect(() => {
         if (!fullscreen) return;
 
@@ -57,54 +59,53 @@ export default function ImageSlideshow({
         };
     }, [fullscreen]);
 
-    const togglePlayback = () => {
-        setIsPlaying((playing) => !playing);
-    };
+    const togglePlayback = () => onPlayingChange(!isPlaying);
 
     const openFullscreen = () => {
-        setIsPlaying(false);
+        onPlayingChange(false);
         setFullscreen(true);
     };
 
     return (
         <div className={styles.slideshow}>
             <div className={styles.imageArea}>
-                {slides.map((slide, i) => (
-                    <Image
-                        key={slide.src}
-                        src={slide.src}
-                        alt={slide.alt}
-                        fill
-                        sizes={sizes}
-                        priority={i === 0}
-                        style={{
-                            objectFit: objectFit,
-                            position: "absolute",
-                            inset: 0,
-                            opacity: i === current ? 1 : 0,
-                            transition: "opacity 1.6s ease",
-                        }}
+                <div
+                    className={styles.imageFrame}
+                    style={ratio ? { aspectRatio: String(ratio) } : undefined}
+                >
+                    {slides.map((slide, i) => (
+                        <Image
+                            key={slide.src}
+                            src={slide.src}
+                            alt={slide.alt}
+                            fill
+                            sizes={sizes}
+                            priority={i === 0}
+                            onLoad={(e) => {
+                                if (ratio === null) {
+                                    const img = e.currentTarget;
+                                    if (img.naturalWidth && img.naturalHeight) {
+                                        setRatio(img.naturalWidth / img.naturalHeight);
+                                    }
+                                }
+                            }}
+                            style={{
+                                objectFit: objectFit,
+                                position: "absolute",
+                                inset: 0,
+                                opacity: i === current ? 1 : 0,
+                                transition: "opacity 1.6s ease",
+                            }}
+                        />
+                    ))}
+
+                    <button
+                        type="button"
+                        className={styles.zoomTrigger}
+                        onClick={openFullscreen}
+                        aria-label="Voir l'image en grand"
                     />
-                ))}
-
-                <button
-                    type="button"
-                    className={styles.zoomTrigger}
-                    onClick={openFullscreen}
-                    aria-label="Voir l'image en grand"
-                />
-            </div>
-
-            <div className={styles.runwayControls}>
-                <PlayPauseButton
-                    isPlaying={isPlaying}
-                    onToggle={togglePlayback}
-                />
-
-                <RunwayWalker
-                    isPlaying={isPlaying}
-                    onToggle={togglePlayback}
-                />
+                </div>
             </div>
 
             {fullscreen && (
@@ -141,10 +142,7 @@ export default function ImageSlideshow({
                     </div>
 
                     <div className={styles.lightboxControls}>
-                        <PlayPauseButton
-                            isPlaying={isPlaying}
-                            onToggle={togglePlayback}
-                        />
+                        <PlayPauseButton isPlaying={isPlaying} onToggle={togglePlayback} />
                     </div>
                 </div>
             )}
