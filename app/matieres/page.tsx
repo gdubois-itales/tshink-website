@@ -7,7 +7,7 @@ import { matieres, fabricShops } from "@/lib/matieres";
 import { useCart } from "@/lib/cart-context";
 import styles from "./page.module.css";
 import { useState, useEffect } from "react";
-import {router} from "next/client";
+import { useRouter} from "next/navigation";
 
 const COMPOSITION_LABELS = ["Utilisation Suggérée", "Palette de Couleurs"];
 
@@ -38,6 +38,7 @@ export default function MatieresPage() {
     const [showReplaceConfirm, setShowReplaceConfirm] = useState(false);
     const [detailIndex, setDetailIndex] = useState<number | null>(null);
     const [fullscreen, setFullscreen] = useState(false);
+    const router = useRouter();
 
     const detail = detailIndex !== null ? matieres[detailIndex] : null;
     const total = matieres.length;
