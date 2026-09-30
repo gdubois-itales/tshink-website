@@ -39,7 +39,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
-          <ToastContainer position="bottom-right" autoClose={6000} closeOnClick={false} />
+          <ToastContainer position="bottom-center" autoClose={6000} closeOnClick={false} />
         </CartProvider>
       </body>
     </html>

@@ -400,3 +400,6 @@ main {
 .Toastify__progress-bar {
   background: var(--bordeaux) !important;
 }
+.Toastify__toast-container--top-center {
+  top: calc(var(--header-height) + 16px);
+}
