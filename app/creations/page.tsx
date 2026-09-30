@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -16,8 +16,8 @@ const filterOptions: { key: "all" | Category; label: string }[] = [
   { key: "accessoire", label: "Accessoires" },
 ];
 
-// Les 3 choix proposés dans la mini pop-up ouverte depuis la modale d'une
-// création, quand le client clique sur "Choisir une matière".
+const PAGE_SIZE = 9;
+
 type MatiereChoice = "menu" | "note-connue" | "note-conseil" | null;
 
 export default function CreationsPage() {
@@ -30,10 +30,36 @@ export default function CreationsPage() {
   const [noteText, setNoteText] = useState("");
   const [priceInfoOpen, setPriceInfoOpen] = useState(false);
 
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(9);
+  const gridTopRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function updatePageSize() {
+      setPageSize(window.innerWidth <= 880 ? 8 : 9);
+    }
+    updatePageSize();
+    window.addEventListener("resize", updatePageSize);
+    return () => window.removeEventListener("resize", updatePageSize);
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPage(1);
+  }, [activeFilter, pageSize]);
+
   const visible =
       activeFilter === "all"
           ? creations
           : creations.filter((c) => c.cat === activeFilter);
+
+  const totalPages = Math.max(1, Math.ceil(visible.length / pageSize));
+  const paginated = visible.slice((page - 1) * pageSize, page * pageSize);
+
+  function goToPage(p: number) {
+    setPage(Math.min(Math.max(1, p), totalPages));
+    gridTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   function closeModal() {
     setSelected(null);
@@ -85,6 +111,7 @@ export default function CreationsPage() {
               </p>
             </div>
 
+            <div ref={gridTopRef} className={styles.gridAnchor}/>
             <div className={styles.filters}>
               {filterOptions.map((f) => (
                   <button
@@ -93,8 +120,9 @@ export default function CreationsPage() {
                       className={`${styles.filterBtn} ${
                           activeFilter === f.key ? styles.active : ""
                       }`}
-                      onClick={() => setActiveFilter(f.key)}
-                  >
+                      onClick={() => {
+                        setActiveFilter(f.key);
+                      }}                  >
                     {f.label}
                   </button>
               ))}
@@ -108,28 +136,69 @@ export default function CreationsPage() {
             )}
             <br/>
 
-            <div className={styles.creationGrid}>
-              {visible.map((c) => (
+              <div className={styles.creationGrid}>
+                {paginated.map((c) => (
+                    <button
+                        key={c.slug}
+                        type="button"
+                        className={styles.creationCard}
+                        onClick={() => setSelected(c)}
+                    >
+                      <div className={styles.cardImage}>
+                        <Image
+                            src={c.cardImage.src}
+                            alt={c.cardImage.alt}
+                            fill
+                            sizes="(max-width: 560px) 100vw, (max-width: 880px) 50vw, 33vw"
+                            style={{ objectFit: "cover" }}
+                        />
+                      </div>
+                      <h4>{c.title}</h4>
+                      <div className={styles.meta}>{c.meta}</div>
+                    </button>
+                ))}
+              </div>
+
+            {totalPages > 1 && (
+                <div className={styles.pagination}>
                   <button
-                      key={c.slug}
                       type="button"
-                      className={styles.creationCard}
-                      onClick={() => setSelected(c)}
+                      className={styles.pageNavButton}
+                      onClick={() => goToPage(page - 1)}
+                      disabled={page === 1}
+                      aria-label="Page précédente"
                   >
-                    <div className={styles.cardImage}>
-                      <Image
-                          src={c.cardImage.src}
-                          alt={c.cardImage.alt}
-                          fill
-                          sizes="(max-width: 560px) 100vw, (max-width: 880px) 50vw, 33vw"
-                          style={{ objectFit: "cover" }}
+                    <span>←</span>
+                    <span>Préc.</span>
+                  </button>
+
+                  <div className={styles.pageProgress}>
+                    <div className={styles.pageCounter}>
+                      <span className={styles.pageCurrent}>{String(page).padStart(2, "0")}</span>
+                      <span className={styles.pageSeparator}>/</span>
+                      <span>{String(totalPages).padStart(2, "0")}</span>
+                    </div>
+                    <div className={styles.pageProgressTrack}>
+                      <div
+                          className={styles.pageProgressBar}
+                          style={{ width: `${(page / totalPages) * 100}%` }}
                       />
                     </div>
-                    <h4>{c.title}</h4>
-                    <div className={styles.meta}>{c.meta}</div>
+                  </div>
+
+                  <button
+                      type="button"
+                      className={`${styles.pageNavButton} ${styles.pageNavNext}`}
+                      onClick={() => goToPage(page + 1)}
+                      disabled={page === totalPages}
+                      aria-label="Page suivante"
+                  >
+                    <span>Suiv.</span>
+                    <span>→</span>
                   </button>
-              ))}
-            </div>
+                </div>
+            )}
+
           </div>
         </section>
 
@@ -200,26 +269,14 @@ export default function CreationsPage() {
                       </>
                   )}
 
-                  <p className={styles.link}>
-                    <button
-                        type="button"
-                        className={styles.filterBtn}
-                        onClick={() => setMatiereChoice("menu")}
-                    >
+                  <div className={styles.ctaRow}>
+                    <button type="button" className={styles.filterBtn} onClick={() => setMatiereChoice("menu")}>
                       Choisir la matière
                     </button>
-                  </p>
-                  <p className={styles.link}>
-                    <button
-                        type="button"
-                        className={styles.filterBtn}
-                        >
-                      <Link href="/contact">
-                        Nous contacter
-                      </Link>
-                    </button>
-
-                  </p>
+                    <Link href="/contact" className={styles.filterBtn}>
+                      Nous contacter
+                    </Link>
+                  </div>
 
                   <span className={styles.badge}>{selected.badge}</span>
                 </div>
