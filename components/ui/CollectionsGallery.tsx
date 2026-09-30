@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Eyebrow from "@/components/ui/Eyebrow";
 import type { CollectionImage } from "@/lib/collections";
 import styles from "./CollectionsGallery.module.css";
 
@@ -14,7 +13,6 @@ type CollectionGalleryProps = {
 // au niveau du module, et reçoit tout ce dont il a besoin en props.
 // (voir règle ESLint react-hooks/static-components)
 type NavBarProps = {
-    dark?: boolean;
     onPrev: () => void;
     onNext: () => void;
     currentNumber: string;
@@ -22,12 +20,12 @@ type NavBarProps = {
     progress: number;
 };
 
-function NavBar({ dark = false, onPrev, onNext, currentNumber, totalNumber, progress }: NavBarProps) {
+function NavBar({ onPrev, onNext, currentNumber, totalNumber, progress }: NavBarProps) {
     return (
-        <div className={dark ? styles.lightboxNavigation : styles.navigation}>
+        <div className={styles.lightboxNavigation}>
             <button
                 type="button"
-                className={dark ? styles.lightboxNavButton : styles.navButton}
+                className={styles.lightboxNavButton}
                 onClick={onPrev}
                 aria-label="Image précédente"
             >
@@ -35,7 +33,7 @@ function NavBar({ dark = false, onPrev, onNext, currentNumber, totalNumber, prog
                 <span>Préc.</span>
             </button>
 
-            <div className={dark ? styles.lightboxProgress : styles.progress}>
+            <div className={styles.lightboxProgress}>
                 <div className={styles.counter}>
                     <span className={styles.current}>{currentNumber}</span>
                     <span className={styles.separator}>/</span>
@@ -48,9 +46,7 @@ function NavBar({ dark = false, onPrev, onNext, currentNumber, totalNumber, prog
 
             <button
                 type="button"
-                className={`${dark ? styles.lightboxNavButton : styles.navButton} ${
-                    dark ? styles.lightboxNavNext : styles.navNext
-                }`}
+                className={`${styles.lightboxNavButton} ${styles.lightboxNavNext}`}
                 onClick={onNext}
                 aria-label="Image suivante"
             >
@@ -63,7 +59,6 @@ function NavBar({ dark = false, onPrev, onNext, currentNumber, totalNumber, prog
 
 export default function CollectionGallery({ images }: CollectionGalleryProps) {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    const [fullscreen, setFullscreen] = useState(false);
 
     const isOpen = activeIndex !== null;
     const total = images.length;
@@ -73,11 +68,7 @@ export default function CollectionGallery({ images }: CollectionGalleryProps) {
     const totalNumber = String(total).padStart(2, "0");
     const progress = activeIndex !== null && total > 1 ? ((activeIndex + 1) / total) * 100 : 100;
 
-    const close = () => {
-        setActiveIndex(null);
-        setFullscreen(false);
-    };
-
+    const close = () => setActiveIndex(null);
     const goTo = (i: number) => setActiveIndex((i + total) % total);
     const prev = () => activeIndex !== null && goTo(activeIndex - 1);
     const next = () => activeIndex !== null && goTo(activeIndex + 1);
@@ -86,9 +77,7 @@ export default function CollectionGallery({ images }: CollectionGalleryProps) {
         if (!isOpen) return;
 
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === "Escape") {
-                fullscreen ? setFullscreen(false) : close();
-            }
+            if (event.key === "Escape") close();
             if (event.key === "ArrowLeft" && total > 1) prev();
             if (event.key === "ArrowRight" && total > 1) next();
         };
@@ -101,7 +90,7 @@ export default function CollectionGallery({ images }: CollectionGalleryProps) {
             document.body.style.overflow = "";
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isOpen, fullscreen, activeIndex, total]);
+    }, [isOpen, activeIndex, total]);
 
     return (
         <>
@@ -112,10 +101,7 @@ export default function CollectionGallery({ images }: CollectionGalleryProps) {
                         key={i}
                         type="button"
                         className={styles.galleryCard}
-                        onClick={() => {
-                            setActiveIndex(i);
-                            setFullscreen(false);
-                        }}
+                        onClick={() => setActiveIndex(i)}
                     >
                         <div className={styles.galleryImage}>
                             <Image
@@ -134,68 +120,21 @@ export default function CollectionGallery({ images }: CollectionGalleryProps) {
                 ))}
             </div>
 
-            {/* ================= MODE FICHE ================= */}
-            {isOpen && current && !fullscreen && (
+            {/* ================= PLEIN ÉCRAN ================= */}
+            {isOpen && current && (
                 <div
-                    className={styles.modalOverlay}
+                    className={styles.lightbox}
+                    role="dialog"
+                    aria-modal="true"
                     onClick={(e) => {
                         if (e.target === e.currentTarget) close();
                     }}
                 >
-                    <div className={styles.modalBox}>
-                        <button
-                            type="button"
-                            className={styles.modalClose}
-                            onClick={close}
-                            aria-label="Fermer"
-                        >
-                            ✕
-                        </button>
-
-                        <div className={styles.modalHeader}>
-                            <Eyebrow>Collection</Eyebrow>
-                            <p className={styles.modalCaption}>{current.note ?? current.alt}</p>
-                        </div>
-
-                        <button
-                            type="button"
-                            className={styles.modalImageWrap}
-                            onClick={() => setFullscreen(true)}
-                            aria-label="Agrandir l'image"
-                        >
-                            <Image
-                                src={current.src}
-                                alt={current.alt}
-                                fill
-                                sizes="(max-width: 720px) 90vw, 640px"
-                                style={{
-                                    objectFit: "cover",
-                                    objectPosition: current.objectPosition ?? "center",
-                                }}
-                            />
-                        </button>
-
-                        {total > 1 && (
-                            <NavBar
-                                onPrev={prev}
-                                onNext={next}
-                                currentNumber={currentNumber}
-                                totalNumber={totalNumber}
-                                progress={progress}
-                            />
-                        )}
-                    </div>
-                </div>
-            )}
-
-            {/* ================= MODE PLEIN ÉCRAN ================= */}
-            {isOpen && current && fullscreen && (
-                <div className={styles.lightbox} role="dialog" aria-modal="true">
                     <button
                         type="button"
                         className={styles.closeButton}
-                        onClick={() => setFullscreen(false)}
-                        aria-label="Revenir à la fiche"
+                        onClick={close}
+                        aria-label="Fermer"
                     >
                         ✕
                     </button>
@@ -212,9 +151,10 @@ export default function CollectionGallery({ images }: CollectionGalleryProps) {
                             />
                         </div>
 
+                        <p className={styles.lightboxCaption}>{current.alt}</p>
+
                         {total > 1 && (
                             <NavBar
-                                dark
                                 onPrev={prev}
                                 onNext={next}
                                 currentNumber={currentNumber}
