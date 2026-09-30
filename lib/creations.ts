@@ -624,7 +624,7 @@ const accessoires: Creation[] = [
         slug: "toteBagMiroir-chat",
         cat: "accessoire",
         title: "Miroir Chat",
-        meta: "Tote Bag",
+        meta: "Tote Bag - Réversible",
         desc: "Coton blanc à motifs chats géométriques bleu.\nCoton blanc à motifs chats géométriques ocre.\nEmpiècement en tissu d'ameublement gris à motif Saki doré.",
         price: "Modèle = 35 €.\nMatières = 15-25 €",
         badge: "Sur Commande",
