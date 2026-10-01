@@ -140,6 +140,9 @@ export default function CollectionGallery({ images }: CollectionGalleryProps) {
                     </button>
 
                     <div className={styles.lightboxContent}>
+
+                        <p className={styles.lightboxCaption}>{current.alt}</p>
+
                         <div className={styles.lightboxImage}>
                             <Image
                                 src={current.src}
@@ -150,8 +153,6 @@ export default function CollectionGallery({ images }: CollectionGalleryProps) {
                                 priority
                             />
                         </div>
-
-                        <p className={styles.lightboxCaption}>{current.alt}</p>
 
                         {total > 1 && (
                             <NavBar

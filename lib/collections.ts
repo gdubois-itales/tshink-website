@@ -68,7 +68,7 @@ export const collectionsContent: CollectionContent[] = [
             objectPosition: "50% 30%",
         },
         gallery: [
-            { src: "/images/collections/kinky-link/prototypes-finaux.jpg", alt: "Les huit silhouettes — prototypes finaux" },
+            { src: "/images/collections/kinky-link/allProtoFinal.jpg", alt: "Les huit silhouettes — prototypes finaux" },
 
             // Croquis
             { src: "/images/collections/kinky-link/croquis-domina.jpg", alt: "Croquis — Domina" },
