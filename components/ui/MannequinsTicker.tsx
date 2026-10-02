@@ -9,21 +9,20 @@ type Look = {
     alt: string;
 };
 
-// ⚠️ Ajuste les textes alt si tu veux nommer les tenues plus précisément.
 const looks: Look[] = [
     { src: "/images/mannequins/A_Model.jpg", alt: "Model A, pose" },
-    { src: "/images/mannequins/A_Walk.jpg", alt: "Model A, walk" },
     { src: "/images/mannequins/B01_Model.jpg", alt: "Model B01, pose" },
-    { src: "/images/mannequins/B01_Walk.jpg", alt: "Model B01, walk" },
     { src: "/images/mannequins/B02_Model.jpg", alt: "Model B02, pose" },
-    { src: "/images/mannequins/B02_Walk.jpg", alt: "Model B02, walk" },
     { src: "/images/mannequins/C_Model.jpg", alt: "Model C, pose" },
-    { src: "/images/mannequins/C_Walk.jpg", alt: "Model C, walk" },
     { src: "/images/mannequins/D_Model.jpg", alt: "Model D, pose" },
-    { src: "/images/mannequins/D_Walk.jpg", alt: "Model D, walk" },
     { src: "/images/mannequins/E_Model.jpg", alt: "Model E, pose" },
-    { src: "/images/mannequins/E_Walk.jpg", alt: "Model E, walk" },
     { src: "/images/mannequins/F_Model.jpg", alt: "Model F, pose" },
+    { src: "/images/mannequins/A_Walk.jpg", alt: "Model A, walk" },
+    { src: "/images/mannequins/B01_Walk.jpg", alt: "Model B01, walk" },
+    { src: "/images/mannequins/B02_Walk.jpg", alt: "Model B02, walk" },
+    { src: "/images/mannequins/C_Walk.jpg", alt: "Model C, walk" },
+    { src: "/images/mannequins/D_Walk.jpg", alt: "Model D, walk" },
+    { src: "/images/mannequins/E_Walk.jpg", alt: "Model E, walk" },
     { src: "/images/mannequins/F_Walk.jpg", alt: "Model F, walk" },
 ];
 
