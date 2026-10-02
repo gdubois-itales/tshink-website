@@ -6,8 +6,9 @@ import FloatingCart from "@/components/ui/FloatingCart";
 import { matieres, fabricShops } from "@/lib/matieres";
 import { useCart } from "@/lib/cart-context";
 import styles from "./page.module.css";
-import { useState, useEffect } from "react";
 import { useRouter} from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import Pagination from "@/components/ui/Pagination";
 
 const COMPOSITION_LABELS = ["Utilisation Suggérée", "Palette de Couleurs"];
 
@@ -39,10 +40,35 @@ export default function MatieresPage() {
     const [detailIndex, setDetailIndex] = useState<number | null>(null);
     const [fullscreen, setFullscreen] = useState(false);
     const router = useRouter();
+    const [page, setPage] = useState(1);
+    const [pageSize, setPageSize] = useState(16);
+    const gridTopRef = useRef<HTMLDivElement>(null);
 
+    useEffect(() => {
+        function updatePageSize() {
+            const w = window.innerWidth;
+            if (w <= 560) setPageSize(8);
+            else if (w <= 880) setPageSize(12);
+            else setPageSize(16);
+        }
+        updatePageSize();
+        window.addEventListener("resize", updatePageSize);
+        return () => window.removeEventListener("resize", updatePageSize);
+    }, []);
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setPage(1);
+    }, [pageSize]);
     const detail = detailIndex !== null ? matieres[detailIndex] : null;
     const total = matieres.length;
+    const totalPages = Math.max(1, Math.ceil(matieres.length / pageSize));
+    const paginated = matieres.slice((page - 1) * pageSize, page * pageSize);
 
+    function goToPage(p: number) {
+        setPage(Math.min(Math.max(1, p), totalPages));
+        gridTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     const closeDetail = () => {
         setDetailIndex(null);
         setFullscreen(false);
@@ -146,14 +172,14 @@ export default function MatieresPage() {
                         </a>
                     </p>
 
+                    <div ref={gridTopRef} className={styles.gridAnchor} />
                     <div className={styles.matiereGrid}>
-                        {matieres.map((m, i) => (
+                        {paginated.map((m, i) => (
                             <button
                                 key={m.slug}
                                 type="button"
                                 className={styles.matiereCard}
-                                onClick={() => setDetailIndex(i)}
-                            >
+                                onClick={() => setDetailIndex((page - 1) * pageSize + i)}                            >
                                 <div className={styles.imageBox}>
                                     <Image
                                         src={m.image.src}
@@ -167,6 +193,8 @@ export default function MatieresPage() {
                             </button>
                         ))}
                     </div>
+
+                    <Pagination page={page} totalPages={totalPages} onPageChange={goToPage} />
 
                     <hr className="hairline" style={{ margin: "60px 0 40px" }} />
 

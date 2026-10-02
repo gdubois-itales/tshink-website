@@ -353,3 +353,7 @@
     font-size: 13.5px;
     color: var(--grey);
 }
+
+.gridAnchor {
+    scroll-margin-top: calc(var(--header-height) + 24px);
+}
