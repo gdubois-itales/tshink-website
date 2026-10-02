@@ -9,6 +9,7 @@ import { creations, type Creation, type Category } from "@/lib/creations";
 import { useCart } from "@/lib/cart-context";
 import styles from "./page.module.css";
 import Link from "next/link";
+import Pagination from "@/components/ui/Pagination";
 
 const filterOptions: { key: "all" | Category; label: string }[] = [
   { key: "all", label: "Toutes" },
@@ -159,45 +160,7 @@ export default function CreationsPage() {
                 ))}
               </div>
 
-            {totalPages > 1 && (
-                <div className={styles.pagination}>
-                  <button
-                      type="button"
-                      className={styles.pageNavButton}
-                      onClick={() => goToPage(page - 1)}
-                      disabled={page === 1}
-                      aria-label="Page précédente"
-                  >
-                    <span>←</span>
-                    <span>Préc.</span>
-                  </button>
-
-                  <div className={styles.pageProgress}>
-                    <div className={styles.pageCounter}>
-                      <span className={styles.pageCurrent}>{String(page).padStart(2, "0")}</span>
-                      <span className={styles.pageSeparator}>/</span>
-                      <span>{String(totalPages).padStart(2, "0")}</span>
-                    </div>
-                    <div className={styles.pageProgressTrack}>
-                      <div
-                          className={styles.pageProgressBar}
-                          style={{ width: `${(page / totalPages) * 100}%` }}
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                      type="button"
-                      className={`${styles.pageNavButton} ${styles.pageNavNext}`}
-                      onClick={() => goToPage(page + 1)}
-                      disabled={page === totalPages}
-                      aria-label="Page suivante"
-                  >
-                    <span>Suiv.</span>
-                    <span>→</span>
-                  </button>
-                </div>
-            )}
+            <Pagination page={page} totalPages={totalPages} onPageChange={goToPage} />
 
           </div>
         </section>
