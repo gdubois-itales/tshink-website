@@ -10,11 +10,11 @@ export type Creation = {
     slug: string;
     cat: Category;
     title: string;
-    meta?: string; // type vêt/access si pas dans title
+    meta?: string;
     desc: string;
-    size?: string; // vêt = OK, access = NOK
+    size?: string;
     price: string;
-    badge: string; // disponibilité
+    badge: string;
     cardImage: { src: string; alt: string };
     modalImages: { src: string; alt: string }[];
 };
@@ -34,7 +34,7 @@ const vetements: Creation[] = [
         meta: "Pull",
         desc: "Sweat rouge.\nCoton/viscose écru ligné rouge.",
         size: "Taille 38",
-        price: "Matières = 17,70 €.\nModèle = 110 €",
+        price: "Modèle = 110 €.\nMatières = 17,70 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/biPull.jpg`, alt: "Bi-Pull, porté" },
         modalImages: [
@@ -48,7 +48,7 @@ const vetements: Creation[] = [
         meta: "Veste",
         desc: "Fausse fourrure ligné blanc/gris.\nFausse fourrure gris ardoise.\nDoublure satinée beige.",
         size: "Taille 38/40",
-        price: "Matières = 86,50 €.\nModèle = 195 €",
+        price: "Modèle = 195 €\nMatières = 86,50 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/byzance01.jpg`, alt: "Byzance Grey, porté" },
         modalImages: [
@@ -116,7 +116,7 @@ const vetements: Creation[] = [
         meta: "Capette",
         desc: "Laine chevron bleu/écru.\nGalon.",
         size: "Taille 38",
-        price: "Modèle = 85 €.\nMatières = 42 €",
+        price: "Modèle = 85 €.\nMatières = 42 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/capette01.jpg`, alt: "Capette SD Blue, portée" },
         modalImages: [
@@ -144,7 +144,7 @@ const vetements: Creation[] = [
         meta: "Cape",
         desc: "Fausse fourrure écrue tachetée.\nFausse fourrure écrue.\nDoublue ardoise satinée.",
         size: "Taille 38",
-        price: "Modèle = 100 €.\nMatoères = 38,75 €",
+        price: "Modèle = 100 €.\nMatières = 38,75 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/cape01.jpg`, alt: "Décape Fur Ecru, portée" },
         modalImages: [
@@ -158,7 +158,7 @@ const vetements: Creation[] = [
         meta: "Cape",
         desc: "Laine bouclette rouge.\nLainage fin rouge.\nDoublure ardoise satinée.",
         size: "Taille 38",
-        price: "Modèle = 100 €.\nMatières = 41,50 €",
+        price: "Modèle = 100 €.\nMatières = 41,50 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/cape02.jpg`, alt: "Décape Red, portée" },
         modalImages: [
@@ -172,7 +172,7 @@ const vetements: Creation[] = [
         meta: "Cape",
         desc: "Minkee écru.\nMaille à peluchons blanc.",
         size: "Taille 38",
-        price: "Modèle = 100 €.\nMatières = 27 €",
+        price: "Modèle = 100 €.\nMatières = 27 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/cape03.jpg`, alt: "Décape Minkee Ecru, portée" },
         modalImages: [{ src: `${V}/model/cape03.jpg`, alt: "Décape Minkee Ecru, portée" }],
@@ -184,7 +184,7 @@ const vetements: Creation[] = [
         meta: "Robe",
         desc: "Tartan rouge.\nVoile noir.\nDoublure noire.",
         size: "Taille 38",
-        price: "Modèle = 320 €.\nMatières = 59,40 €",
+        price: "Modèle = 320 €.\nMatières = 59,40 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/robeFakeCoat.jpg`, alt: "Robe Fake Coat, porté" },
         modalImages: [
@@ -200,7 +200,7 @@ const vetements: Creation[] = [
         meta: "Manteau",
         desc: "Vinyle noir.\nDoublure jacquard satinée beige.",
         size: "Taille 38",
-        price: "Modèle = 250 €.\nMatières = 54,85 €",
+        price: "Modèle = 250 €.\nMatières = 54,85 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/openLegs.jpg`, alt: "OpenLegs, portée" },
         modalImages: [
@@ -214,9 +214,9 @@ const vetements: Creation[] = [
         cat: "vetement",
         title: "Corsetier - 133,75 €",
         meta: "Pantalon",
-        desc: "Jersey noir.\nPolyester élasthane - carreaux coloré",
+        desc: "Jersey noir.\nPolyester élasthane - carreaux coloré.",
         size: "Taille 38/40",
-        price: "Modèle = 90 €.\nMatières = 43,75 €",
+        price: "Modèle = 90 €.\nMatières = 43,75 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/pantCorset.jpg`, alt: "Pantalon Corset, porté" },
         modalImages: [
@@ -230,9 +230,9 @@ const vetements: Creation[] = [
         cat: "vetement",
         title: "Valy/Duel - 192,80 €",
         meta: "Pantalon",
-        desc: "Simili cuir noir.\nVoile rouge pourpre",
+        desc: "Simili cuir noir.\nVoile de polyester rouge pourpre.",
         size: "Taille 38",
-        price: "Modèle = 140 €.\nMatières = 52,80 €",
+        price: "Modèle = 140 €.\nMatières = 52,80 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/pantValy.jpg`, alt: "Pantalon Valy, porté" },
         modalImages: [
@@ -244,9 +244,9 @@ const vetements: Creation[] = [
         cat: "vetement",
         title: "Maille de 2 - 192 €",
         meta: "Réversible",
-        desc: "Maille impriméjacquard.",
+        desc: "Maille imprimé jacquard.",
         size: "Taille 38/40",
-        price: "Modèle = 150 €.\nMatières = 42 €",
+        price: "Modèle = 150 €.\nMatières = 42 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/reverse01.jpg`, alt: "Pull Réversible I, porté" },
         modalImages: [
@@ -264,7 +264,7 @@ const vetements: Creation[] = [
         meta: "Top",
         desc: "Voile de polyester gris/mauve, quadrillage floqué noir.",
         size: "Taille 38",
-        price: "Modèle = 100 €.\nMatières = 15 €",
+        price: "Modèle = 100 €.\nMatières = 15 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/top01.jpg`, alt: "Top I, porté" },
         modalImages: [
@@ -276,9 +276,9 @@ const vetements: Creation[] = [
         cat: "vetement",
         title: "KMiSol Red - 115€",
         meta: "Top",
-        desc: "Polyester satiné rouge, tacheté noit/écru..",
+        desc: "Polyester satiné rouge, tacheté noir/écru.",
         size: "Taille 38",
-        price: "Modèle = 100 €.\nMatières = 15 €",
+        price: "Modèle = 100 €.\nMatières = 15 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/top02.jpg`, alt: "Top KMiSol Red, porté" },
         modalImages: [
@@ -292,7 +292,7 @@ const vetements: Creation[] = [
         meta: "Top",
         desc: "Polyester satiné vert, tacheté noir/écru.",
         size: "Taille 38",
-        price: "Modèle = 100 €.\nMatières = 15 €",
+        price: "Modèle = 100 €.\nMatières = 15 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/top03.jpg`, alt: "Top KMiSol Green, porté" },
         modalImages: [
@@ -306,7 +306,7 @@ const vetements: Creation[] = [
         meta: "Top",
         desc: "Viscose fond blanc, tacheté noir/jaune/or.",
         size: "Taille 38",
-        price: "Modèle = 100 €.\nMatières = 15 €",
+        price: "Modèle = 100 €.\nMatières = 15 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/top04.jpg`, alt: "Top KMiSol Black/Yellow/Gold, porté" },
         modalImages: [
@@ -318,9 +318,9 @@ const vetements: Creation[] = [
         cat: "vetement",
         title: "Pan de 3 - 268 €",
         meta: "Jupe",
-        desc: "Suédine crème.\nCrèpe blanc.\nVoile bordeaux - motif fleurs et or",
+        desc: "Suédine crème.\nCrèpe blanc.\nVoile bordeaux - motif fleurs et or.",
         size: "Taille 38",
-        price: "Modèle = 220 €.\nMatières = 48 €",
+        price: "Modèle = 220 €.\nMatières = 48 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/triJupe.jpg`, alt: "Tri-Jupe, portée" },
         modalImages: [
@@ -334,9 +334,9 @@ const vetements: Creation[] = [
         cat: "vetement",
         title: "Pavillon Chine - 309,40 €",
         meta: "Veste",
-        desc: "Fausse fourrure gris ardoise.\nCoton écru.\nDoublure noire.",
+        desc: "Fausse fourrure gris ardoise.\nCoton écru.\nDoublure polyester noire.",
         size: "Taille 38",
-        price: "Modèle = 220 €.\nMatières = 89,40 €",
+        price: "Modèle = 220 €.\nMatières = 89,40 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/vesteChine.jpg`, alt: "Veste Chine, portée" },
         modalImages: [
@@ -350,9 +350,9 @@ const vetements: Creation[] = [
         cat: "vetement",
         title: "Emprise - 280,50 €",
         meta: "Manteau",
-        desc: "Fausse fourrure crème.\nDoublure noire.\nTissu texturé noir.",
+        desc: "Fausse fourrure crème.\nDoublure polyester noire.\nTissu polyester texturé noir.",
         size: "Taille 38",
-        price: "Modèle = 215 €.\nMatières = 65,50 €",
+        price: "Modèle = 215 €.\nMatières = 65,50 €.",
         badge: "Sur commande",
         cardImage: { src: `${V}/model/vesteDC.jpg`, alt: "Veste DC, portée" },
         modalImages: [
@@ -371,10 +371,10 @@ const accessoires: Creation[] = [
     {
         slug: "baroudeur-militaire",
         cat: "accessoire",
-        title: "Baroudeur Militaire",
+        title: "Baroudeur Militaire - 45 à 60 €",
         meta: "Chèche",
         desc: "Sweat jersey gris.\nVelours Minkee polyester kaki.",
-        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        price: "Modèle = 35 €.\nMatières = 10-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/baroudeurMilitaire.jpg`, alt: "Chèche Baroudeur Militaire" },
         modalImages: [{ src: `${A}/baroudeurMilitaire.jpg`, alt: "Chèche Baroudeur Militaire" }],
@@ -382,10 +382,10 @@ const accessoires: Creation[] = [
     {
         slug: "baroudeur-noir",
         cat: "accessoire",
-        title: "Baroudeur Noir",
+        title: "Baroudeur Noir - 45 à 60 €",
         meta: "Chèche",
         desc: "Sweat jersey gris.\nVelours Minkee polyester noir.",
-        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        price: "Modèle = 35 €.\nMatières = 10-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/baroudeurNoir.jpg`, alt: "Chèche Baroudeur Noir" },
         modalImages: [{ src: `${A}/baroudeurNoir.jpg`, alt: "Chèche Baroudeur Noir" }],
@@ -393,10 +393,10 @@ const accessoires: Creation[] = [
     {
         slug: "boheme-retro",
         cat: "accessoire",
-        title: "Bohème Rétro",
+        title: "Bohème Rétro - 40 à 50 €",
         meta: "Châle avec galons",
         desc: "Voile de coton bleu nuit à motifs abstraits organiques parme/olive.\nGalon à frange pompons bleu nuit.",
-        price: "Modèle = 30 €.\nMatières = 10-20 €",
+        price: "Modèle = 30 €.\nMatières = 10-20 €.",
         badge: "Disponible",
         cardImage: { src: `${A}/bohemeRetro.jpg`, alt: "Châle Bohème Rétro" },
         modalImages: [{ src: `${A}/bohemeRetro.jpg`, alt: "Châle Bohème Rétro" }],
@@ -404,10 +404,10 @@ const accessoires: Creation[] = [
     {
         slug: "col-hiver",
         cat: "accessoire",
-        title: "Couche d'Hiver",
+        title: "Couche d'Hiver - 50 à 60 €",
         meta: "Col",
         desc: "Fausse fourrure effet vison.",
-        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        price: "Modèle = 35 €.\nMatières = 15-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/colHiver.jpg`, alt: "Mini col Fourrure" },
         modalImages: [{ src: `${A}/colHiver.jpg`, alt: "Mini col Fourrure" }],
@@ -415,10 +415,10 @@ const accessoires: Creation[] = [
     {
         slug: "col-pointe",
         cat: "accessoire",
-        title: "Tour Pointé",
+        title: "Tour Pointé - 45 à 60 €",
         meta: "Col",
         desc: "Sweat torsadé gris.\nDoublure velours Minkee blanc.",
-        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        price: "Modèle = 35 €.\nMatières = 10-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/colPointe01.jpg`, alt: "Col Pointe, face" },
         modalImages: [
@@ -429,10 +429,10 @@ const accessoires: Creation[] = [
     {
         slug: "double-snood-01",
         cat: "accessoire",
-        title: "Cocon Poly",
+        title: "Cocon Poly - 45 à 60 €",
         meta: "Double Snood",
         desc: "Velour Minkee bleu nuit.\nViscose bleu nuit motifs orange/crème.",
-        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        price: "Modèle = 35 €.\nMatières = 10-25 €.",
         badge: "Sur Commande",
         cardImage: { src: `${A}/doubleSnood01.jpg`, alt: "Cocon Poly, Double Snood 01" },
         modalImages: [{ src: `${A}/doubleSnood01.jpg`, alt: "Cocon Poly, Double Snood 01" }],
@@ -440,10 +440,10 @@ const accessoires: Creation[] = [
     {
         slug: "double-snood-02",
         cat: "accessoire",
-        title: "Cocon Velvet",
+        title: "Cocon Velvet - 45 à 60 €",
         meta: "Double Snood",
         desc: "Velours polyester noir.\nPolyester quadrillé blanc/noir.",
-        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        price: "Modèle = 35 €.\nMatières = 10-25 €.",
         badge: "Sur Commande",
         cardImage: { src: `${A}/doubleSnood02.jpg`, alt: "Cocon Velvet, Double Snood 02" },
         modalImages: [{ src: `${A}/doubleSnood02.jpg`, alt: "Cocon Velvet, Double Snood 02" }],
@@ -451,10 +451,10 @@ const accessoires: Creation[] = [
     {
         slug: "double-snood-03",
         cat: "accessoire",
-        title: "Cocon Torsade",
+        title: "Cocon Torsade - 45 à 60 €",
         meta: "Double Snood",
         desc: "Sweat torsadé ardoise.\nDoublure velours Minkee blanc.",
-        price: "Modèle = 35 €.\nMatières = 10-25 €",
+        price: "Modèle = 35 €.\nMatières = 10-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/doubleSnood03.jpg`, alt: "Cocon Torsade, Double Snood 03" },
         modalImages: [{ src: `${A}/doubleSnood03.jpg`, alt: "Cocon Torsade, Double Snood 03" }],
@@ -462,10 +462,10 @@ const accessoires: Creation[] = [
     {
         slug: "metamorphe",
         cat: "accessoire",
-        title: "Métamorphe",
+        title: "Métamorphe - 45 à 55 €",
         meta: "Châle",
         desc: "Gaze de coton terracota.\nViscose crème/fil d'or à motif crocodile.",
-        price: "Modèle = 30 €.\nMatières = 15-25 €",
+        price: "Modèle = 30 €.\nMatières = 15-25 €.",
         badge: "Sur Commande",
         cardImage: { src: `${A}/metamorphe01.jpg`, alt: "Métamorphe, bi-châle" },
         modalImages: [
@@ -477,10 +477,10 @@ const accessoires: Creation[] = [
     {
         slug: "multiforme-orange",
         cat: "accessoire",
-        title: "Multiforme Orange",
+        title: "Multiforme Orange - 70 à 90 €",
         meta: "Écharpe — Multi fonction",
         desc: "Laine à motif géométrique noir/gris/orange.\nDoublure fine laine gris motifs losange noir.",
-        price: "Modèle = 50 €.\nMatières = 20-40 €",
+        price: "Modèle = 50 €.\nMatières = 20-40 €.",
         badge: "Sur Commande",
         cardImage: { src: `${A}/multiformeOrange01.jpg`, alt: "Écharpe Multiforme Orange" },
         modalImages: [
@@ -492,10 +492,10 @@ const accessoires: Creation[] = [
     {
         slug: "multiforme-rouge",
         cat: "accessoire",
-        title: "Multiforme Rouge",
+        title: "Multiforme Rouge - - 70 à 90 €",
         meta: "Écharpe — Multi fonction",
         desc: "Laine quadrillée rouge/crème.\nDoublure laine bouclette rouge.",
-        price: "Modèle = 50 €.\nMatières = 20-40 €",
+        price: "Modèle = 50 €.\nMatières = 20-40 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/multiformeRouge01.jpg`, alt: "Écharpe Multiforme Rouge" },
         modalImages: [
@@ -507,10 +507,10 @@ const accessoires: Creation[] = [
     {
         slug: "nomade",
         cat: "accessoire",
-        title: "Nomade",
+        title: "Nomade - 50 à 60 €",
         meta: "Col capuche",
         desc: "Sweat gris, envers fin velours blanc.",
-        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        price: "Modèle = 35 €.\nMatières = 15-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/nomade.jpg`, alt: "Capuche Nomade" },
         modalImages: [{ src: `${A}/nomade.jpg`, alt: "Capuche Nomade" }],
@@ -518,10 +518,10 @@ const accessoires: Creation[] = [
     {
         slug: "panier-lingette",
         cat: "accessoire",
-        title: "Panier Lingette",
+        title: "Panier Lingette - 35 à 45 €",
         meta: "6 lingettes par panier",
         desc: "Panier en coton, rembourré de ouatine.\nLingettes avec une face coton, une face éponge bambou.",
-        price: "Modèle = 30 €.\nMatières = 5-15 €",
+        price: "Modèle = 30 €.\nMatières = 5-15 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/panierLingettes.jpg`, alt: "Lingettes, version Panier" },
         modalImages: [
@@ -532,10 +532,10 @@ const accessoires: Creation[] = [
     {
         slug: "parisienne",
         cat: "accessoire",
-        title: "Parisienne",
+        title: "Parisienne - 55 à 65 €",
         meta: "Écharpe",
         desc: "Jersey polyester motif pied-de-poule.\nDoublure fausse fourrure blanche.",
-        price: "Modèle = 40 €.\nMatières = 15-25 €",
+        price: "Modèle = 40 €.\nMatières = 15-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/parisienne.jpg`, alt: "Parisienne, Écharpe coupe structurée" },
         modalImages: [{ src: `${A}/parisienne.jpg`, alt: "Parisienne, Écharpe coupe structurée" }],
@@ -543,10 +543,10 @@ const accessoires: Creation[] = [
     {
         slug: "patchwork-urbain",
         cat: "accessoire",
-        title: "Patchwork Urbain",
+        title: "Patchwork Urbain - 50 à 60 €",
         meta: "Écharpe",
         desc: "Sweat gris.\nSweat torsadé bleu nuit.\nMinkee motif militaire.",
-        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        price: "Modèle = 35 €.\nMatières = 15-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/patchworkUrbain.jpg`, alt: "Écharpe Patchwork Urbain" },
         modalImages: [{ src: `${A}/patchworkUrbain.jpg`, alt: "Écharpe Patchwork Urbain" }],
@@ -554,10 +554,10 @@ const accessoires: Creation[] = [
     {
         slug: "snood-cream",
         cat: "accessoire",
-        title: "Combo Cream",
+        title: "Combo Cream - 50 à 60 €",
         meta: "Snood",
         desc: "Tissu d'ameublement jacquard noir/or, motif grandes feuilles.\nFausse fourrure blanche.",
-        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        price: "Modèle = 35 €.\nMatières = 15-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/snoodCream.jpg`, alt: "Snood Crème Nath" },
         modalImages: [{ src: `${A}/snoodCream.jpg`, alt: "Snood Crème Nath" }],
@@ -565,10 +565,10 @@ const accessoires: Creation[] = [
     {
         slug: "snood-01",
         cat: "accessoire",
-        title: "Semi Cocon Torsade",
+        title: "Semi Cocon Torsade - 50 à 60 €",
         meta: "Snood",
         desc: "Sweat torsadé ardoise.\nDoublure fausse fourrure brun.",
-        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        price: "Modèle = 35 €.\nMatières = 15-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/snood01.jpg`, alt: "Snood" },
         modalImages: [{ src: `${A}/snood01.jpg`, alt: "Snood" }],
@@ -576,10 +576,10 @@ const accessoires: Creation[] = [
     {
         slug: "sphinx",
         cat: "accessoire",
-        title: "Sphinx",
+        title: "Sphinx - 50 à 65 €",
         meta: "Écharpe Capuche",
         desc: "Sweat gris.\nSweat torsadé bleu nuit.\nDoublure Minkee bleu nuit.",
-        price: "Modèle = 35 €.\nMatières = 15-30 €",
+        price: "Modèle = 35 €.\nMatières = 15-30 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/sphinx.jpg`, alt: "Écharpe Capuche Sphinx" },
         modalImages: [{ src: `${A}/sphinx.jpg`, alt: "Écharpe Capuche Sphinx" }],
@@ -587,10 +587,10 @@ const accessoires: Creation[] = [
     {
         slug: "tdc-01",
         cat: "accessoire",
-        title: "Tubul Red",
+        title: "Tubul Red - 40 à 50 €",
         meta: "Tour de cou",
         desc: "Lainage quadrillé rouge.\nDoublure fausse fourrure crème/beige.",
-        price: "Modèle = 30 €.\nMatières = 10-20 €",
+        price: "Modèle = 30 €.\nMatières = 10-20 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/tdc01.jpg`, alt: "Tour de Cou Red" },
         modalImages: [{ src: `${A}/tdc01.jpg`, alt: "Tour de Cou Red" }],
@@ -598,10 +598,10 @@ const accessoires: Creation[] = [
     {
         slug: "tdc-02",
         cat: "accessoire",
-        title: "Tubul Brown",
+        title: "Tubul Brown - 50 à 60 €",
         meta: "Tour de cou",
-        desc: "Chutes de laines et tweed texturés, fond brun.\nMotif Prince de Galles, Chevrons et Quadrilles.\nDoublure Minkee brun.\nBoutons noir mat en forme de croissant, avec lanière noire.",
-        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        desc: "Chutes de laines/tweed texturés, fond brun.\nMotif Prince de Galles, Chevrons et Quadrilles.\nDoublure Minkee brun.\nBoutons noir mat forme de croissant, avec lanière noire.",
+        price: "Modèle = 35 €.\nMatières = 15-25 €.",
         badge: "Sur commande",
         cardImage: { src: `${A}/tdc02.jpg`, alt: "Tour de Cou Brun" },
         modalImages: [{ src: `${A}/tdc02.jpg`, alt: "Tour de Cou Brun" }],
@@ -609,10 +609,10 @@ const accessoires: Creation[] = [
     {
         slug: "toteBagMiroir-chien",
         cat: "accessoire",
-        title: "Miroir Bulldog",
+        title: "Miroir Bulldog - 50 à 60 €",
         meta: "Tote Bag - Réversible",
         desc: "Coton bleu motifs éventails et bulldogs.\nCoton ocre motifs éventails et bulldogs.\nEmpiècement en tissu d'ameublement gris à motif Saki doré.",
-        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        price: "Modèle = 35 €.\nMatières = 15-25 €.",
         badge: "Sur Commande",
         cardImage: { src: `${A}/chiensB.jpg`, alt: "Sac Bulldog" },
         modalImages: [
@@ -623,10 +623,10 @@ const accessoires: Creation[] = [
     {
         slug: "toteBagMiroir-chat",
         cat: "accessoire",
-        title: "Miroir Chat",
+        title: "Miroir Chat - 50 à 60 €",
         meta: "Tote Bag - Réversible",
         desc: "Coton blanc à motifs chats géométriques bleu.\nCoton blanc à motifs chats géométriques ocre.\nEmpiècement en tissu d'ameublement gris à motif Saki doré.",
-        price: "Modèle = 35 €.\nMatières = 15-25 €",
+        price: "Modèle = 35 €.\nMatières = 15-25 €.",
         badge: "Sur Commande",
         cardImage: { src: `${A}/chatsB.jpg`, alt: "Sac Chat" },
         modalImages: [
