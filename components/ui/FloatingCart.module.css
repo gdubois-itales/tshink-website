@@ -206,21 +206,32 @@
 .zoomClose {
     position: fixed;
     top: 24px;
-    right: 24px;
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(251, 248, 243, 0.4);
-    background: rgba(27, 22, 20, 0.4);
+    right: 30px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: transparent;
     color: var(--white);
-    font-size: 16px;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 961;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 .zoomClose:hover {
-    background: var(--bordeaux);
-    border-color: var(--bordeaux);
+    color: var(--bordeaux);
+    background: transparent;
+}
+
+@media (max-width: 720px) {
+    .zoomClose {
+        top: 12px;
+        right: 14px;
+        font-size: 26px;
+    }
 }
 
 .addedConfirmation {
