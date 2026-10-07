@@ -288,6 +288,11 @@
     cursor: pointer;
 }
 
+.detailClose:hover {
+    background: var(--black);
+    color: var(--white);
+}
+
 .navigation {
     flex-shrink: 0;
     width: 100%;
