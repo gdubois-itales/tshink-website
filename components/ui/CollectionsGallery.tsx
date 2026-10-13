@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import type { CollectionImage } from "@/lib/collections";
 import styles from "./CollectionsGallery.module.css";
+import SlideNav from "@/components/ui/SlideNav";
 
 type CollectionGalleryProps = {
     images: CollectionImage[];
@@ -15,47 +16,8 @@ type CollectionGalleryProps = {
 type NavBarProps = {
     onPrev: () => void;
     onNext: () => void;
-    currentNumber: string;
-    totalNumber: string;
-    progress: number;
 };
 
-function NavBar({ onPrev, onNext, currentNumber, totalNumber, progress }: NavBarProps) {
-    return (
-        <div className={styles.lightboxNavigation}>
-            <button
-                type="button"
-                className={styles.lightboxNavButton}
-                onClick={onPrev}
-                aria-label="Image précédente"
-            >
-                <span>←</span>
-                <span>Préc.</span>
-            </button>
-
-            <div className={styles.lightboxProgress}>
-                <div className={styles.counter}>
-                    <span className={styles.current}>{currentNumber}</span>
-                    <span className={styles.separator}>/</span>
-                    <span>{totalNumber}</span>
-                </div>
-                <div className={styles.progressTrack}>
-                    <div className={styles.progressBar} style={{ width: `${progress}%` }} />
-                </div>
-            </div>
-
-            <button
-                type="button"
-                className={`${styles.lightboxNavButton} ${styles.lightboxNavNext}`}
-                onClick={onNext}
-                aria-label="Image suivante"
-            >
-                <span>Suiv.</span>
-                <span>→</span>
-            </button>
-        </div>
-    );
-}
 
 export default function CollectionGallery({ images }: CollectionGalleryProps) {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -154,15 +116,8 @@ export default function CollectionGallery({ images }: CollectionGalleryProps) {
                             />
                         </div>
 
-                        {total > 1 && (
-                            <NavBar
-                                onPrev={prev}
-                                onNext={next}
-                                currentNumber={currentNumber}
-                                totalNumber={totalNumber}
-                                progress={progress}
-                            />
-                        )}
+                        <SlideNav current={activeIndex! + 1} total={total} onPrev={prev} onNext={next} dark />
+
                     </div>
                 </div>
             )}
