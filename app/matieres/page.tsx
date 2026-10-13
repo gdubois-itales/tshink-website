@@ -9,6 +9,7 @@ import styles from "./page.module.css";
 import { useRouter} from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import Pagination from "@/components/ui/Pagination";
+import SlideNav from "@/components/ui/SlideNav";
 
 const COMPOSITION_LABELS = ["Utilisation Suggérée", "Palette de Couleurs"];
 
@@ -330,45 +331,12 @@ export default function MatieresPage() {
                                     </button>
                                 )}
                             </div>
-                            {total > 1 && (
-                                <div className={styles.navigation}>
-                                    <button
-                                        type="button"
-                                        className={styles.navButton}
-                                        onClick={prevDetail}
-                                        aria-label="Matière précédente"
-                                    >
-                                        <span>←</span>
-                                        <span>Préc.</span>
-                                    </button>
-
-                                    <div className={styles.progress}>
-                                        <div className={styles.counter}>
-                                            <span className={styles.current}>
-                                                {String(detailIndex! + 1).padStart(2, "0")}
-                                            </span>
-                                            <span className={styles.separator}>/</span>
-                                            <span>{String(total).padStart(2, "0")}</span>
-                                        </div>
-                                        <div className={styles.progressTrack}>
-                                            <div
-                                                className={styles.progressBar}
-                                                style={{ width: `${((detailIndex! + 1) / total) * 100}%` }}
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <button
-                                        type="button"
-                                        className={`${styles.navButton} ${styles.navNext}`}
-                                        onClick={nextDetail}
-                                        aria-label="Matière suivante"
-                                    >
-                                        <span>Suiv.</span>
-                                        <span>→</span>
-                                    </button>
-                                </div>
-                            )}
+                            <SlideNav
+                                current={detailIndex! + 1}
+                                total={total}
+                                onPrev={prevDetail}
+                                onNext={nextDetail}
+                            />
                         </div>
                     </div>
                 </div>

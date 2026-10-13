@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./ImageCarousel.module.css";
+import SlideNav from "@/components/ui/SlideNav";
 
 type Slide = {
     src: string;
@@ -103,54 +104,7 @@ export default function ImageCarousel({
                     </button>
                 </div>
 
-                {/* ================= NAVIGATION ================= */}
-
-                {slides.length > 1 && (
-                    <div className={styles.navigation}>
-
-                        <button
-                            type="button"
-                            className={styles.navButton}
-                            onClick={prev}
-                            aria-label="Image précédente"
-                        >
-                            <span>←</span>
-                            <span>Préc.</span>
-                        </button>
-
-                        <div className={styles.progress}>
-                            <div className={styles.counter}>
-                                <span className={styles.current}>
-                                    {currentNumber}
-                                </span>
-
-                                <span className={styles.separator}>
-                                    /
-                                </span>
-
-                                <span>{totalNumber}</span>
-                            </div>
-
-                            <div className={styles.progressTrack}>
-                                <div
-                                    className={styles.progressBar}
-                                    style={{ width: `${progress}%` }}
-                                />
-                            </div>
-                        </div>
-
-                        <button
-                            type="button"
-                            className={`${styles.navButton} ${styles.navNext}`}
-                            onClick={next}
-                            aria-label="Image suivante"
-                        >
-                            <span>Suiv.</span>
-                            <span>→</span>
-                        </button>
-
-                    </div>
-                )}
+                <SlideNav current={current + 1} total={total} onPrev={prev} onNext={next} size="lg" />
             </div>
 
             {/* ================= LIGHTBOX ================= */}
@@ -189,52 +143,8 @@ export default function ImageCarousel({
                             />
                         </div>
 
-                        {slides.length > 1 && (
-                            <div className={styles.lightboxNavigation}>
+                        <SlideNav current={current + 1} total={total} onPrev={prev} onNext={next} dark size="lg" />
 
-                                <button
-                                    type="button"
-                                    className={styles.lightboxNavButton}
-                                    onClick={prev}
-                                    aria-label="Image précédente"
-                                >
-                                    ← <span>Préc.</span>
-                                </button>
-
-                                <div className={styles.lightboxProgress}>
-                                    <div className={styles.counter}>
-                                        <span className={styles.current}>
-                                            {currentNumber}
-                                        </span>
-
-                                        <span className={styles.separator}>
-                                            /
-                                        </span>
-
-                                        <span>{totalNumber}</span>
-                                    </div>
-
-                                    <div className={styles.progressTrack}>
-                                        <div
-                                            className={styles.progressBar}
-                                            style={{
-                                                width: `${progress}%`,
-                                            }}
-                                        />
-                                    </div>
-                                </div>
-
-                                <button
-                                    type="button"
-                                    className={`${styles.lightboxNavButton} ${styles.lightboxNavNext}`}
-                                    onClick={next}
-                                    aria-label="Image suivante"
-                                >
-                                    <span>Suiv.</span> →
-                                </button>
-
-                            </div>
-                        )}
                     </div>
                 </div>
             )}
