@@ -11,7 +11,7 @@ export default function MentionsLegalesPage() {
             Mentions Légales & Politique de Confidentialité
           </h1>
           <p style={{ marginTop: 10, color: "var(--grey)", fontSize: 13.5 }}>
-            Dernière mise à jour : 16 septembre 2026
+            Dernière mise à jour : 13 octobre 2026
           </p>
           <p style={{ marginTop: 26, maxWidth: 760, fontSize: 15, color: "var(--ink)" }}>
             Cette politique de confidentialité pour TshinK (marque exploitée par
@@ -50,7 +50,7 @@ export default function MentionsLegalesPage() {
                 <br />
                 Siège : Horenberg 85, 3090 Overijse, Belgique
                 <br />
-                Numéro d&apos;entreprise (BCE) : 1023.072.361c
+                Numéro d&apos;entreprise (BCE) : 1023.072.361
                 <br />
                 Numéro de TVA : BE 1023.072.361
                 <br />
@@ -67,7 +67,7 @@ export default function MentionsLegalesPage() {
               <p>
                 Nous collectons les informations personnelles que vous nous
                 fournissez volontairement lorsque vous manifestez un intérêt
-                pour nos produits et Services, ou lorsque vous nous contactez.
+                pour nos produits et services, ou lorsque vous nous contactez.
                 Cela peut inclure votre adresse email, votre nom, ainsi que le
                 contenu de votre message ou de votre commande. Nous ne
                 traitons pas d&apos;informations sensibles.
@@ -86,30 +86,29 @@ export default function MentionsLegalesPage() {
               <p>
                 <em>
                   En bref : pour fournir, améliorer et administrer nos
-                  Services, communiquer avec vous, et nous conformer à la loi.
+                  services, communiquer avec vous, et nous conformer à la loi.
                 </em>
               </p>
               <p>
                 Nous traitons vos informations pour répondre à vos demandes et
-                résoudre tout problème lié au service demandé, ainsi que pour
-                protéger un intérêt vital lorsque cela est nécessaire.
+                résoudre tout problème lié au service demandé.
               </p>
 
               <h2 id="l4">4. Sur quelles bases légales nous appuyons-nous ?</h2>
               <p>
                 Le RGPD nous impose d&apos;expliquer nos bases légales :
                 consentement (que vous pouvez retirer à tout moment), exécution
-                d&apos;un contrat, obligations légales, et intérêts vitaux.
+                d&apos;un contrat, obligations légales.
               </p>
 
               <h2 id="l5">5. Quand et avec qui partageons-nous vos informations ?</h2>
               <p>
                 Nous utilisons deux formulaires Google Forms distincts (contact
-                et commande/panier), associés à un script Google Apps Script
-                qui nous envoie automatiquement un e-mail récapitulatif à
+                et commande/panier), associés à un Google Sheets et à un script Google Apps Script
+                qui vous envoie automatiquement un e-mail récapitulatif à
                 chaque nouvelle réponse. Nous ne conservons aucune copie de vos
                 données sur nos propres serveurs : elles restent uniquement
-                dans Google Forms et dans notre messagerie électronique. Google
+                dans Google Forms, Google Sheets et dans notre messagerie électronique. Google
                 agit à ce titre comme sous-traitant et peut être amené à
                 traiter ces données, y compris le cas échéant en dehors de
                 l&apos;Espace économique européen, dans le cadre des garanties
@@ -120,12 +119,16 @@ export default function MentionsLegalesPage() {
                 transfert d&apos;entreprise (fusion, vente d&apos;actifs,
                 financement ou acquisition).
               </p>
+              <p>
+                Le site est actuellement hébergé sur Github Pages qui peut traiter
+                des données techniques comme l&apos;adresse IP.
+              </p>
 
               <h2 id="l6">6. Combien de temps conservons-nous vos informations ?</h2>
               <p>
                 Aussi longtemps que nécessaire pour remplir les finalités
                 décrites, sauf obligation légale contraire. Passé ce délai, les
-                données sont supprimées ou anonymisées.
+                données sont supprimées ou anonymisées (maximum 7 ans).
               </p>
 
               <h2 id="l7">7. Collectons-nous des informations auprès de mineurs ?</h2>
@@ -138,7 +141,7 @@ export default function MentionsLegalesPage() {
               <h2 id="l8">8. Quels sont vos droits en matière de confidentialité ?</h2>
               <p>
                 Dans l&apos;EEE, vous disposez de droits d&apos;accès, de
-                rectification, de suppression, de restriction, de portabilité
+                rectification, de suppression, de restriction, d&apos;opposition, de portabilité
                 et de ne pas faire l&apos;objet d&apos;une décision
                 automatisée. Vous pouvez déposer une réclamation auprès de
                 l&apos;Autorité de protection des données (APD) :
