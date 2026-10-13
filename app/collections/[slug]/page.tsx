@@ -6,7 +6,9 @@ import { collections } from "@/lib/nav-links";
 import { collectionsContent } from "@/lib/collections";
 import styles from "./page.module.css";
 import CollectionGallery from "@/components/ui/CollectionsGallery";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = { title: "TshinK — Collections" };
 // Pré-génère une route statique pour chaque collection connue
 // (zodiac-tribe, kinky-link, freedoms-temptation).
 export function generateStaticParams() {

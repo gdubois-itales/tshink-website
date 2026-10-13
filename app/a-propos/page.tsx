@@ -2,7 +2,9 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
 import styles from "./page.module.css";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = { title: "TshinK — À propos" };
 export default function AProposPage() {
   return (
       <>

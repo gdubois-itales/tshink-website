@@ -3,7 +3,6 @@ import Link from "next/link";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
 import styles from "./page.module.css";
-import ImageSlideshow from "@/components/ui/ImageSlideshow";
 import MannequinsTicker from "@/components/ui/MannequinsTicker";
 import HeroSlideshow from "@/components/ui/HeroSlideshow";
 

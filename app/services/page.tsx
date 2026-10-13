@@ -2,7 +2,9 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 import styles from "./page.module.css";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = { title: "TshinK — Services" };
 const steps = [
   {
     n: "01",
