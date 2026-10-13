@@ -1,7 +1,9 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import ContactForm from "@/components/ui/ContactForm";
 import styles from "./page.module.css";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = { title: "TshinK — Contact" };
 export default function ContactPage() {
   return (
       <section className="section">

@@ -2,7 +2,9 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
 import styles from "./not-found.module.css";
 import Image from "next/image";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = { title: "Not Found" };
 export default function NotFound() {
     return (
         <section className="section">

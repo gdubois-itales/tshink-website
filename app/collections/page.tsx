@@ -4,7 +4,9 @@ import Image from "next/image";
 import { collections } from "@/lib/nav-links";
 import { collectionsContent } from "@/lib/collections";
 import styles from "./page.module.css";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = { title: "TshinK — Collections" };
 export default function CollectionsPage() {
   return (
       <section className="section">

@@ -1,12 +1,14 @@
 import Eyebrow from "@/components/ui/Eyebrow";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = { title: "TshinK — Mentions légales" };
 export default function MentionsLegalesPage() {
   return (
       <section className="section tight">
         <div className="wrap">
           <Eyebrow>Légal</Eyebrow>
           <h1 style={{ marginTop: 14, fontSize: 32 }}>
-            Politique de confidentialité
+            Mentions Légales & Politique de Confidentialité
           </h1>
           <p style={{ marginTop: 10, color: "var(--grey)", fontSize: 13.5 }}>
             Dernière mise à jour : 16 septembre 2026
