@@ -8,7 +8,24 @@ import styles from "./page.module.css";
 import CollectionGallery from "@/components/ui/CollectionsGallery";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "TshinK — Collections" };
+export async function generateMetadata({
+                                         params,
+                                       }: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const collection = collections.find((c) => c.slug === slug);
+  const content = collectionsContent.find((c) => c.slug === slug);
+
+  if (!collection || !content) {
+    return { title: "Collection introuvable" };
+  }
+
+  return {
+    title: collection.title,
+    description: content.teaser,
+  };
+}
 // Pré-génère une route statique pour chaque collection connue
 // (zodiac-tribe, kinky-link, freedoms-temptation).
 export function generateStaticParams() {
