@@ -14,7 +14,7 @@ export default function MentionsLegalesPage() {
             Dernière mise à jour : 13 octobre 2026
           </p>
           <p style={{ marginTop: 26, maxWidth: 760, fontSize: 15, color: "var(--ink)" }}>
-            Cette politique de confidentialité pour TshinK (marque exploitée par
+            Ces mentions légales et cette politique de confidentialité pour TshinK (marque exploitée par
             I-Tales SRL) décrit comment et pourquoi nous traitons vos
             informations personnelles lorsque vous utilisez nos services,
             notamment lorsque vous visitez notre site ou interagissez avec
@@ -96,9 +96,11 @@ export default function MentionsLegalesPage() {
 
               <h2 id="l4">4. Sur quelles bases légales nous appuyons-nous ?</h2>
               <p>
-                Le RGPD nous impose d&apos;expliquer nos bases légales :
-                consentement (que vous pouvez retirer à tout moment), exécution
-                d&apos;un contrat, obligations légales.
+                Pour répondre à votre demande de contact ou de commande,
+                nous nous appuyons sur des mesures précontractuelles prises à votre demande
+                et, le cas échéant, sur l’exécution du contrat conclu, ainsi que sur notre intérêt
+                légitime à vous répondre. Certaines données sont conservées pour respecter
+                nos obligations légales, notamment comptables.
               </p>
 
               <h2 id="l5">5. Quand et avec qui partageons-nous vos informations ?</h2>
@@ -120,15 +122,17 @@ export default function MentionsLegalesPage() {
                 financement ou acquisition).
               </p>
               <p>
-                Le site est actuellement hébergé sur Github Pages qui peut traiter
-                des données techniques comme l&apos;adresse IP.
+                Le site est actuellement hébergé sur GitHub Pages, filiale de Microsoft, États-Unis,
+                qui peut traiter des données techniques comme l&apos;adresse IP.
               </p>
 
               <h2 id="l6">6. Combien de temps conservons-nous vos informations ?</h2>
               <p>
-                Aussi longtemps que nécessaire pour remplir les finalités
-                décrites, sauf obligation légale contraire. Passé ce délai, les
-                données sont supprimées ou anonymisées (maximum 7 ans).
+                Les messages de contact et les demandes restées sans suite sont conservés
+                le temps nécessaire pour y répondre, puis supprimés au plus tard 12 mois après
+                le dernier échange. Les données liées à une commande (échanges, devis, acompte, facture)
+                sont conservées pendant la durée légale de conservation des pièces comptables, soit 7 ans.
+                Passé ces délais, elles sont supprimées ou anonymisées.
               </p>
 
               <h2 id="l7">7. Collectons-nous des informations auprès de mineurs ?</h2>
