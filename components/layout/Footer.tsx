@@ -40,6 +40,7 @@ export default function Footer() {
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} TshinK — I-Tales SRL</span>
           <Link href="/mentions-legales">Mentions légales</Link>
+          <Link href="/conditions-de-vente">Conditions de vente</Link>
         </div>
       </div>
     </footer>

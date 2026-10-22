@@ -175,3 +175,40 @@
     padding: 16px 0;
     white-space: pre-line;
 }
+
+.termsLabel {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 18px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    cursor: pointer;
+}
+.termsLabel input {
+    margin-top: 3px;
+    flex-shrink: 0;
+    accent-color: var(--bordeaux);
+}
+.termsLink {
+    color: var(--bordeaux);
+    text-decoration: underline;
+}
+
+.submitHint {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--grey);
+}
+
+.privacyNote {
+    margin: 0 0 20px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--grey);
+}
+.privacyLink {
+    color: var(--bordeaux);
+    text-decoration: underline;
+}

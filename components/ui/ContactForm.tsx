@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import Eyebrow from "@/components/ui/Eyebrow";
 import styles from "./ContactForm.module.css";
+import Link from "next/link";
 
 const GOOGLE_FORM_ACTION =
     "https://docs.google.com/forms/d/e/1FAIpQLSc-b4zP2HGFASXUo4vAvoOKaq1_HUCUW_eTjD6ZgooQpAKpig/formResponse";
@@ -101,6 +102,20 @@ export default function ContactForm() {
                         required
                     />
                 </div>
+
+                <p className={styles.privacyNote}>
+                    Vos informations servent uniquement à répondre à votre message. Pour en
+                    savoir plus, consultez nos{" "}
+                    <Link
+                        href="/mentions-legales"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.privacyLink}
+                    >
+                        mentions légales et politique de confidentialité
+                    </Link>
+                    .
+                </p>
 
                 {status === "error" && (
                     <p className={styles.errorMessage}>

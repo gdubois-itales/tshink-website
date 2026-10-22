@@ -44,10 +44,6 @@
     border: 0;
     cursor: pointer;
 }
-.submitButton:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
 
 .errorMessage {
     margin-bottom: 20px;
@@ -82,4 +78,15 @@
 .confirmBox p {
     margin-top: 12px;
     font-size: 14px;
+}
+
+.privacyNote {
+    margin: 0 0 20px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--grey);
+}
+.privacyLink {
+    color: var(--bordeaux);
+    text-decoration: underline;
 }

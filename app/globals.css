@@ -185,7 +185,7 @@ main {
 
 .cta-outline {
   border: 1px solid var(--black);
-  padding: 10px 22px;
+  padding: 15px 22px;
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -402,4 +402,35 @@ main {
 }
 .Toastify__toast-container--top-center {
   top: calc(var(--header-height) + 16px);
+}
+
+.cta-solid:disabled,
+.cta-outline:disabled,
+.cta-ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.cta-solid:disabled:hover {
+  background: var(--bordeaux);
+  border-color: var(--bordeaux);
+}
+.cta-outline:disabled:hover {
+  background: transparent;
+  color: inherit;
+}
+.cta-ghost:disabled:hover {
+  background: transparent;
+  color: var(--black);
+}
+
+.legal-form {
+  margin-top: 16px;
+  max-width: 640px;
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--bordeaux);
+  background: var(--white);
+  padding: 22px 26px;
+}
+.legal-form p {
+  margin-top: 0;
 }
