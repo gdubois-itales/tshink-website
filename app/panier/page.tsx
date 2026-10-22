@@ -50,7 +50,11 @@ export default function PanierPage() {
     const [sent, setSent] = useState(false);
 
     const recap = buildRecap(panier);
-    const canSubmit = panier.length > 0 && nom.trim() !== "" && email.trim() !== "";
+
+    const [acceptedTerms, setAcceptedTerms] = useState(false);
+
+    const canSubmit =
+        panier.length > 0 && nom.trim() !== "" && email.trim() !== "" && acceptedTerms;
 
     async function handleSubmit(e: FormEvent) {
         e.preventDefault();
@@ -84,6 +88,7 @@ export default function PanierPage() {
         setSent(false);
         viderPanier();
         router.push("/creations");
+        setAcceptedTerms(false);
     }
 
     return (
@@ -192,6 +197,41 @@ export default function PanierPage() {
                                     placeholder="Ex : je préfère être recontacté·e par téléphone…"
                                 />
                             </div>
+
+                            <label className={styles.termsLabel}>
+                                <input
+                                    type="checkbox"
+                                    checked={acceptedTerms}
+                                    onChange={(e) => setAcceptedTerms(e.target.checked)}
+                                />
+                                <span>
+                                    En envoyant votre demande, vous reconnaissez avoir pris connaissance des{" "}
+                                        <Link
+                                            href="/conditions-de-vente"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={styles.termsLink}
+                                        >
+                                        conditions générales de vente
+                                    </Link>
+                                    .
+                                </span>
+                            </label>
+
+                            <p className={styles.privacyNote}>
+                                Vos informations servent uniquement à répondre à votre message. Pour en
+                                savoir plus, consultez nos{" "}
+                                <Link
+                                    href="/mentions-legales"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.privacyLink}
+                                >
+                                    mentions légales et politique de confidentialité
+                                </Link>
+                                .
+                            </p>
+
                             <button
                                 type="submit"
                                 className={`cta-solid ${styles.submitBtn}`}
@@ -199,6 +239,11 @@ export default function PanierPage() {
                             >
                                 {sending ? "Envoi…" : "Envoyer commande"}
                             </button>
+                            {!canSubmit && panier.length > 0 && (
+                                <p className={styles.submitHint}>
+                                    Renseignez votre nom et votre e-mail, et cochez la case pour envoyer.
+                                </p>
+                            )}
                         </form>
                     </div>
                 )}
