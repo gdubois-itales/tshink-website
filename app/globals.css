@@ -434,3 +434,20 @@ main {
 .legal-form p {
   margin-top: 0;
 }
+
+@media print {
+  header,
+  footer,
+  .legal-toc {
+    display: none !important;
+  }
+  main {
+    padding-top: 0;
+  }
+  .legal-layout {
+    display: block;
+  }
+  .legal-body h2 {
+    break-after: avoid;
+  }
+}
