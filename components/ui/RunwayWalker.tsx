@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import styles from "./RunwayWalker.module.css";
+import { withBasePath } from "@/lib/with-base-path";
 
 type RunwayWalkerProps = {
     isPlaying: boolean;
@@ -27,10 +28,12 @@ export default function RunwayWalker({
     useEffect(() => {
         for (let i = 1; i <= frameCount; i++) {
             const img = new Image();
-            img.src = `/images/runway/walk-${String(i).padStart(2, "0")}.gif`;
+            img.src = withBasePath(
+                `/images/runway/walk-${String(i).padStart(2, "0")}.gif`
+            );
         }
         const pauseImage = new Image();
-        pauseImage.src = "/images/runway/pause.png";
+        pauseImage.src = withBasePath("/images/runway/pause.png");
     }, [frameCount]);
 
     // 2. Boucle d'animation haute performance (Zéro temps d'arrêt)
@@ -83,12 +86,13 @@ export default function RunwayWalker({
                     : "Reprendre le diaporama"
             }
         >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-                src={
+                src={withBasePath(
                     isPlaying
                         ? `/images/runway/walk-${String(frame + 1).padStart(2, "0")}.gif`
                         : "/images/runway/pause.png"
-                }
+                )}
                 alt=""
                 aria-hidden="true"
             />
