@@ -10,6 +10,7 @@ import { useRouter} from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import Pagination from "@/components/ui/Pagination";
 import SlideNav from "@/components/ui/SlideNav";
+import Link from "next/link";
 
 const COMPOSITION_LABELS = ["Utilisation Suggérée", "Palette de Couleurs"];
 
@@ -159,10 +160,10 @@ export default function MatieresPage() {
                         <p>
                             Vous souhaitez une création dans une autre matière ? Repérez
                             d&apos;abord votre modèle sur la page{" "}
-                            <a href="/creations" className={styles.disclaimerLink}>Créations</a>{" "}
+                            <Link href="/creations" className={styles.disclaimerLink}>Créations</Link>{" "}
                             et utilisez le bouton <strong>Choisir une matière</strong>, ou
                             écrivez-nous directement via la page{" "}
-                            <a href="/contact" className={styles.disclaimerLink}>Contact</a>.
+                            <Link href="/contact" className={styles.disclaimerLink}>Contact</Link>.
                         </p>
                     </div>
 
@@ -245,7 +246,7 @@ export default function MatieresPage() {
                     ) : (
                         <p className={styles.externalFabricHint}>
                             Repérez d&apos;abord une création sur la page{" "}
-                            <a href="/creations" className={styles.disclaimerLink}>Créations</a>{" "}
+                            <Link href="/creations" className={styles.disclaimerLink}>Créations</Link>{" "}
                             pour pouvoir ajouter un tissu trouvé ailleurs à votre panier.
                         </p>
                     )}
